@@ -1,0 +1,22 @@
+{
+  "wp_endpoint": "https://trojan.dmbk.io/wp-json/api/v1/core",
+  "meta_defaults": {
+    "title": "Site",
+    "description": "Site.",
+    "site_url": "",
+    "bgcolor": "#fff"
+  },
+  "mail_scrape": {
+    "mailchimp_url": ""
+  },
+  "fonts": [
+    "GintoNord"
+  ],
+  "HEADER_MENU": [
+    {
+      "title": "contact",
+      "slug": "contact",
+      "is_home": false
+    }
+  ]
+}

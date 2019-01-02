@@ -1,0 +1,25 @@
+{
+  "name": "trojan-api",
+  "version": "1.0.0",
+  "description": "trojan data api",
+  "main": "gulpfile.js",
+  "scripts": {
+    "gulp": "node ./node_modules/gulp/bin/gulp.js default"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dblodorn/trojan/issues"
+  },
+  "homepage": "https://github.com/dblodorn/trojan#readme",
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "gulp": "^4.0.0",
+    "gulp-sftp": "^0.1.5",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^5.0.1"
+  }
+}

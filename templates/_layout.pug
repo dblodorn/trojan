@@ -1,0 +1,10 @@
+doctype html
+
+html(lang= htmlWebpackPlugin.options.language)
+  include includes/_head.pug
+  body(bgcolor= htmlWebpackPlugin.options.bgcolor)
+    #modal
+    #root
+    #canvas-wrapper
+      canvas#canvas(width='150', height='150')
+    block scripts
