@@ -1,7 +1,6 @@
 import paper from 'paper'
 import { store } from '../state/store'
 import { colors } from '../styles/theme'
-import { randomNumMinMax } from './../scripts'
 import Artist from './Artist'
 
 export default () => {
@@ -17,10 +16,12 @@ export default () => {
         mousePoint: 0,
       };
       // PAPER OBJECTS
-      this.cursor = {}
+      this.cursor;
+      this.children;
       // FUNCTION BINDING
       this.updateState = this.updateState.bind(this);
       this.init = this.init.bind(this);
+      this.createCursor =  this.createCursor.bind(this);
       // INIT
       this.init();
     };
@@ -34,6 +35,15 @@ export default () => {
       };
     };
 
+    createCursor(paper) {
+      this.cursor = new paper.Path.Circle({
+        center: paper.view.center,
+        radius: 10,
+        fillColor: colors.yellow
+      });
+      this.cursor.name = 'cursor';
+    }
+
     createThumbs(data, paper) {
       this.artists = [];
       data.artists.forEach((info) => {
@@ -43,35 +53,29 @@ export default () => {
       });
     };
 
-    animate() {
+    animate(paper) {
       paper.view.onFrame = () => {
         this.updateState();
-        this.cursor.position = this.state.mousePoint;
         if (this.state.api !== false && !this.artists) {
+          this.createCursor(paper);
           this.createThumbs(this.state.api, paper);
         };
         if (this.artists !== false) {
           for (var i = 0, l = this.artists.length; i < l; i++) {
 		        this.artists[i].position(i);
           }
+          this.cursor.position = this.state.mousePoint;
         }
       };
     };
 
     init() {      
       paper.setup(this.stage);
-      this.cursor = new paper.Path.Circle({
-        center: paper.view.center,
-        radius: 10,
-        fillColor: colors.yellow
-      });
+      this.children = paper.project.activeLayer.children;
       paper.view.onMouseMove = (event) => {
         this.state.mousePoint = event.point;
       }
-      this.cursor.onClick = (event) => {
-        console.log(this.state.api, event);
-      }
-      this.animate();
+      this.animate(paper);
     };
 
   } 
