@@ -188,3 +188,13 @@
     $string = preg_replace("/[\s_]/", "-", $string);
     return $string;
   }
+
+  function post_data($post) {
+    $permalink = get_permalink($post->ID);
+    return array(
+      'id' => $post->ID,
+      'title' => $post->post_title,
+      'slug' => $post->post_name,
+      'thumbnail' => get_the_post_thumbnail_url($post->ID),
+    );
+  }
