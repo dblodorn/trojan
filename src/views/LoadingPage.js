@@ -5,7 +5,7 @@ import { Logo } from './../components'
 
 export default () =>
   <LoadingWrapper>
-    <Logo size={`50vmin`}/>
+    <Logo size={`30vmin`}/>
   </LoadingWrapper>
 
 // STYLES

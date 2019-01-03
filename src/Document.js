@@ -5,21 +5,7 @@ import { flexColumn } from './styles/mixins'
 import { Header } from './components'
 import { LoadingPage } from './views'
 
-const Document = props => {
-  if (props.apiData) {
-    return (
-      <Fragment>
-        <GlobalStyles/>
-        <Header/>
-        <Main>
-          {props.children}
-        </Main>
-      </Fragment>
-    )
-  } else {
-    return <LoadingPage/>
-  }
-}
+const Document = props => <LoadingPage/>
 
 export default connect(
   state => ({

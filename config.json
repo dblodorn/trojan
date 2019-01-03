@@ -1,8 +1,8 @@
 {
   "wp_endpoint": "https://trojan.dmbk.io/wp-json/api/v1/data/",
   "meta_defaults": {
-    "title": "Site",
-    "description": "Site.",
+    "title": "Trojan Jamaica",
+    "description": "Trojan Jamaica",
     "site_url": "",
     "bgcolor": "#ob9444"
   },
