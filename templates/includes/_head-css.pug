@@ -20,7 +20,6 @@ style(type="text/css").
     width: 100vw;
     min-height: 100vh;
     margin: 0;
-    background-color: transparent;
   }
   * {
     box-sizing: border-box;
@@ -30,16 +29,31 @@ style(type="text/css").
     pointer-events: none;
   }
   #nprogress .bar {
-    background: #000000;
+    background: #ffe200;
     position: fixed;
     z-index: 10000;
     top: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 3px;
   }
   #nprogress .spinner {
     display: none;
   }
-  #root { position: relative; z-index: 100; }
+  #root { 
+    position: relative;
+    z-index: 100; 
+  }
+  #canvas,
+  #canvas-wrapper {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    cursor: none;
+  }
 link(rel="stylesheet", type="text/css", href="/assets/canvas.css")

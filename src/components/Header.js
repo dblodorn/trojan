@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { H1 } from './../styles/components'
-import { flexCenteredAll } from './../styles/mixins'
+import Logo from './Logo'
+import { flexCenteredAll, buttonInit } from './../styles/mixins'
 
 const Header = props => {
   if (props.resizeState.window_width >= props.resizeState.breakpoints.desktop) {
-    return <HeaderWrapper></HeaderWrapper>
+    return <LogoWrapper to={'/'}><Logo size={`100%`} /></LogoWrapper>
   } else {
     return <HeaderWrapper></HeaderWrapper>
   }
@@ -25,4 +26,19 @@ const HeaderWrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+`
+
+const LogoWrapper = styled(Link)`
+  ${buttonInit};
+  width: 25vmin;
+  height: 25vmin;
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  transform: rotate(0deg);
+  transition: transform 250ms ease-in-out;
+  will-change: transform;
+  &:hover {
+    transform: rotate(10deg);
+  }
 `

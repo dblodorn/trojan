@@ -11,7 +11,7 @@ module.exports = merge(common, {
     historyApiFallback: true
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       ...htmlOptions,
       template: './templates/index.dev.pug'

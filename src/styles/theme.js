@@ -39,15 +39,17 @@ const spacing = {
 
 const colors = {
   bg: meta_defaults.bgcolor,
-  white: '#ffffff',
+  white: '#FFFFFF',
   black: '#000000',
-  red: '#ec3e00',
-  bright_red: '#ec3e00',
-  orange: '#f07924',
-  green: '#ob9444',
-  yellow: '#ffe200',
-  blue: '003aaaa',
+  red: '#EC3E00',
+  bright_red: '#EC3E00',
+  orange: '#F07924',
+  green: '#OB9444',
+  yellow: '#FFE200',
+  blue: '#003AAA',
 }
+
+const logo = `/assets/icons/android-chrome-512x512.png`
 
 const fonts = {
   sans: `'GintoNord', Arial, system-ui, sans-serif`,
@@ -89,5 +91,6 @@ export {
   baseFontSize,
   font_sizes,
   font_sizes_rem,
-  shared
+  shared,
+  logo,
 }

@@ -10,7 +10,7 @@ import { fetchApiData, setResizeState, hasTouch, fontsLoaded } from './state/act
 import App from './App'
 import config from './../config.json'
 import { history, store } from './state/store'
-import canvasInit from './canvas/canvasInit'
+import paperInit from './paper'
 
 mixin(_, {
   throttle: throttle
@@ -24,7 +24,7 @@ const resizeHandler = () => {
 
 scrollWatcher()
 resizeHandler()
-// canvasInit()
+paperInit()
 
 window.addEventListener('resize', _.throttle(resizeHandler, 50))
 
