@@ -41,6 +41,12 @@ const colors = {
   bg: meta_defaults.bgcolor,
   white: '#ffffff',
   black: '#000000',
+  red: '#ec3e00',
+  bright_red: '#ec3e00',
+  orange: '#f07924',
+  green: '#ob9444',
+  yellow: '#ffe200',
+  blue: '003aaaa',
 }
 
 const fonts = {

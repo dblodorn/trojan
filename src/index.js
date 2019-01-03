@@ -24,7 +24,7 @@ const resizeHandler = () => {
 
 scrollWatcher()
 resizeHandler()
-canvasInit()
+// canvasInit()
 
 window.addEventListener('resize', _.throttle(resizeHandler, 50))
 

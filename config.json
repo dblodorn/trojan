@@ -1,10 +1,10 @@
 {
-  "wp_endpoint": "https://trojan.dmbk.io/wp-json/api/v1/core",
+  "wp_endpoint": "https://trojan.dmbk.io/wp-json/api/v1/data/",
   "meta_defaults": {
     "title": "Site",
     "description": "Site.",
     "site_url": "",
-    "bgcolor": "#fff"
+    "bgcolor": "#ob9444"
   },
   "mail_scrape": {
     "mailchimp_url": ""

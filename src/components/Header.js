@@ -6,9 +6,9 @@ import { flexCenteredAll } from './../styles/mixins'
 
 const Header = props => {
   if (props.resizeState.window_width >= props.resizeState.breakpoints.desktop) {
-    return <HeaderWrapper><H1 id='title'>DMBK</H1></HeaderWrapper>
+    return <HeaderWrapper></HeaderWrapper>
   } else {
-    return <HeaderWrapper><H1 id='title'>DMBK</H1></HeaderWrapper>
+    return <HeaderWrapper></HeaderWrapper>
   }
 }
 
@@ -21,7 +21,7 @@ export default connect(
 const HeaderWrapper = styled.header`
   ${flexCenteredAll};
   width: 100vw;
-  height: 100vh;
+  height: 10rem;
   position: fixed;
   top: 0;
   left: 0;
