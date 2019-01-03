@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Head } from './../components'
+import { Head, VideoModal } from './../components'
 
 const Home = props => 
   <Fragment>
     <Head title={`Home`} />
+    <VideoModal/>
   </Fragment>
 
 export default connect(

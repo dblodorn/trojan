@@ -1,45 +1,37 @@
 import React, { Fragment } from 'react'
-import Vimeo from '@u-wave/react-vimeo'
 import styled from 'styled-components'
-import { Section, ModalContentWrapper } from './../../styles/components'
+import YouTube from 'react-youtube'
+import getYouTubeID from 'get-youtube-id'
+import { ModalContentWrapper } from './../../styles/components'
 import { absoluteTopFull, shadow, flexCenteredAll, media, flexColumn, animationFadeIn } from './../../styles/mixins'
-import { colors, spacing } from './../../styles/theme.json'
-import BottomLogo from './../BottomLogo'
-import VideoCaption from './VideoCaption'
-import FitImage from '../utils/FitImage';
+import { colors, spacing } from './../../styles/theme'  
 
-const VideoInner = (props) =>
-  <VideoContainer>
-    <InnerVideoWrapper>
-      {props.videoUrl.video_url
-        ? <Vimeo
-            video={props.videoUrl.video_url}
-            autoplay
-            className={'player'}
-            loop={true}
-          />
-        : <VidThumb>
-            <div className={`inner`}><FitImage src={props.videoUrl.thumbnail} fit={'contain'}/></div>
-          </VidThumb>
-      }
-    </InnerVideoWrapper>
-  </VideoContainer>
+const opts = {
+  playerVars: {
+    autoplay: 1,
+    modestbranding: 1,
+    playsinline: 1,
+    rel: 0,
+    controls: 0,
+  }
+}
 
 export default props =>
   <Fragment>
     <ModalContentWrapper>
       <VideoSection>
         <VideoWrapper>
-          {(props.data !== null) &&
-            <VidBox>
-              <VideoInner videoUrl={props.data.video_data} />
-              <VideoCaption content={props.data.video_data} />
-            </VidBox>
-          }
+          <VideoContainer>
+            <YouTube
+              videoId={getYouTubeID(props.data.video)}
+              opts={opts}
+              className={'video-player'}
+              containerClassName={'video-container'}
+            />
+          </VideoContainer>
         </VideoWrapper>
       </VideoSection>
     </ModalContentWrapper>
-    <BottomLogo />
   </Fragment>
 
 // STYLES
@@ -49,25 +41,20 @@ const VideoContainer = styled.div`
   padding-bottom: 56.25%;
   overflow-y: visible;
   position: relative;
-`
-
-const VidBox = styled.div`
-  ${animationFadeIn(250, 10)};
-`
-
-const VidThumb = styled.div`
-  ${absoluteTopFull};
-  padding: ${spacing.double_pad};
-  .inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  .video-container {
+    ${animationFadeIn(250, 10)};
+  }
+  iframe {
+    ${absoluteTopFull};
+    ${shadow};
+    z-index: 100;
+    background-color: ${colors.black};
   }
 `
 
+
 const InnerVideoWrapper = styled.div`
-  ${absoluteTopFull};
-  ${shadow};
+  
   background-color: ${colors.black};
   .player,
   iframe {
@@ -76,7 +63,7 @@ const InnerVideoWrapper = styled.div`
   }
 `
 
-const VideoSection = styled(Section)`
+const VideoSection = styled.section`
   ${flexCenteredAll};
   position: fixed;
   top: 0;

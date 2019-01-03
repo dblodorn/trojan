@@ -28,7 +28,7 @@ export default class ArtistThumb {
 
   clickHandler(event) {
     console.log(this.props, event);
-    store.dispatch(setArtist(this.props.post_data.slug));
+    store.dispatch(setArtist(this.props));
     store.dispatch(setArtistPopup(true));
   }
 
