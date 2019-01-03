@@ -30,8 +30,8 @@ const HeaderWrapper = styled.header`
 
 const LogoWrapper = styled(Link)`
   ${buttonInit};
-  width: 25vmin;
-  height: 25vmin;
+  width: 18rem;
+  height: 18rem;
   position: fixed;
   top: 2rem;
   left: 2rem;
