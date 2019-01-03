@@ -1,5 +1,5 @@
-import { store } from './../state/store';
-import { randomNumMinMax, makeRandomColor } from './../scripts';
+import { store } from '../state/store';
+import { randomNumMinMax, makeRandomColor } from '../scripts';
 import Circle from './Circle';
 import CanvasImage from './CanvasImage';
 

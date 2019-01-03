@@ -1,12 +1,12 @@
 import paper from 'paper'
-import { store } from './../state/store'
+import { store } from '../state/store'
+import { colors } from '../styles/theme'
 import { randomNumMinMax } from './../scripts'
-import { colors } from './../styles/theme'
+import Artist from './Artist'
 
-export default() => {
+export default () => {
   class Artists {
     constructor() {
-      // CONFIG
       this.stage = document.getElementById('canvas');
       this.window = store.getState().resizeState;
       this.artists = false;
@@ -16,14 +16,11 @@ export default() => {
         api: false,
         mousePoint: 0,
       };
-      
       // PAPER OBJECTS
       this.cursor = {}
-
       // FUNCTION BINDING
       this.updateState = this.updateState.bind(this);
       this.init = this.init.bind(this);
-      
       // INIT
       this.init();
     };
@@ -37,15 +34,29 @@ export default() => {
       };
     };
 
+    createThumbs(data, paper) {
+      this.artists = [];
+      data.artists.forEach((info) => {
+        this.artists.push(
+          new Artist(paper, info, this.state)
+        );
+      });
+    };
+
     animate() {
-      paper.view.onFrame = (event) => {
+      paper.view.onFrame = () => {
         this.updateState();
         this.cursor.position = this.state.mousePoint;
-        if (this.state.api !== false) {
-          this.cursor.fillColor = colors.red;
+        if (this.state.api !== false && !this.artists) {
+          this.createThumbs(this.state.api, paper);
         };
+        if (this.artists !== false) {
+          for (var i = 0, l = this.artists.length; i < l; i++) {
+		        this.artists[i].position(i);
+          }
+        }
       };
-    }
+    };
 
     init() {      
       paper.setup(this.stage);
