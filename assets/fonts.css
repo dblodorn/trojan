@@ -1,4 +1,8 @@
 @font-face {
-  font-family: "GintoNord";
-  src: url("/assets/fonts/GintoNord-BoldIta-1.otf");
+  font-family: "Azidenz";
+  src: url("/assets/fonts/AkzidenzBold.woff");
+}
+@font-face {
+  font-family: "Fakt";
+  src: url("/assets/fonts/FaktPro-Normal.otf");
 }

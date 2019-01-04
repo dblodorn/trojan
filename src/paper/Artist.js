@@ -7,7 +7,7 @@ export default class ArtistThumb {
   constructor(paper, data, state) {
     this.props = data;
     this.state = state;
-    this.width = this.height = 100;
+    this.width = 125;
     this.rate = randomNumMinMax(500, 2000);
     this.x = randomNumMinMax(0, state.ww);
     this.y = randomNumMinMax(0, state.wh);
@@ -26,19 +26,58 @@ export default class ArtistThumb {
     this.createThumb(paper);
   }
 
-  clickHandler(event) {
-    console.log(this.props, event);
+  clickHandler() {
     store.dispatch(setArtist(this.props));
     store.dispatch(setArtistPopup(true));
   }
 
   createThumb(paper) {
-    this.thumbnail = new paper.Path.Circle({
-      center: [this.x, this.y],
+    
+    const name = this.props.post_data.title;
+
+    const title =  new paper.PointText(
+      new paper.Point(0,this.width + 28)
+    );
+
+    title.fillColor = '#000000';
+    title.content = name.toUpperCase();
+    title.justification = 'center';
+    title.fontSize = 30;
+    title.fontFamily = 'Azidenz';
+
+    const thumbBg = new paper.Path.Circle({
       radius: this.width,
+      fillColor: '#000000',
+    });
+    
+    const thumbInner = new paper.Path.Circle({
+      radius: this.width * .85,
       fillColor: randomArrItem(this.colors),
     });
+
+    const thumbMask = new paper.Path.Circle({
+      radius: this.width * .75,
+      fillColor: randomArrItem(this.colors),
+    });
+    
+    const thumbImage = new paper.Raster(`thumb_${this.props.post_data.slug}`)
+    thumbImage.width = this.width * 1.5;
+    thumbImage.height = this.width * 1.5;
+    
+    const imageGroup = new paper.Group({
+      children: [thumbMask, thumbImage]
+    });
+
+    thumbBg.fullySelected = true;
+
+    imageGroup.clipped = true;
+    // Master Group
+    this.thumbnail = new paper.Group({
+      children: [thumbBg, thumbInner, imageGroup, title],
+      position: [this.x, this.y],
+    });
     this.thumbnail.name = this.props.post_data.slug;
+    // 
     this.thumbnail.onClick = (event) => {
       this.clickHandler(event);
     };
@@ -49,9 +88,6 @@ export default class ArtistThumb {
     const arc = Math.abs(Math.cos(this.i))
     const x = this.x * arc;
     const y = this.y * arc;
-    if (arc === 0) {
-      console.log('change');
-    };
     this.thumbnail.position = [x, y]
   }
 }

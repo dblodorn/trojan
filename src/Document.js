@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn } from './styles/mixins'
-import { Header } from './components'
+import { Header, ImageLoader } from './components'
 import { LoadingPage } from './views'
 
 const Document = props => {
@@ -14,6 +14,7 @@ const Document = props => {
         <Main>
           {props.children}
         </Main>
+        <ImageLoader artists={props.apiData.artists}/>
       </Fragment>
     )
   } else {

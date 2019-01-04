@@ -5,6 +5,7 @@ import Close from './utils/Close'
 import Head from './utils/Head'
 import pageData from './HOC/pageData'
 import VideoModal from './video/VideoModal'
+import ImageLoader from './ImageLoader'
 
 export {
   FitImage,
@@ -14,4 +15,5 @@ export {
   Logo,
   pageData,
   VideoModal,
+  ImageLoader,
 }
