@@ -14,6 +14,7 @@ export default class ArtistThumb {
     this.x = randomNumMinMax(0, state.ww);
     this.y = randomNumMinMax(0, state.wh);
     this.i = 0;
+    this.fast = 0;
     this.title_alpha = 0;
     this.modal = store.getState().artistPopup;
     this.image = this.props.post_data.thumbnail;
@@ -111,6 +112,7 @@ export default class ArtistThumb {
 
   position() {
     this.i = this.i + 1 / this.rate
+    this.fast = this.fast + 1
     const arc = Math.abs(Math.cos(this.i))
     const x = this.x * arc;
     const y = this.y * arc;
@@ -122,13 +124,13 @@ export default class ArtistThumb {
 
     // UPDATE SEGMENTS
     for (let i = 0; i < this.numSegment; i++) {
-      const sinValue = Math.sin(this.i * randomNumMinMax(i, 50)) / 10;
+      const sinValue = Math.sin(this.fast * randomNumMinMax(i, 25)) / 5;
       const bgSegment = this.thumbBg.segments[i];
       bgSegment.point.y = this.thumbBg.segments[i].point.y + sinValue;
     }
 
     for (let i = 0; i < this.innerSegments; i++) {
-      const sinValue = Math.sin(this.i * randomNumMinMax(i, 50)) / 15;
+      const sinValue = Math.sin(this.fast * randomNumMinMax(i, 15)) / 15;
       const innerSegment = this.thumbInner.segments[i];
       innerSegment.point.y = this.thumbInner.segments[i].point.y + sinValue;
     }

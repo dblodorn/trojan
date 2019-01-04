@@ -52,17 +52,6 @@ const VideoContainer = styled.div`
   }
 `
 
-
-const InnerVideoWrapper = styled.div`
-  
-  background-color: ${colors.black};
-  .player,
-  iframe {
-    ${absoluteTopFull};
-    z-index: 100;
-  }
-`
-
 const VideoSection = styled.section`
   ${flexCenteredAll};
   position: fixed;
@@ -77,17 +66,22 @@ const VideoWrapper = styled.div`
   width: 100%;
   padding: ${spacing.double_pad} 1rem 8rem;
   margin-bottom: 4rem;
+  background-image: url('/assets/imgs/video-bg.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   ${media.desktopNav`
-    width: 75vw;
-    max-width: 90rem;
+    width: 80vw;
+    max-width: 96rem;
     padding: 0;
-    padding: ${spacing.double_pad} 0;
+    padding: 8rem;
     margin-bottom: 0;
   `}
   ${media.big`
-    width: 75vw;
-    max-width: 90rem;
+    width: 85vw;
+    max-width: 126rem;
     padding: 0;
+    padding: 8rem;
     margin-bottom: 0;
   `}
 `

@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Transition } from 'react-spring'
 import styled from 'styled-components'
-import { ModalWrapper } from './../../styles/components'
-import { absoluteTopFull } from './../../styles/mixins'
+import { Transition } from 'react-spring'
+import { flexCenteredAll } from './../../styles/mixins'
 import { setArtist, setArtistPopup } from './../../state/actions'
 import Modal from './../Modal'
 import Video from './Video'
@@ -41,7 +40,11 @@ export default connect(
   })
 )(VideoModal)
 
-const VideoPopper = styled.div`
-  ${absoluteTopFull};
-  overflow: hidden;
+const ModalWrapper = styled.div`
+  ${flexCenteredAll};
+  position: fixed;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.45);
 `

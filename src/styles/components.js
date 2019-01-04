@@ -103,16 +103,6 @@ const SocialLink = styled.a`
   }
 `
 
-// WRAPPERS
-const ModalWrapper = styled.div`
-  ${_.flexCenteredAll};
-  position: fixed;
-  z-index: 10000;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,.25);
-`
-
 const ModalContentWrapper = styled.div`
   ${_.flexCenteredAll};
   max-height: ${props => props.maxHeight};
@@ -139,6 +129,23 @@ const CloseButton = styled.button`
     height: 100%;
     object-fit: cover;
   }
+  .close-x {
+    ${_.absoluteCentered};
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    padding: 1rem;
+    svg {
+      padding: 1rem;
+    }
+  }
+  .close-bg {
+    ${_.absoluteCentered};
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 90;
+  }
 `
 
 export {
@@ -154,7 +161,6 @@ export {
   SocialLink,
   StyledLink,
   ExternalLink,
-  ModalWrapper,
   ModalContentWrapper,
   CloseButton
 }
