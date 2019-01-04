@@ -49,7 +49,7 @@ export default () => {
         };
         if (this.artists !== false) {
           for (var i = 0, l = this.artists.length; i < l; i++) {
-		        this.artists[i].position(i);
+		        this.artists[i].position();
           }
         }
       };
