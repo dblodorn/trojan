@@ -14,6 +14,8 @@ export default class ArtistThumb {
     this.x = randomNumMinMax(0, state.ww);
     this.y = randomNumMinMax(0, state.wh);
     this.i = 0;
+    this.title_alpha = 0;
+    this.modal = store.getState().artistPopup;
     this.image = this.props.post_data.thumbnail;
     this.colors = [
       colors.red,
@@ -63,7 +65,7 @@ export default class ArtistThumb {
     this.title.justification = 'center';
     this.title.fontSize = 30;
     this.title.fontFamily = 'Azidenz';
-    
+
     // SET SEGMENTS
     this.thumbBg.smooth();
     this.thumbInner.smooth();
@@ -82,15 +84,29 @@ export default class ArtistThumb {
     });
 
     imageGroup.clipped = true;
+    
     // Master Group
     this.thumbnail = new paper.Group({
       children: [this.thumbBg, this.thumbInner, imageGroup, this.title],
       position: [this.x, this.y],
     });
+    
     this.thumbnail.name = this.props.post_data.slug;
-    this.thumbnail.onClick = (event) => {
-      this.clickHandler(event);
+    
+    // Mouse Events
+    this.thumbnail.onClick = (e) => {
+      this.clickHandler(e);
     };
+    imageGroup.onMouseEnter = () => {
+      if (!this.modal) {
+        this.title_alpha = 1;
+        document.body.style.cursor = 'pointer';
+      }
+    }
+    imageGroup.onMouseLeave = () => {
+      this.title_alpha = 0;
+      document.body.style.cursor = 'default';
+    }
   }
 
   position() {
@@ -99,6 +115,10 @@ export default class ArtistThumb {
     const x = this.x * arc;
     const y = this.y * arc;
     this.thumbnail.position = [x, y];
+
+    // ANIMATION
+    this.title.opacity = this.title_alpha;
+    this.modal = store.getState().artistPopup;
 
     // UPDATE SEGMENTS
     for (let i = 0; i < this.numSegment; i++) {
