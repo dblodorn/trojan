@@ -7,22 +7,21 @@ export default class ArtistThumb {
   constructor(paper, data, state) {
     this.props = data;
     this.state = state;
-    this.radius = 125;
+    this.radius = 100;
     this.numSegment = Math.floor(this.radius / 5 + 2);
     this.innerSegments = Math.floor(this.radius / 8 + 2);
     this.rate = randomNumMinMax(500, 2000);
     this.x = randomNumMinMax(0, state.ww);
     this.y = randomNumMinMax(0, state.wh);
+    this.direction = randomNumMinMax(1, 5);
     this.i = 0;
+    this.i_speed = randomNumMinMax(3, 20);
+    this.z = 0;
+    this.z_speed = randomNumMinMax(3, 20);
     this.fast = 0;
     this.title_alpha = 0;
     this.modal = store.getState().artistPopup;
     this.image = this.props.post_data.thumbnail;
-    this.colors = [
-      colors.red,
-      colors.blue,
-      colors.yellow
-    ]
     this.clickHandler = this.clickHandler.bind(this);
     
     // INITIALIZE PAPER OBJECTS
@@ -32,22 +31,24 @@ export default class ArtistThumb {
       sides: this.numSegment,
       fillColor: '#000000',
     });
+    
     this.thumbInner = new paper.Path.RegularPolygon({
       center: [0, 0],
       radius: this.radius * .85,
       sides: this.innerSegments,
-      fillColor: randomArrItem(this.colors),
     });
+    
     this.title =  new paper.PointText(
-      new paper.Point(0, this.radius + 35)
+      new paper.Point(0, this.radius + 25)
     );
+    
     this.thumbMask = new paper.Path.Circle({
       radius: this.radius * .75,
-      fillColor: randomArrItem(this.colors),
     });
     
     // INITIALIZE OBJECT
     this.init(paper);
+    console.log(this.direction)
   }
   
   init(paper) {
@@ -64,13 +65,14 @@ export default class ArtistThumb {
     this.title.fillColor = '#000000';
     this.title.content = this.props.post_data.title.toUpperCase();
     this.title.justification = 'center';
-    this.title.fontSize = 30;
+    this.title.fontSize = 25;
     this.title.fontFamily = 'Azidenz';
 
     // SET SEGMENTS
     this.thumbBg.smooth();
     this.thumbInner.smooth();
 
+    this.thumbInner.fillColor = this.props.circle_color;
     // Rescale Tool
     paper.Raster.prototype.rescale = function(width, height) {
       this.scale(width / this.radius, height / this.height);
@@ -78,7 +80,7 @@ export default class ArtistThumb {
 
     // Thumbnail Image
     const thumbImage = new paper.Raster(`thumb_${this.props.post_data.slug}`);
-    thumbImage.scale(0.35);
+    thumbImage.scale(.6);
     
     const imageGroup = new paper.Group({
       children: [this.thumbMask, thumbImage]
@@ -98,6 +100,8 @@ export default class ArtistThumb {
     this.thumbnail.onClick = (e) => {
       this.clickHandler(e);
     };
+
+    // GROUPS
     imageGroup.onMouseEnter = () => {
       if (!this.modal) {
         this.title_alpha = 1;
@@ -111,12 +115,45 @@ export default class ArtistThumb {
   }
 
   position() {
-    this.i = this.i + 1 / this.rate
+    this.i = this.i + 1 / this.i_speed / 500;
+    this.z = this.z + 1 / this.z_speed / 500;
     this.fast = this.fast + 1
-    const arc = Math.abs(Math.cos(this.i))
-    const x = this.x * arc;
-    const y = this.y * arc;
-    this.thumbnail.position = [x, y];
+    
+    if (this.direction === 1) {
+      this.x = this.x + this.i;
+      this.y = this.y + this.z;
+    } else if (this.direction === 2) {
+      this.x = this.x + this.i;
+      this.y = this.y - this.z;
+    } else if (this.direction === 3) {
+      this.x = this.x - this.i;
+      this.y = this.y + this.z;
+    } else if (this.direction === 4) {
+      this.x = this.x - this.i;
+      this.y = this.y - this.z;
+    }
+
+    if (this.x > (this.state.ww - this.radius) && this.direction === 1) {
+      this.direction = 3
+    } else if (this.x > (this.state.ww - this.radius) && this.direction === 2) {
+      this.direction = 4
+    } else if (this.x < this.radius && this.direction === 3) {
+      this.direction = 1
+    } else if (this.x < this.radius && this.direction === 4) {
+      this.direction = 2
+    }
+
+    if (this.y > (this.state.wh - this.radius) && this.direction === 1) {
+      this.direction = 2
+    } else if (this.y > (this.state.wh - this.radius) && this.direction === 3) {
+      this.direction = 4
+    } else if (this.y < this.radius && this.direction === 2) {
+      this.direction = 1
+    } else if (this.y < this.radius && this.direction === 4) {
+      this.direction = 3
+    }
+
+    this.thumbnail.position = [this.x, this.y];
 
     // ANIMATION
     this.title.opacity = this.title_alpha;
@@ -124,7 +161,7 @@ export default class ArtistThumb {
 
     // UPDATE SEGMENTS
     for (let i = 0; i < this.numSegment; i++) {
-      const sinValue = Math.sin(this.fast * randomNumMinMax(i, 25)) / 5;
+      const sinValue = Math.sin(this.fast * randomNumMinMax(i, 17)) / 15;
       const bgSegment = this.thumbBg.segments[i];
       bgSegment.point.y = this.thumbBg.segments[i].point.y + sinValue;
     }

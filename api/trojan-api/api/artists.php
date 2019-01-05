@@ -13,6 +13,8 @@
           'post_data' => post_data($post),
           'bio' => get_field('bio', $post->ID),
           'video' => get_field('video_url', $post->ID, false, false),
+          'circle_color' => get_field('circle_color', $post->ID),
+          'duotone_color' => get_field('duotone_color', $post->ID),
         );
       endwhile;
     endif;

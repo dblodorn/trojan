@@ -8,6 +8,7 @@ export default () => {
       this.stage = document.getElementById('canvas');
       this.window = store.getState().resizeState;
       this.artists = false;
+      this.artists_array = false;
       this.state = {
         ww: this.window.window_width,
         wh: this.window.window_height,
@@ -29,12 +30,15 @@ export default () => {
       this.state.wh = store.getState().resizeState.window_height;
       if (store.getState().apiData !== false) {
         this.state.api = store.getState().apiData;
+        this.artists_array = this.state.api.artists.map((item) => {
+          return [item, item];
+        }).reduce((a, b) => { return a.concat(b) });
       };
     };
 
-    createThumbs(data, paper) {
+    createThumbs(paper) {
       this.artists = [];
-      data.artists.forEach((info) => {
+      this.artists_array.forEach((info) => {
         this.artists.push(
           new Artist(paper, info, this.state)
         );
@@ -44,11 +48,11 @@ export default () => {
     animate(paper) {
       paper.view.onFrame = () => {
         this.updateState();
-        if (this.state.api !== false && !this.artists) {
-          this.createThumbs(this.state.api, paper);
+        if (this.artists_array !== false && !this.artists) {
+          this.createThumbs(paper);
         };
         if (this.artists !== false) {
-          for (var i = 0, l = this.artists.length; i < l; i++) {
+          for (let i = 0, l = this.artists.length; i < l; i++) {
 		        this.artists[i].position();
           }
         }
@@ -63,7 +67,6 @@ export default () => {
       }
       this.animate(paper);
     };
-
   } 
 
   new Artists();
