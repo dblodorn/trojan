@@ -15,9 +15,9 @@ export default class ArtistThumb {
     this.y = randomNumMinMax(0, state.wh);
     this.direction = randomNumMinMax(1, 5);
     this.i = 0;
-    this.i_speed = randomNumMinMax(3, 20);
+    this.i_speed = randomNumMinMax(3, 20) * .025;
     this.z = 0;
-    this.z_speed = randomNumMinMax(3, 20);
+    this.z_speed = randomNumMinMax(3, 20) * .025;
     this.fast = 0;
     this.title_alpha = 0;
     this.modal = store.getState().artistPopup;
@@ -115,22 +115,22 @@ export default class ArtistThumb {
   }
 
   position() {
-    this.i = this.i + 1 / this.i_speed / 500;
-    this.z = this.z + 1 / this.z_speed / 500;
+    this.i = this.i + (1 / this.i_speed / 500);
+    this.z = this.z + (1 / this.z_speed / 500);
     this.fast = this.fast + 1
     
     if (this.direction === 1) {
-      this.x = this.x + this.i;
-      this.y = this.y + this.z;
+      this.x = this.x + this.i_speed;
+      this.y = this.y + this.z_speed;
     } else if (this.direction === 2) {
-      this.x = this.x + this.i;
-      this.y = this.y - this.z;
+      this.x = this.x + this.i_speed;
+      this.y = this.y - this.z_speed;
     } else if (this.direction === 3) {
-      this.x = this.x - this.i;
-      this.y = this.y + this.z;
+      this.x = this.x - this.i_speed;
+      this.y = this.y + this.z_speed;
     } else if (this.direction === 4) {
-      this.x = this.x - this.i;
-      this.y = this.y - this.z;
+      this.x = this.x - this.i_speed;
+      this.y = this.y - this.z_speed;
     }
 
     if (this.x > (this.state.ww - this.radius) && this.direction === 1) {
