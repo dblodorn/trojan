@@ -29,7 +29,7 @@ const TickerTape = styled.div`
   width: 100vw;
   flex: 1;
   position: fixed;
-  bottom: 10rem;
+  bottom: 8rem;
   left: 0;
   h1 {
     font-size: 2.5rem;

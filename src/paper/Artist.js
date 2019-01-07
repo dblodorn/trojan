@@ -48,7 +48,6 @@ export default class ArtistThumb {
     
     // INITIALIZE OBJECT
     this.init(paper);
-    console.log(this.direction)
   }
   
   init(paper) {

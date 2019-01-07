@@ -1,6 +1,7 @@
 import paper from 'paper'
 import { store } from '../state/store'
 import Artist from './Artist'
+import Wave from './Wave'
 
 export default () => {
   class Artists {
@@ -64,6 +65,7 @@ export default () => {
         this.state.mousePoint = event.point;
       }
       this.animate(paper);
+      new Wave(paper, this.state, 140);
     };
   } 
 
