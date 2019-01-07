@@ -30,9 +30,7 @@ export default () => {
       this.state.wh = store.getState().resizeState.window_height;
       if (store.getState().apiData !== false) {
         this.state.api = store.getState().apiData;
-        this.artists_array = this.state.api.artists.map((item) => {
-          return [item, item];
-        }).reduce((a, b) => { return a.concat(b) });
+        this.artists_array = this.state.api.artists;
       };
     };
 

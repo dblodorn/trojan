@@ -52,7 +52,8 @@ const colors = {
 const logo = `/assets/icons/android-chrome-512x512.png`
 
 const fonts = {
-  sans: `'GintoNord', Arial, system-ui, sans-serif`,
+  akzidenz: `'Azidenz', Arial, system-ui, sans-serif`,
+  fakt: `'Fakt', Arial, system-ui, sans-serif `,
 }
 
 const baseFontSize = 16

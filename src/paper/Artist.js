@@ -115,7 +115,7 @@ export default class ArtistThumb {
   }
 
   position() {
-    this.i = this.i + (1 / this.i_speed / 500);
+    this.i = this.i + this.i_speed;
     this.z = this.z + (1 / this.z_speed / 500);
     this.fast = this.fast + 1
     

@@ -6,6 +6,7 @@ import Head from './utils/Head'
 import pageData from './HOC/pageData'
 import VideoModal from './video/VideoModal'
 import ImageLoader from './ImageLoader'
+import Ticker from './Ticker'
 
 export {
   FitImage,
@@ -16,4 +17,5 @@ export {
   pageData,
   VideoModal,
   ImageLoader,
+  Ticker,
 }

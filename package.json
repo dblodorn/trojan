@@ -30,6 +30,7 @@
     "chroma-js": "^2.0.2",
     "get-youtube-id": "^1.0.0",
     "lodash": "^4.17.11",
+    "marquee3000": "^1.0.9",
     "mathjs": "^5.4.0",
     "nprogress": "^0.2.0",
     "react": "next",

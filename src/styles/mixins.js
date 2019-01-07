@@ -73,7 +73,7 @@ const scrollPanel = css`
 
 // TYPOGRAPHY
 const sansFont = css`
-  font-family: ${fonts.sans};
+  font-family: ${fonts.akizdenz};
   font-weight: 400;
 `
 
