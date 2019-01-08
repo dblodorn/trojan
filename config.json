@@ -4,13 +4,14 @@
     "title": "Trojan Jamaica",
     "description": "Trojan Jamaica",
     "site_url": "",
-    "bgcolor": "#231F20"
+    "bgcolor": "#OB9444"
   },
   "mail_scrape": {
     "mailchimp_url": ""
   },
   "fonts": [
-    "GintoNord"
+    "Azidenz",
+    "Fakt"
   ],
   "HEADER_MENU": [
     {
