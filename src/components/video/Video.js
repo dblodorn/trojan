@@ -1,38 +1,50 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import YouTube from 'react-youtube'
-import getYouTubeID from 'get-youtube-id'
+import ReactPlayer from 'react-player'
 import { ModalContentWrapper } from './../../styles/components'
-import { absoluteTopFull, shadow, flexCenteredAll, media, flexColumn, animationFadeIn } from './../../styles/mixins'
-import { colors, spacing } from './../../styles/theme'  
+import { absoluteTopFull, flexCenteredAll, media, flexColumn, animationFadeIn } from './../../styles/mixins'
+import { spacing } from './../../styles/theme'  
 
-const opts = {
-  playerVars: {
-    autoplay: 1,
-    modestbranding: 1,
-    playsinline: 1,
-    rel: 0,
-    controls: 0,
-  }
+export default props => {
+  return (
+    <Fragment>
+      <ModalContentWrapper>
+        <VideoSection>
+          <VideoWrapper>
+            <VideoContainer>
+              <VideoInner>
+                <ReactPlayer 
+                  url={props.data.video} 
+                  playing
+                  className='player'
+                  width={'100%'}
+                  height={'100%'}
+                  config={{
+                    youtube: {
+                      playerVars: {
+                        showinfo: 0,
+                        controls: 1,
+                        modestbranding: 1,
+                        rel: 0,
+                        playsinline: 1
+                      }
+                    },
+                    vimeo: {
+                      playerVars: {
+                        showinfo: 0,
+                        controls: 1
+                      }
+                    }
+                  }}
+                />
+              </VideoInner>
+            </VideoContainer>
+          </VideoWrapper>
+        </VideoSection>
+      </ModalContentWrapper>
+    </Fragment>
+  )
 }
-
-export default props =>
-  <Fragment>
-    <ModalContentWrapper>
-      <VideoSection>
-        <VideoWrapper>
-          <VideoContainer>
-            <YouTube
-              videoId={getYouTubeID(props.data.video)}
-              opts={opts}
-              className={'video-player'}
-              containerClassName={'video-container'}
-            />
-          </VideoContainer>
-        </VideoWrapper>
-      </VideoSection>
-    </ModalContentWrapper>
-  </Fragment>
 
 // STYLES
 const VideoContainer = styled.div`
@@ -41,14 +53,19 @@ const VideoContainer = styled.div`
   padding-bottom: 56.25%;
   overflow-y: visible;
   position: relative;
-  .video-container {
+`
+
+const VideoInner = styled.div`
+  ${absoluteTopFull};
+  .player {
     ${animationFadeIn(250, 10)};
-  }
-  iframe {
     ${absoluteTopFull};
-    ${shadow};
     z-index: 100;
-    background-color: ${colors.black};
+    width: 100%;
+    height: 100%;
+  }
+  div {
+    background-color: transparent!important;
   }
 `
 

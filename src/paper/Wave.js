@@ -13,6 +13,7 @@ export default class Wave {
     })
     this.path.closed = true;
     this.createWave(paper);
+    this.path.selected = true;
   }
 
   createWave(paper) {
