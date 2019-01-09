@@ -2,7 +2,7 @@
 
   function main_data(){
     $data = array();
-    // $data['options'] = options_data();
+    $data['options'] = options_data();
     $data['artists'] = cpt_artists();
     // $data['releases'] = cpt_releases();
     return $data;

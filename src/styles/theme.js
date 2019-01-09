@@ -40,12 +40,13 @@ const spacing = {
 const colors = {
   bg: meta_defaults.bgcolor,
   white: '#FFFFFF',
-  black: '#000000',
+  black: '#111010',
   red: '#EC3E00',
   bright_red: '#EC3E00',
   orange: '#F07924',
   green: '#0B9444',
   yellow: '#FFE200',
+  off_black: '#111010',
   blue: '#003AAA',
 }
 

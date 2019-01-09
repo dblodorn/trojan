@@ -94,8 +94,8 @@ const ExternalLink = styled.a`
 
 const SocialLink = styled.a`
   ${_.flexCenteredAll};
-  width: ${props => props.size || `4rem`};
-  height: ${props => props.size || `4rem`};
+  width: ${props => props.size || `2rem`};
+  height: ${props => props.size || `2rem`};
   svg {
     width: 100%;
     height: 100%;

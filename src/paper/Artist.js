@@ -29,7 +29,7 @@ export default class ArtistThumb {
       center: [0, 0],
       radius: this.radius,
       sides: this.numSegment,
-      fillColor: '#000000',
+      fillColor: colors.black,
     });
     
     this.thumbInner = new paper.Path.RegularPolygon({

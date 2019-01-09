@@ -7,6 +7,7 @@ import pageData from './HOC/pageData'
 import VideoModal from './video/VideoModal'
 import ImageLoader from './ImageLoader'
 import Ticker from './Ticker'
+import Footer from './Footer'
 
 export {
   FitImage,
@@ -18,4 +19,5 @@ export {
   VideoModal,
   ImageLoader,
   Ticker,
+  Footer,
 }

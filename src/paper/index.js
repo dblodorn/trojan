@@ -54,7 +54,7 @@ export default () => {
         this.updateState();
         if (this.artists_array !== false && !this.artists) {
           this.createThumbs(paper);
-          this.wave1 = new Wave(paper, this.state, this.bottom_height, colors.black);
+          this.wave1 = new Wave(paper, this.state, this.bottom_height, colors.off_black);
           // this.wave2 = new Wave(paper, this.state, 100, colors.black);
           // this.wave3 = new Wave(paper, this.state, 50, colors.green);
         };
