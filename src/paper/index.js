@@ -25,9 +25,7 @@ export default () => {
       this.init = this.init.bind(this);
       // INIT
       this.init();
-      this.wave1 = false
-      this.wave2 = false
-      this.wave3 = false
+      this.wave1 = false;
     };
 
     updateState() {
@@ -55,17 +53,17 @@ export default () => {
         if (this.artists_array !== false && !this.artists) {
           this.createThumbs(paper);
           this.wave1 = new Wave(paper, this.state, this.bottom_height, colors.off_black);
-          // this.wave2 = new Wave(paper, this.state, 100, colors.black);
-          // this.wave3 = new Wave(paper, this.state, 50, colors.green);
         };
         if (this.artists !== false) {
           for (let i = 0, l = this.artists.length; i < l; i++) {
 		        this.artists[i].position(95);
           }
           this.wave1.update(event);
-          // this.wave2.update(event);
-          // this.wave3.update(event);
         }
+      };
+      paper.view.onResize = (event) => {
+        // this.init();
+        console.log(event);
       };
     };
 

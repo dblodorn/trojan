@@ -30,7 +30,6 @@
     "chroma-js": "^2.0.2",
     "lodash": "^4.17.11",
     "marquee3000": "^1.0.9",
-    "mathjs": "^5.4.0",
     "nprogress": "^0.2.0",
     "react": "next",
     "react-dom": "next",
