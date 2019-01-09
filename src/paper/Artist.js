@@ -7,7 +7,7 @@ export default class ArtistThumb {
   constructor(paper, data, state) {
     this.props = data;
     this.state = state;
-    this.radius = 100;
+    this.radius = 80;
     this.numSegment = Math.floor(this.radius / 5 + 2);
     this.innerSegments = Math.floor(this.radius / 8 + 2);
     this.rate = randomNumMinMax(500, 2000);
@@ -43,11 +43,11 @@ export default class ArtistThumb {
     );
     
     this.thumbMask = new paper.Path.Circle({
-      radius: this.radius * .75,
+      radius: this.radius * .7,
     });
     
     for (let i = 0; i < this.numSegment; i++) {
-      this.thumbBg.segments[i].point.y = this.thumbBg.segments[i].point.y + randomNumMinMax(1, 6);
+      this.thumbBg.segments[i].point.y = this.thumbBg.segments[i].point.y + randomNumMinMax(1, 7);
     }
 
     for (let i = 0; i < this.innerSegments; i++) {
@@ -140,9 +140,9 @@ export default class ArtistThumb {
       this.y = this.y - this.z_speed;
     }
 
-    if (this.x > (this.state.ww - this.radius) && this.direction === 1) {
+    if (this.x > (this.state.ww - (this.radius - 3)) && this.direction === 1) {
       this.direction = 3
-    } else if (this.x > (this.state.ww - this.radius) && this.direction === 2) {
+    } else if (this.x > (this.state.ww - (this.radius - 3)) && this.direction === 2) {
       this.direction = 4
     } else if (this.x < this.radius && this.direction === 3) {
       this.direction = 1

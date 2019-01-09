@@ -44,7 +44,7 @@ const colors = {
   red: '#EC3E00',
   bright_red: '#EC3E00',
   orange: '#F07924',
-  green: '#OB9444',
+  green: '#0B9444',
   yellow: '#FFE200',
   blue: '#003AAA',
 }

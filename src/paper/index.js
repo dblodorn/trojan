@@ -2,6 +2,7 @@ import paper from 'paper'
 import { store } from '../state/store'
 import Artist from './Artist'
 import Wave from './Wave'
+import { colors } from './../styles/theme'
 
 export default () => {
   class Artists {
@@ -10,7 +11,7 @@ export default () => {
       this.window = store.getState().resizeState;
       this.artists = false;
       this.artists_array = false;
-      this.bottom_height = 110;
+      this.bottom_height = 130;
       this.state = {
         ww: this.window.window_width,
         wh: this.window.window_height,
@@ -24,6 +25,9 @@ export default () => {
       this.init = this.init.bind(this);
       // INIT
       this.init();
+      this.wave1 = false
+      this.wave2 = false
+      this.wave3 = false
     };
 
     updateState() {
@@ -46,16 +50,21 @@ export default () => {
     };
 
     animate(paper) {
-      paper.view.onFrame = () => {
+      paper.view.onFrame = (event) => {
         this.updateState();
         if (this.artists_array !== false && !this.artists) {
-          new Wave(paper, this.state, this.bottom_height);
           this.createThumbs(paper);
+          this.wave1 = new Wave(paper, this.state, this.bottom_height, colors.black);
+          // this.wave2 = new Wave(paper, this.state, 100, colors.black);
+          // this.wave3 = new Wave(paper, this.state, 50, colors.green);
         };
         if (this.artists !== false) {
           for (let i = 0, l = this.artists.length; i < l; i++) {
 		        this.artists[i].position(95);
           }
+          this.wave1.update(event);
+          // this.wave2.update(event);
+          // this.wave3.update(event);
         }
       };
     };

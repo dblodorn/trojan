@@ -64,11 +64,6 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
-  @-moz-document url-prefix() {
-    body {
-      font-weight: lighter !important;
-    }
-  }
   ::-webkit-input-placeholder,
   ::-moz-placeholder {
     color: white;

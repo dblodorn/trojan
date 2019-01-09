@@ -22,7 +22,7 @@ export default connect(
 const HeaderWrapper = styled.header`
   ${flexCenteredAll};
   width: 100vw;
-  height: 10rem;
+  height: 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -30,11 +30,11 @@ const HeaderWrapper = styled.header`
 
 const LogoWrapper = styled(Link)`
   ${buttonInit};
-  width: 190px;
-  height: 190px;
+  width: 160px;
+  height: 160px;
   position: fixed;
-  top: 2rem;
-  left: 2rem;
+  top: 4rem;
+  left: 4rem;
   transform: rotate(0deg);
   transition: transform 250ms ease-in-out;
   will-change: transform;

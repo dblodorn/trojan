@@ -4,7 +4,7 @@ import Marquee3k from 'marquee3000'
 import { flexRowCenteredVert, animationFadeIn } from './../styles/mixins'
 import { colors, fonts } from './../styles/theme'
 
-const copy = `Artists soon Come. <span class="squiggle"></span> Artists soon Come <span class="dots"></span>`
+const copy = `Artists soon Come<span class="squiggle"></span> Artists soon Come <span class="dots"></span>`
 
 export default class extends Component {
   componentDidMount() {
