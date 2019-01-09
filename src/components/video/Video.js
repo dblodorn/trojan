@@ -76,6 +76,7 @@ const VideoSection = styled.section`
   left: 0;
   width: 100vw;
   height: 100vh;
+  padding-bottom: 8rem;
 `
 
 const VideoWrapper = styled.div`
@@ -98,7 +99,7 @@ const VideoWrapper = styled.div`
     width: 85vw;
     max-width: 126rem;
     padding: 0;
-    padding: 8rem;
+    padding: 6rem;
     margin-bottom: 0;
   `}
 `
