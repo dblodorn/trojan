@@ -1,8 +1,6 @@
 import paper from 'paper'
 import { store } from '../state/store'
 import Artist from './Artist'
-import Wave from './Wave'
-import { colors } from './../styles/theme'
 
 export default () => {
   class Artists {
@@ -25,7 +23,6 @@ export default () => {
       this.init = this.init.bind(this);
       // INIT
       this.init();
-      this.wave1 = false;
     };
 
     updateState() {
@@ -52,17 +49,14 @@ export default () => {
         this.updateState();
         if (this.artists_array !== false && !this.artists) {
           this.createThumbs(paper);
-          this.wave1 = new Wave(paper, this.state, this.bottom_height, colors.off_black);
         };
         if (this.artists !== false) {
           for (let i = 0, l = this.artists.length; i < l; i++) {
-		        this.artists[i].position(95);
+		        this.artists[i].position(95, paper);
           }
-          this.wave1.update(event);
         }
       };
       paper.view.onResize = (event) => {
-        // this.init();
         console.log(event);
       };
     };
