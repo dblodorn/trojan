@@ -170,14 +170,15 @@ export default class ArtistThumb {
     this.modal = store.getState().artistPopup;
 
     // Hover Handler
+    
     if (this.hovered) {
       this.title_alpha = 1;
-      this.thumbnail.bounds.width = this.thumbnail.bounds.width + 1;
-      this.thumbnail.bounds.height = this.thumbnail.bounds.height + 1;
+      // this.thumbnail.bounds.width = this.thumbnail.bounds.width + 1;
+      // this.thumbnail.bounds.height = this.thumbnail.bounds.height + 1;
     } else {
       this.title_alpha = 0;
-      this.thumbnail.bounds.width = this.initwidth;
-      this.thumbnail.bounds.height = this.initheight;
+      // this.thumbnail.bounds.width = this.initwidth;
+      // this.thumbnail.bounds.height = this.initheight;
     }
   }
 }

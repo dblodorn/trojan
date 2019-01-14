@@ -1,5 +1,5 @@
 {
-  "wp_endpoint": "https://trojan.dmbk.io/wp-json/api/v1/data/",
+  "wp_endpoint": "https://dmbk.network/trojan-jamaica/wp-json/api/v1/data/",
   "meta_defaults": {
     "title": "Trojan Jamaica",
     "description": "Trojan Jamaica",
