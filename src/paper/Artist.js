@@ -1,8 +1,8 @@
 import { store } from '../state/store'
 import { colors } from '../styles/theme'
-import { randomNumMinMax, randomArrItem } from './../scripts'
+import { randomNumMinMax } from './../scripts'
 import { setArtist, setArtistPopup } from './../state/actions'
-import { HitResult } from 'paper';
+import { calc, easing, everyFrame, value, tween, physics } from 'popmotion'
 
 export default class ArtistThumb {
   constructor(paper, data, state) {
@@ -27,6 +27,9 @@ export default class ArtistThumb {
     this.clickHandler = this.clickHandler.bind(this);
     this.initwidth = 0;
     this.initheight = 0;
+    this.tween = 1;
+
+
 
     // INITIALIZE PAPER OBJECTS
     this.thumbBg = new paper.Path.RegularPolygon({
@@ -71,6 +74,27 @@ export default class ArtistThumb {
     store.dispatch(setArtistPopup(true));
   }
 
+  tweenIt(dir) {
+    const tweenVal = value(1, (v) => {
+      this.tween = v;
+    });
+    if (dir === 'up') {
+      tween({
+        from: 1,
+        to: 1.15,
+        duration: 500
+      }).start(tweenVal);
+    } else if (dir === 'down') {
+      tween({
+        from: 1.15,
+        to: 1,
+        duration: 500
+      }).start(tweenVal);
+    } else {
+      this.tween = 1;
+    }
+  } 
+
   createThumb(paper) {
     // SET TYPE
     this.title.fillColor = '#000000';
@@ -113,22 +137,40 @@ export default class ArtistThumb {
     // GROUPS
     this.thumbnail.onMouseEnter = e => {
       if (!this.modal) {
+        this.tweenIt('up');
         this.hovered = true;
         document.body.style.cursor = 'pointer';
       }
     }
     this.thumbnail.onMouseLeave = e => {
       if (!this.modal) {
+        this.tweenIt('down');
         this.hovered = false;
         document.body.style.cursor = 'default';
       }
     }
   }
 
-  position(bottom, paper) {
+  position(bottom) {
     this.i = this.i + this.i_speed;
     this.z = this.z + (1 / this.z_speed / 500);
-    
+
+    // Animation
+    this.title.opacity = this.title_alpha;
+    this.modal = store.getState().artistPopup;
+
+    // Hover Handler
+    if (this.hovered) {
+      this.title_alpha = 1;
+      this.thumbnail.bounds.width = this.initwidth * this.tween;
+      this.thumbnail.bounds.height = this.initheight * this.tween;
+    } else {
+      this.title_alpha = 0;
+      this.thumbnail.bounds.width = this.initwidth * this.tween;
+      this.thumbnail.bounds.height = this.initheight * this.tween;
+    }
+
+    // Bouncing
     if (this.direction === 1) {
       this.x = this.x + this.i_speed;
       this.y = this.y + this.z_speed;
@@ -164,21 +206,5 @@ export default class ArtistThumb {
     }
 
     this.thumbnail.position = [this.x, this.y];
-
-    // Animation
-    this.title.opacity = this.title_alpha;
-    this.modal = store.getState().artistPopup;
-
-    // Hover Handler
-    
-    if (this.hovered) {
-      this.title_alpha = 1;
-      // this.thumbnail.bounds.width = this.thumbnail.bounds.width + 1;
-      // this.thumbnail.bounds.height = this.thumbnail.bounds.height + 1;
-    } else {
-      this.title_alpha = 0;
-      // this.thumbnail.bounds.width = this.initwidth;
-      // this.thumbnail.bounds.height = this.initheight;
-    }
   }
 }

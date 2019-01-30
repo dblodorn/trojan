@@ -31,6 +31,7 @@
     "lodash": "^4.17.11",
     "marquee3000": "^1.0.9",
     "nprogress": "^0.2.0",
+    "popmotion": "^8.6.2",
     "react": "next",
     "react-dom": "next",
     "react-helmet": "^5.2.0",
