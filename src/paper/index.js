@@ -45,7 +45,8 @@ export default () => {
     };
 
     animate(paper) {
-      paper.view.onFrame = (event) => {
+      
+      paper.view.onFrame = () => {
         this.updateState();
         if (this.artists_array !== false && !this.artists) {
           this.createThumbs(paper);
@@ -56,9 +57,21 @@ export default () => {
           }
         }
       };
-      paper.view.onResize = (event) => {
-        console.log(event);
+      
+      paper.view.onResize = e => {
+        console.log(e);
       };
+
+      paper.view.onMouseMove = e => {
+        // console.log(e)
+      }
+
+      paper.view.onMouseDown = e => {
+        console.log(e)
+        console.log(paper.project)
+      }
+
+
     };
 
     init() {      

@@ -7,6 +7,7 @@ import randomArrItem from './randomArrItem'
 import randomNumMinMax from './randomNumMinMax'
 import trimExcerpt from './trimExcerpt'
 import listIndex from './listIndex'
+import htmlConvert from './htmlConvert'
 
 export {
   routeName,
@@ -18,5 +19,6 @@ export {
   trimExcerpt,
   toPixel,
   toRem,
-  listIndex
+  listIndex,
+  htmlConvert,
 }

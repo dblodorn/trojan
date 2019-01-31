@@ -1,8 +1,15 @@
 import { store } from '../state/store'
 import { colors } from '../styles/theme'
-import { randomNumMinMax } from './../scripts'
+import { randomNumMinMax, htmlConvert } from './../scripts'
 import { setArtist, setArtistPopup } from './../state/actions'
-import { calc, easing, everyFrame, value, tween, physics } from 'popmotion'
+import { value, tween } from 'popmotion'
+import debounce from 'lodash/debounce'
+import mixin from 'lodash/mixin'
+import _ from 'lodash/wrapperLodash'
+
+mixin(_, {
+  debounce: debounce
+})
 
 export default class ArtistThumb {
   constructor(paper, data, state) {
@@ -12,14 +19,11 @@ export default class ArtistThumb {
     this.radius = 80;
     this.numSegment = Math.floor(this.radius / 5 + 2);
     this.innerSegments = Math.floor(this.radius / 8 + 2);
-    this.rate = randomNumMinMax(500, 2000);
     this.x = randomNumMinMax(0, state.ww);
     this.y = randomNumMinMax(0, state.wh);
     this.direction = randomNumMinMax(1, 5);
     this.i = 0;
     this.i_speed = randomNumMinMax(3, 20) * .025;
-    this.z = 0;
-    this.z_speed = randomNumMinMax(3, 20) * .025;
     this.title_alpha = 0;
     this.modal = store.getState().artistPopup;
     this.image = this.props.post_data.thumbnail;
@@ -28,8 +32,6 @@ export default class ArtistThumb {
     this.initwidth = 0;
     this.initheight = 0;
     this.tween = 1;
-
-
 
     // INITIALIZE PAPER OBJECTS
     this.thumbBg = new paper.Path.RegularPolygon({
@@ -45,13 +47,24 @@ export default class ArtistThumb {
       sides: this.innerSegments,
     });
     
-    this.title =  new paper.PointText(
-      new paper.Point(0, this.radius + 25)
-    );
+    this.title = new paper.PointText({
+      point: [0, this.radius + 25],
+      fillColor: '#000000',
+      justification: 'center',
+      fontFamily: 'Azidenz',
+      fontSize: 20,
+    });
     
     this.thumbMask = new paper.Path.Circle({
       radius: this.radius * .7,
     });
+
+    this.boundBox = new paper.Shape.Rectangle({
+      point: [-100, -100],
+      size: [200, 200],
+      strokeColor: 'black',
+      fillColor: 'transparent'
+    })
     
     for (let i = 0; i < this.numSegment; i++) {
       this.thumbBg.segments[i].point.y = this.thumbBg.segments[i].point.y + randomNumMinMax(1, 7);
@@ -61,11 +74,10 @@ export default class ArtistThumb {
       this.thumbInner.segments[i].point.y = this.thumbInner.segments[i].point.y + randomNumMinMax(1, 5);
     }
 
+    this.thumbBg.smooth();
+    this.thumbInner.smooth();
+    
     // INITIALIZE OBJECT
-    this.init(paper);
-  }
-  
-  init(paper) {
     this.createThumb(paper);
   }
 
@@ -74,7 +86,7 @@ export default class ArtistThumb {
     store.dispatch(setArtistPopup(true));
   }
 
-  tweenIt(dir) {
+  hoverTween(dir) {
     const tweenVal = value(1, (v) => {
       this.tween = v;
     });
@@ -82,13 +94,13 @@ export default class ArtistThumb {
       tween({
         from: 1,
         to: 1.15,
-        duration: 500
+        duration: 250
       }).start(tweenVal);
     } else if (dir === 'down') {
       tween({
         from: 1.15,
         to: 1,
-        duration: 500
+        duration: 250
       }).start(tweenVal);
     } else {
       this.tween = 1;
@@ -97,15 +109,7 @@ export default class ArtistThumb {
 
   createThumb(paper) {
     // SET TYPE
-    this.title.fillColor = '#000000';
-    this.title.content = this.props.post_data.title.toUpperCase();
-    this.title.justification = 'center';
-    this.title.fontSize = 25;
-    this.title.fontFamily = 'Azidenz';
-
-    // SET SEGMENTS
-    this.thumbBg.smooth();
-    this.thumbInner.smooth();
+    this.title.content = htmlConvert(this.props.post_data.title).toUpperCase();
     this.thumbInner.fillColor = this.props.circle_color;
 
     // Thumbnail Image
@@ -117,43 +121,52 @@ export default class ArtistThumb {
     });
 
     imageGroup.clipped = true;
-    
+
     // Master Group
     this.thumbnail = new paper.Group({
-      children: [this.thumbBg, this.thumbInner, imageGroup, this.title],
+      children: [
+        this.thumbBg,
+        this.thumbInner, 
+        imageGroup, 
+        this.title,
+        this.boundBox,
+      ],
       position: [this.x, this.y],
     });
     
     this.initwidth = this.thumbnail.bounds.width;
     this.initheight = this.thumbnail.bounds.height;
-
-    this.thumbnail.name = this.props.post_data.slug;
-    
+  
     // Mouse Events
     this.thumbnail.onClick = e => {
-      this.clickHandler(e);
+      // this.clickHandler(e);
     };
 
     // GROUPS
     this.thumbnail.onMouseEnter = e => {
+      e.stopPropagation();
       if (!this.modal) {
-        this.tweenIt('up');
+        console.log('hover')
         this.hovered = true;
+        this.hoverTween('up');
         document.body.style.cursor = 'pointer';
       }
     }
+    
     this.thumbnail.onMouseLeave = e => {
+      e.stopPropagation();
       if (!this.modal) {
-        this.tweenIt('down');
+        console.log('outs')
         this.hovered = false;
+        // _.debounce(this.hoverTween('down'), 550);
         document.body.style.cursor = 'default';
       }
     }
   }
 
-  position(bottom) {
+  position(bottom, paper) {
+
     this.i = this.i + this.i_speed;
-    this.z = this.z + (1 / this.z_speed / 500);
 
     // Animation
     this.title.opacity = this.title_alpha;
@@ -166,23 +179,23 @@ export default class ArtistThumb {
       this.thumbnail.bounds.height = this.initheight * this.tween;
     } else {
       this.title_alpha = 0;
-      this.thumbnail.bounds.width = this.initwidth * this.tween;
-      this.thumbnail.bounds.height = this.initheight * this.tween;
+      this.thumbnail.bounds.width = this.initwidth;
+      this.thumbnail.bounds.height = this.initheight;
     }
 
     // Bouncing
     if (this.direction === 1) {
       this.x = this.x + this.i_speed;
-      this.y = this.y + this.z_speed;
+      this.y = this.y + this.i_speed;
     } else if (this.direction === 2) {
       this.x = this.x + this.i_speed;
-      this.y = this.y - this.z_speed;
+      this.y = this.y - this.i_speed;
     } else if (this.direction === 3) {
       this.x = this.x - this.i_speed;
-      this.y = this.y + this.z_speed;
+      this.y = this.y + this.i_speed;
     } else if (this.direction === 4) {
       this.x = this.x - this.i_speed;
-      this.y = this.y - this.z_speed;
+      this.y = this.y - this.i_speed;
     }
 
     if (this.x > (this.state.ww - (this.radius - 3)) && this.direction === 1) {
