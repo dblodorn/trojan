@@ -62,7 +62,7 @@ export default class ArtistThumb {
     this.boundBox = new paper.Shape.Rectangle({
       point: [-100, -100],
       size: [200, 200],
-      strokeColor: 'black',
+      // strokeColor: 'black',
       fillColor: 'transparent'
     })
     
@@ -139,7 +139,7 @@ export default class ArtistThumb {
   
     // Mouse Events
     this.thumbnail.onClick = e => {
-      // this.clickHandler(e);
+      this.clickHandler(e);
     };
 
     // GROUPS
@@ -148,7 +148,7 @@ export default class ArtistThumb {
       if (!this.modal) {
         console.log('hover')
         this.hovered = true;
-        this.hoverTween('up');
+        // this.hoverTween('up');
         document.body.style.cursor = 'pointer';
       }
     }
