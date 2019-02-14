@@ -50,7 +50,7 @@ const colors = {
   blue: '#003AAA',
 }
 
-const logo = `/assets/imgs/trojan-jamaica-logo-circle.svg`
+const logo = `/assets/trojan-logo.svg`
 
 const fonts = {
   akzidenz: `'Azidenz', Arial, system-ui, sans-serif`,
