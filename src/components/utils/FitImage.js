@@ -5,7 +5,7 @@ export default props => {
   const [loaded, isLoaded] = useState(false)
   return (
     <ImgWrapper alpha={loaded ? 1 : 0}> 
-      <ImgFit src={props.src} onLoad={() => isLoaded(true)} fit={props.fit || 'cover'}/>
+      <ImgFit src={props.src} onLoad={() => isLoaded(true)} fit={props.fit || 'contain'}/>
     </ImgWrapper>
   )
 }

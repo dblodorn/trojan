@@ -49,7 +49,7 @@ const colors = {
   blue: '#003AAA',
 }
 
-const logo = `/assets/icons/android-chrome-512x512.png`
+const logo = `/assets/trojan-logo.svg`
 
 const fonts = {
   sans: `'GintoNord', Arial, system-ui, sans-serif`,
