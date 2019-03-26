@@ -15,13 +15,11 @@ export default apiData(props =>
       leave={{ opacity: 0, transform: `matrix3d(-1.25, 0.02, 0.00, 0.0005, 0.025, -1.45,0.00,0.0001,0,0,1,0,0,0,10,1)`, pointerEvents: 'none' }}
     >
       {props && (styles =>
-        <div style={styles}>
-          <FullWindow zindex={0} bgcolor={colors.green}>
-            <HomeBgWrapper>
-              <FitImage src="assets/imgs/bg-home.svg"/>
-            </HomeBgWrapper>
-          </FullWindow>
-        </div>
+        <FullWindow zindex={0} bgcolor={colors.green} styles={styles}>
+          <HomeBgWrapper>
+            <FitImage src="assets/imgs/bg-home.svg"/>
+          </HomeBgWrapper>
+        </FullWindow>
       )}
     </Transition>
   </React.Fragment>

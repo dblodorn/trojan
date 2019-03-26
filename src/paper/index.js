@@ -2,9 +2,12 @@ import paper from 'paper'
 import { store } from '../state/store'
 import Artist from './Artist'
 
-export default () => {
+export default (status) => {
+  
+
   class Artists {
-    constructor() {
+    constructor(status) {
+      console.log(status);
       this.stage = document.getElementById('canvas');
       this.window = store.getState().resizeState;
       this.artists = false;
@@ -22,7 +25,11 @@ export default () => {
       this.updateState = this.updateState.bind(this);
       this.init = this.init.bind(this);
       // INIT
-      this.init();
+      if(status) {
+        this.init();
+      } else {
+        this.kill();
+      }
     };
 
     updateState() {
@@ -45,7 +52,6 @@ export default () => {
     };
 
     animate(paper) {
-      
       paper.view.onFrame = () => {
         this.updateState();
         if (this.artists_array !== false && !this.artists) {
@@ -59,7 +65,7 @@ export default () => {
       };
       
       paper.view.onResize = e => {
-        console.log(e);
+        // console.log(e);
       };
 
       paper.view.onMouseMove = e => {
@@ -74,6 +80,11 @@ export default () => {
 
     };
 
+    kill() {
+      paper.project.activeLayer.removeChildren();
+      paper.remove();
+    };
+
     init() {      
       paper.setup(this.stage);
       this.children = paper.project.activeLayer.children;
@@ -82,7 +93,6 @@ export default () => {
       }
       this.animate(paper);
     };
-  } 
-
-  new Artists();
+  }
+  new Artists(status);
 }

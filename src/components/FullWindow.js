@@ -1,11 +1,14 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
+import BgModal from './BgModal'
 
 const FullWindow = props =>
-	<FullWindowWrapper height={props.wh} zindex={props.zIndex || 10} position={props.position || 'fixed'} bgcolor={props.bgcolor || 'transparent'}>
-		{props.children}
-	</FullWindowWrapper>
+  <BgModal>
+    <FullWindowWrapper style={props.styles} height={props.wh} zindex={props.zIndex || 10} position={props.position || 'fixed'} bgcolor={props.bgcolor || 'transparent'}>
+      {props.children}
+    </FullWindowWrapper>
+  </BgModal>
 
 export default connect(
 	state => ({
