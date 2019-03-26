@@ -2,9 +2,9 @@
 
   function main_data(){
     $data = array();
-    $data['options'] = options_data();
+    $data['options'] = get_fields('options');
     $data['artists'] = cpt_artists();
-    // $data['releases'] = cpt_releases();
+    $data['releases'] = cpt_releases();
     return $data;
   }
   
