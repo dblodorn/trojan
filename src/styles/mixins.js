@@ -251,10 +251,13 @@ const spin = keyframes`
   }
 `
 
-const animationRotate = css`
-  animation: ${spin} 700ms linear 0s infinite normal;
-  animation-fill-mode: forwards;
-`
+const animationRotate = (time) => {
+  const this_time = time ? time : 1200;
+  return css`
+    animation: ${spin} ${this_time}ms linear 0s infinite normal;
+    animation-fill-mode: forwards;
+  `
+}
 
 const simpleFade = keyframes`
   from {

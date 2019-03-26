@@ -1,26 +1,23 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn } from './styles/mixins'
 import { Header, ImageLoader } from './components'
-import { LoadingPage } from './views'
 
-const Document = props => {
-  if (props.apiData) {
-    return (
-      <Fragment>
-        <GlobalStyles/>
+const Document = props =>
+  <React.Fragment>
+    <GlobalStyles />
+    {props.apiData &&
+      <React.Fragment>
         <Header/>
         <Main>
           {props.children}
         </Main>
         <ImageLoader artists={props.apiData.artists}/>
-      </Fragment>
-    )
-  } else {
-    return <LoadingPage/>
-  }
-}
+      </React.Fragment>
+    }
+  </React.Fragment>
 
 export default connect(
   state => ({

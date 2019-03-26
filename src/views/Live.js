@@ -1,15 +1,12 @@
-import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
-import { Head } from './../components'
+import React from 'react'
+import { Head, apiData, FullWindow } from './../components'
+import { } from './../styles/components'
+import { } from './../styles/mixins'
+import { } from './../styles/theme'
 
-const Live = props => 
-  <Fragment>
+export default apiData(props =>
+  <React.Fragment>
     <Head title={`Live`} />
-		<h1>Live</h1>
-  </Fragment>
-
-export default connect(
-  state => ({
-    apiData: state.apiData
-  })
-)(Live)
+    <FullWindow zindex={0}></FullWindow>
+  </React.Fragment>
+)

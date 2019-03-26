@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { flexColumn } from './../styles/mixins'
 import Navigation from './navigation'
@@ -15,4 +15,5 @@ const HeaderWrapper = styled.header`
   left: 3rem;
   width: 22rem;
   position: fixed;
+  z-index: 9000;
 `

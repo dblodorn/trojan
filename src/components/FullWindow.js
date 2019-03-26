@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 
 const FullWindow = props =>
-	<FullWindowWrapper height={props.wh} zindex={props.zIndex || 10} position={props.position || 'fixed'}>
+	<FullWindowWrapper height={props.wh} zindex={props.zIndex || 10} position={props.position || 'fixed'} bgcolor={props.bgcolor || 'transparent'}>
 		{props.children}
 	</FullWindowWrapper>
 
@@ -29,6 +29,7 @@ const FullWindowWrapper = styled.aside`
   height: ${props => props.height}px;
   z-index: ${props => props.zindex};
   position: ${props => props.position};
+  background-color: ${props => props.bgcolor};
   top: 0;
   left: 0;
   width: 100vw;

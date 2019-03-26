@@ -7,7 +7,7 @@ import { HEADER_MENU } from './../../../config.json'
 export default props =>
 	<Nav>
 		{HEADER_MENU.map((item, i) =>
-			<NavLink slug={item.slug} title={item.title} key={`${item.slug}${i}`} link={item.link}/>
+			<NavLink item={item} key={`${item.slug}${i}`}/>
 		)}
 	</Nav>
 

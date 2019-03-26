@@ -1,15 +1,13 @@
-import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
-import { Head, VideoModal, Ticker } from './../components'
+import React from 'react'
+import { Head, apiData, FullWindow } from './../components'
+import { StyledMarkup } from './../styles/components'
+import {  } from './../styles/mixins'
+import {  } from './../styles/theme'
 
-const About = props => 
-  <Fragment>
+export default apiData(props =>
+  <React.Fragment>
     <Head title={`About`} />
-    <h1>ABOUT</h1>
-  </Fragment>
-
-export default connect(
-  state => ({
-    apiData: state.apiData
-  })
-)(About)
+    <StyledMarkup dangerouslySetInnerHTML={{ __html: props.options.about_page_copy }}/>
+    <FullWindow zindex={0}></FullWindow>
+  </React.Fragment>
+)

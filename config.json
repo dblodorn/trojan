@@ -4,7 +4,7 @@
     "title": "Trojan Jamaica",
     "description": "Trojan Jamaica",
     "site_url": "",
-    "bgcolor": "#OB9444"
+    "bgcolor": "#D5AE18"
   },
   "fonts": [
     "Azidenz",
@@ -12,20 +12,29 @@
   ],
   "HEADER_MENU": [
     {
+      "title": "Home",
+      "slug": "",
+      "image": "home"
+    },
+    {
       "title": "Artists",
-      "slug": "artists"
+      "slug": "artists",
+      "image": "artists"
     },
     {
       "title": "Listen",
-      "slug": "listen"
+      "slug": "listen",
+      "image": "listen"
     },
     {
       "title": "Live",
-      "slug": "live" 
+      "slug": "live",
+      "image": "live"
     },
     {
       "title": "About",
-      "slug": "about"
+      "slug": "about",
+      "image": "about"
     }
   ]
 }

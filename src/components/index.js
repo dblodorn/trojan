@@ -8,6 +8,8 @@ import VideoModal from './video/VideoModal'
 import ImageLoader from './ImageLoader'
 import Ticker from './Ticker'
 import Footer from './Footer'
+import apiData from './apiData'
+import FullWindow from './FullWindow'
 
 export {
   FitImage,
@@ -20,4 +22,6 @@ export {
   ImageLoader,
   Ticker,
   Footer,
+  apiData,
+  FullWindow,
 }

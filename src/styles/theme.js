@@ -42,7 +42,7 @@ const colors = {
   white: '#FFFFFF',
   black: '#111010',
   red: '#EC3E00',
-  bright_red: '#EC3E00',
+  bright_red: '#EC0400',
   orange: '#F07924',
   green: '#0B9444',
   yellow: '#FFE200',
