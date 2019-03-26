@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Router } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setPageCount, setRoute } from './state/actions'
 import Routes from './Routes'
@@ -17,7 +18,9 @@ class App extends Component {
   }
   render() {
     return (
-      <Routes/>
+      <Router history={this.props.history}>
+        <Routes />
+      </Router>
     )
   }
 }

@@ -2,8 +2,13 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Head } from './../components'
 
-export default props => 
+const Listen = props => 
   <Fragment>
-    <Head title={`Home`} />
-    <h1>Home</h1>
+    <Head title={`Listen`} />
   </Fragment>
+
+export default connect(
+  state => ({
+    apiData: state.apiData
+  })
+)(Listen)

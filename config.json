@@ -6,18 +6,26 @@
     "site_url": "",
     "bgcolor": "#OB9444"
   },
-  "mail_scrape": {
-    "mailchimp_url": ""
-  },
   "fonts": [
     "Azidenz",
     "Fakt"
   ],
   "HEADER_MENU": [
     {
-      "title": "contact",
-      "slug": "contact",
-      "is_home": false
+      "title": "Artists",
+      "slug": "artists"
+    },
+    {
+      "title": "Listen",
+      "slug": "listen"
+    },
+    {
+      "title": "Live",
+      "slug": "live" 
+    },
+    {
+      "title": "About",
+      "slug": "about"
     }
   ]
 }

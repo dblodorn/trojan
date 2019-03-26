@@ -24,7 +24,7 @@ const resizeHandler = () => {
 
 scrollWatcher()
 resizeHandler()
-paperInit()
+// paperInit()
 
 window.addEventListener('resize', _.throttle(resizeHandler, 50))
 

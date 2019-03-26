@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn } from './styles/mixins'
-import { Header, ImageLoader, Footer } from './components'
+import { Header, ImageLoader } from './components'
 import { LoadingPage } from './views'
 
 const Document = props => {
@@ -15,7 +15,6 @@ const Document = props => {
           {props.children}
         </Main>
         <ImageLoader artists={props.apiData.artists}/>
-        <Footer/>
       </Fragment>
     )
   } else {
@@ -26,6 +25,7 @@ const Document = props => {
 export default connect(
   state => ({
     apiData: state.apiData,
+    router: state.router,
     resizeState: state.resizeState
   })
 )(Document)

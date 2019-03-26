@@ -148,6 +148,26 @@ const CloseButton = styled.button`
   }
 `
 
+const NavWrapper = styled(Link)`
+  ${_.flexRow};
+  position: relative;
+  width: 100%;
+  height: 8rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  .image-wrapper {
+    width: 60%;
+    height: 100%;
+    position: relative;
+    img {
+      ${_.absoluteCentered};
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+`
+
 export {
   H1,
   H2,
@@ -162,5 +182,6 @@ export {
   StyledLink,
   ExternalLink,
   ModalContentWrapper,
-  CloseButton
+  CloseButton,
+  NavWrapper
 }
