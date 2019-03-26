@@ -11,14 +11,16 @@ import NotFound from './views/NotFound'
 
 const Routes = props =>
   <Document>
-    <Switch>
-      {(props.apiData) && <Route exact path={'/'} component={Home} />}
-      {(props.apiData) && <Route exact path={'/about'} component={About} />}
-      {(props.apiData) && <Route exact path={'/live'} component={Live} />}
-      {(props.apiData) && <Route exact path={'/listen'} component={Listen} />}
-      {(props.apiData) && <Route exact path={'/artists'} component={Artists} />}
-      <Route component={NotFound} />
-    </Switch>
+    {props.apiData &&
+      <Switch>
+        <Route exact path={'/'} component={props => <Home {...props} />} />
+        <Route exact path={'/artists'} component={props => <Artists {...props} />} />
+        <Route exact path={'/listen'} component={props => <Listen {...props} />} />
+        <Route exact path={'/live'} component={props => <Live {...props} />} />
+        <Route exact path={'/about'} component={props => <About {...props} />} />
+        <Route component={NotFound} />
+      </Switch>
+    }
   </Document>
 
 export default connect(

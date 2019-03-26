@@ -5,6 +5,7 @@ import { Head } from './../components'
 const Listen = props => 
   <Fragment>
     <Head title={`Listen`} />
+    <h1>Listen</h1>
   </Fragment>
 
 export default connect(
