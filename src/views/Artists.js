@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Transition } from 'react-spring'
 import { Head, apiData, FullWindow, FitImage, VideoModal } from './../components'
 import { } from './../styles/components'
-import { animationRotate } from './../styles/mixins'
+import { animationRotate, animationFadeIn } from './../styles/mixins'
 import { colors } from './../styles/theme'
 import paperInit from './../paper'
 
@@ -59,6 +59,7 @@ const ArtBg = styled.div`
   position: relative;
   margin: auto;
   padding: 2.5vh;
+  ${animationFadeIn(1000, 500)};
   .inner-wrapper {
     ${animationRotate(45000)};
     width: 100%;

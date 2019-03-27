@@ -4,7 +4,7 @@ import { absoluteCentered, flexCenteredAll } from './../../styles/mixins'
 import { fonts } from './../../styles/theme'
 
 export default props =>
-	<HoverShape>
+	<HoverShape className="hover-shape">
 		<div className='span-wrapper'>
 			<span>{props.title}</span>
 		</div>
@@ -25,6 +25,11 @@ const HoverShape = styled.div`
 	width: 40%;
 	height: 100%;
 	position: relative;
+	&.hover-shape {
+		opacity: 0;
+		transition: opacity 400ms ease;
+		will-change: opacity;
+	}
 	.span-wrapper {
 		${flexCenteredAll};
 		width: 100%;

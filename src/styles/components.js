@@ -155,6 +155,17 @@ const NavWrapper = styled(Link)`
   height: 8rem;
   margin-bottom: 2rem;
   padding: 1rem;
+  &.active {
+    pointer-events: none;
+    .hover-shape {
+      opacity: 1;
+    }
+  }
+  &:hover {
+    .hover-shape {
+      opacity: 1;
+    }
+  }
   .image-wrapper {
     width: 60%;
     height: 100%;
