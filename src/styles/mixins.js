@@ -94,7 +94,6 @@ const mediumType = css`
   ${sansFont};  
   font-size: ${font_sizes_rem.medium_sm};
   line-height: 1;
-  letter-spacing: 2px;
   ${media.medium`
     font-size: ${font_sizes_rem.medium};
   `}
@@ -251,10 +250,27 @@ const spin = keyframes`
   }
 `
 
+const spinRev = keyframes`
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+`
+
 const animationRotate = (time) => {
   const this_time = time ? time : 1200;
   return css`
     animation: ${spin} ${this_time}ms linear 0s infinite normal;
+    animation-fill-mode: forwards;
+  `
+}
+
+const animationRotateRev = (time) => {
+  const this_time = time ? time : 1200;
+  return css`
+    animation: ${spinRev} ${this_time}ms linear 0s infinite normal;
     animation-fill-mode: forwards;
   `
 }
@@ -496,4 +512,5 @@ export {
   fixedWindow,
   fancyScroll,
   linkInit,
+  animationRotateRev,
 }

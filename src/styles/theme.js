@@ -46,6 +46,7 @@ const colors = {
   orange: '#F07924',
   green: '#0B9444',
   yellow: '#FFE200',
+  yellow_gold: '#FFCA00',
   off_black: '#111010',
   blue: '#003AAA',
 }
