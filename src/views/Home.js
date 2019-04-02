@@ -2,7 +2,6 @@ import React from 'react'
 import { Transition } from 'react-spring'
 import styled from 'styled-components'
 import { Head, apiData, FullWindow, FitImage } from './../components'
-import { } from './../styles/components'
 import { flexCenteredAll, animationRotate, animationFadeIn } from './../styles/mixins'
 import { colors } from './../styles/theme'
 
