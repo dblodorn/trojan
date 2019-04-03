@@ -508,7 +508,6 @@ export {
   wrapperWidths,
   textShadow,
   fixedHero,
-  halfFixed,
   fixedWindow,
   fancyScroll,
   linkInit,

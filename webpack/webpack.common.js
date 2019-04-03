@@ -4,8 +4,8 @@ const path = require('path')
 
 module.exports = {
   entry: [
-    "core-js/modules/es6.promise",
-    "core-js/modules/es6.array.iterator",
+    // "core-js/modules/es6.promise",
+    // "core-js/modules/es6.array.iterator",
     path.join(__dirname, '../src', 'index.js'),
   ],
   module: {
@@ -22,10 +22,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.paper.js$/,
-        loader: "paper-loader"
       }
     ]
   },
@@ -51,7 +47,7 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
       maxInitialRequests: Infinity,
-      minSize: 0
+      minSize: 0,
     }
   }
 }

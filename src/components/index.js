@@ -6,10 +6,10 @@ import Head from './utils/Head'
 import pageData from './HOC/pageData'
 import VideoModal from './video/VideoModal'
 import ImageLoader from './ImageLoader'
-import Ticker from './Ticker'
 import Footer from './Footer'
 import apiData from './apiData'
 import FullWindow from './FullWindow'
+import Loading from './Loading'
 
 export {
   FitImage,
@@ -20,8 +20,8 @@ export {
   pageData,
   VideoModal,
   ImageLoader,
-  Ticker,
   Footer,
   apiData,
   FullWindow,
+  Loading,
 }
