@@ -36,7 +36,7 @@ export default connect(
 
 const AlbumListWrapper = styled.section`
 	width: 100%;
-	max-width: 96rem;
+	max-width: 86rem;
 	height: ${props => props.height}px;
 	padding: 3rem;
 	margin: auto;
@@ -59,7 +59,7 @@ const AlbumListWrapper = styled.section`
 	}
 	ul {
 		width: 100%;
-		padding:  10rem 1rem;
+		padding:  10rem 4rem;
 		position: relative;
 		z-index: 100;
 		height: 100%;
