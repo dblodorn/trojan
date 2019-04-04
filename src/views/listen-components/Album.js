@@ -1,30 +1,17 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { flexColumn } from '../../styles/mixins'
 import { FitImage } from './../../components'
 
-export default class extends React.Component {
-	constructor (props) {
-		super(props)
-		console.log(this.props)
-		this.state = {
-			popped: false
-		};
-	}
+export default props =>
+  <AlbumItem to={`/release/${props.data.post_data.slug}`}>
+    <div className='album-image'>
+      <FitImage src={props.data.post_data.thumbnail} fit={'cover'}/>
+    </div>
+  </AlbumItem>
 
-	render() {
-		return (
-			<AlbumItem>
-				<div className='album-image'>
-					<FitImage src={this.props.data.post_data.thumbnail} fit={'cover'}/>
-				</div>
-			</AlbumItem>
-		)
-	}
-}
-
-const AlbumItem = styled.div`
+const AlbumItem = styled(Link)`
 	display: flex;
 	height: 100%;
 	position: relative;
