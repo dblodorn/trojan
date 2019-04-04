@@ -10,6 +10,7 @@
       while ($the_query->have_posts()) : $the_query->the_post();
         $post = get_post($post_id);
         $data[] = array(
+          'slug' => $post->post_name,
           'post_data' => post_data($post),
           'about_release' => get_field('about_release', $post->ID),
           'spotify_link' => get_field('spotify_link', $post->ID),

@@ -10,6 +10,7 @@
       while ($the_query->have_posts()) : $the_query->the_post();
         $post = get_post($post_id);
         $data[] = array(
+          'slug' => $post->post_name,
           'post_data' => post_data($post),
           'bio' => get_field('bio', $post->ID),
           'video' => get_field('video_url', $post->ID, false, false),
