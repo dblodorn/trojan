@@ -16,7 +16,6 @@ const returnSlug = (route) => {
 
 const filterProject = (data, pageSlug) => {
 	const project = _.find(data, { slug: pageSlug })
-	console.log(project)
 	return project
 }
 
@@ -27,7 +26,6 @@ export default (InnerComponent) => {
 			this.state = {
 				project: null
       }
-      console.log(this.props)
 		}
 		componentWillMount() {
 			this.setState({

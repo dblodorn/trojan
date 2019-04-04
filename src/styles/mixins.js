@@ -122,15 +122,6 @@ const microType = css`
   letter-spacing: 1px;
 `
 
-const monoP = css`
-  ${monoFont};
-  font-size: 1.5rem;
-  line-height: 1.125;
-  ${media.medium`
-    font-size: 1.35rem;
-  `}
-`
-
 const linkInit = css`
   text-decoration: none;  
   &:hover {
@@ -174,14 +165,6 @@ const buttonInit = css`
   cursor: pointer;
   display: block;
 `
-
-const transitionAll = (time) => {
-  return css`
-    transition-property: all;
-    transition-duration: ${time}ms;
-    transition-timing-function: ease;
-  `
-}
 
 const shadow = css`
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
@@ -229,18 +212,6 @@ const flexRowSpaceBetween = css`
 `
 
 // Animation
-const pulse = keyframes`
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-`
-
 const spin = keyframes`
   from {
     transform: rotate(0deg);
@@ -284,10 +255,6 @@ const simpleFade = keyframes`
   }
 `
 
-const pulseAnimation = css`
-  animation: 350ms linear ${pulse} infinite;
-`
-
 const animationFadeIn = (time, delay) => {
   return css`
     animation: ${simpleFade} ${time}ms ease normal;
@@ -308,12 +275,6 @@ const textShadow = (blur, color) => {
   `
 }
 
-const fullBg = css`
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-`
-
 const fullWindow = css`
   display: flex;
   width: 100vw;
@@ -331,148 +292,28 @@ const absoluteTopFull = css`
   left: 0;
 `
 
-const positionClasses = css`
+const albumImage = css`
   display: flex;
-  flex-direction: column;
-  &.centered {
-    align-items: center;
-    justify-content: center;
-  }
-  &.centered_right {
-    align-items: flex-end;
-    justify-content: center;
-  }
-  &.top_right {
-    align-items: flex-end;
-    justify-content: flex-start;
-  }
-  &.bottom_right {
-    align-items: flex-end;
-    justify-content: flex-end;
-  }
-  &.centered_left {
-    align-items: flex-start;
-    justify-content: center;
-  }
-  &.top_left {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  &.bottom_left {
-    align-items: flex-start;
-    justify-content: flex-end;
-  }
-`
-
-const wrapperWidths = css`
-  width: 100%;
-  margin: 0 auto;
-  &.full_width {
-    max-width: 100%;
-  }
-  &.max_large {
-    max-width: ${widths.max_large};
-  }
-  &.max_medium {
-    max-width: ${widths.max_medium};
-  }
-  &.max_small {
-    max-width: ${widths.max_small};
-  }
-`
-
-const grid = css`
-  flex-grow: 0;
-  flex-shrink: 0;
-  li {
-    width: 50%;
+  height: 100%;
+  position: relative;
+  padding: 2rem;
+  background-image: url('assets/imgs/record-bg.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  .album-image {
+    width: 100%;
+    height: 0;
+    overflow-y: visible;
+    padding-bottom: 100%;
     position: relative;
-  }
-  ${media.desktopNav`
-    &.one_col > li {
-      width: 100%;
-    }
-    &.three_col > li {
-      width: calc(100% / 3);
-    }
-    &.four_col > li {
-      width: calc(100% / 4);
-    }
-    &.two_col > li {
-      width: 50%;
-    }
-  `}
-  ${media.big`
-    &.four_col > li {
-      width: calc(100% / 5);
-    }
-  `}
-`
-
-const fancyScroll = css`
-  &::-webkit-scrollbar {
-    width: 1rem;
-    border-left: ${shared.border_thin};
-    position: absolute;
-    z-index: 9000;
-    display: none;
-  }
-  &::-webkit-scrollbar-track {
-    border-left: ${shared.border_thin};
-    background: ${colors.white};
-    width: 1rem;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: ${colors.green};
-    border-left: ${shared.border_thin};
-    width: 1rem;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background: ${colors.grey};
-    width: 1rem;
-    cursor: pointer;
-  }
-`
-
-const fixedHero = (top, bottom, left) => {
-  return css`
-    &.fixed-hero {
-      margin: 0;
-      max-height: 100vh;
-      height: 100vh;
-      overflow: hidden;
-      ${media.desktopNav`
-        padding-bottom: ${bottom};
-        padding-top: ${top};
-        padding-left: ${left};
-        position: fixed;
-        top: 0;
-        height: 100vh;
-      `}
-    }
-  `
-}
-
-const fixedWindow = css`
-  ${fancyScroll};
-  padding: ${heights.header} 0 ${heights.footer};
-  width: 50vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  article {
-    padding-top: ${spacing.double_pad};
-    padding-bottom: ${heights.footer};
   }
 `
 
 export {
   media,
   maxWidth,
+  albumImage,
   absoluteCentered,
   fixedTopLeft,
   mainPadding,
@@ -482,9 +323,7 @@ export {
   bodyType,
   smallType,
   microType,
-  monoP,
   defaultLink,
-  transitionAll,
   buttonInit,
   shadow,
   animationRotate,
@@ -498,18 +337,10 @@ export {
   flexRowCenteredAll,
   flexCenteredAll,
   borderRadius,
-  pulseAnimation,
-  fullBg,
-  grid,
   fullWindow,
-  positionClasses,
   absoluteTopFull,
   opacityTransition,
-  wrapperWidths,
   textShadow,
-  fixedHero,
-  fixedWindow,
-  fancyScroll,
   linkInit,
   animationRotateRev,
 }
