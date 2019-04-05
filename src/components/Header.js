@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { flexColumn } from './../styles/mixins'
 import Navigation from './navigation'
+import Socials from './navigation/Socials'
 
 export default () => 
   <HeaderWrapper>
     <Navigation/>
+    <Socials/>
   </HeaderWrapper>
 
 const HeaderWrapper = styled.header`

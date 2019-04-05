@@ -21,6 +21,14 @@ export default pageData(props => {
           </div>
           <div className='copy-wrapper'>
             <div className='album-copy' dangerouslySetInnerHTML={{ __html: props.about_release }} />
+            <div className='streaming'>
+              <ReleaseDiv>
+                <a href={props.apple_music_link}><FitImage src={'/assets/apple.svg'} fit={'contain'} /></a>
+              </ReleaseDiv>
+              <ReleaseDiv>
+                <a href={props.spotify_link}><FitImage src={'/assets/logo-spotify.svg'} fit={'contain'}/></a>
+              </ReleaseDiv>
+            </div>
           </div>
         </ReleaseWrapper>
       </AlbumWrapper>
@@ -50,6 +58,23 @@ export default pageData(props => {
   )
 })
 
+const ReleaseDiv = styled.div`
+  width: 5rem;
+  height: 3rem;
+  will-change: transform;
+  padding: 0 1rem;
+  transition: transform 250ms ease -in -out;
+  &:hover {
+    transform: scale(1.05) rotate(-2.5deg);
+  }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+`
+
 const ReleaseWrapper = styled.div`
   ${flexRow};
   width: 100%;
@@ -58,6 +83,12 @@ const ReleaseWrapper = styled.div`
 	z-index: 100;
 	height: 100%;
 	min-height: 40rem;
+  .streaming {
+    position: relative;
+    width: 100%;
+    ${flexRow};
+    justify-content: center;
+  }
   .album-container {
     ${flexColumn};
     position: relative;
