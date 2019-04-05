@@ -115,11 +115,11 @@ const ModalContentWrapper = styled.div`
 
 const CloseButton = styled.button`
   ${_.buttonInit};
-  position: fixed;
+  position: absolute;
   width: ${props => props.size || `4rem`};
   height: ${props => props.size || `4rem`};
-  top: ${props => props.position || `.75rem`};
-  right: ${props => props.position || `.75rem`};
+  top: ${props => props.positionY || `.75rem`};
+  right: ${props => props.positionX || `.75rem`};
   padding: 0;
   z-index: 11000;
   cursor: pointer;
@@ -152,8 +152,8 @@ const NavWrapper = styled(Link)`
   ${_.flexRow};
   position: relative;
   width: 100%;
-  height: 8rem;
-  margin-bottom: 2rem;
+  height: 9rem;
+  margin-bottom: 1.5rem;
   padding: 1rem;
   &.active {
     pointer-events: none;
@@ -167,7 +167,7 @@ const NavWrapper = styled(Link)`
     }
   }
   .image-wrapper {
-    width: 60%;
+    width: 70%;
     height: 100%;
     position: relative;
     img {

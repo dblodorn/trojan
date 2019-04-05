@@ -10,6 +10,7 @@ import Footer from './Footer'
 import apiData from './apiData'
 import FullWindow from './FullWindow'
 import Loading from './Loading'
+import BackClose from './BackClose'
 
 export {
   FitImage,
@@ -24,4 +25,5 @@ export {
   apiData,
   FullWindow,
   Loading,
+  BackClose,
 }

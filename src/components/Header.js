@@ -4,16 +4,16 @@ import styled from 'styled-components'
 import { flexColumn } from './../styles/mixins'
 import Navigation from './navigation'
 
-export default props => 
+export default () => 
   <HeaderWrapper>
     <Navigation/>
   </HeaderWrapper>
 
 const HeaderWrapper = styled.header`
   ${flexColumn};
-  top: 5rem;
-  left: 3rem;
-  width: 22rem;
+  top: 4rem;
+  left: 2.5rem;
+  width: 18rem;
   position: fixed;
   z-index: 9000;
 `

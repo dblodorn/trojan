@@ -77,11 +77,6 @@ const sansFont = css`
   font-weight: 400;
 `
 
-const monoFont = css`
-  font-family: ${fonts.mono};
-  font-weight: 400;
-`
-
 const bigType = css`
   ${sansFont};
   font-size: ${font_sizes_rem.giant};
@@ -343,4 +338,5 @@ export {
   textShadow,
   linkInit,
   animationRotateRev,
+  sansFont
 }

@@ -1,22 +1,29 @@
 import React from 'react'
 import { Transition } from 'react-spring'
-import styled, { css, keyframes } from 'styled-components'
-import { Head, pageData, FullWindow, FitImage } from './../components'
-import { } from './../styles/components'
-import { animationFadeIn, animationRotate, animationRotateRev } from './../styles/mixins'
+import styled from 'styled-components'
+import { Head, pageData, FullWindow, FitImage, BackClose } from './../components'
+import { animationFadeIn, animationRotate, animationRotateRev, flexRow, flexColumn, sansFont } from './../styles/mixins'
 import { colors } from './../styles/theme'
 import AlbumPhoto from './listen-components/AlbumPhoto'
-import ListenBg from './listen-components/ListenBg'
+import AlbumWrapper from './listen-components/AlbumWrapper'
 
 export default pageData(props => {
-  console.log(props.post_data)
+  console.log(props)
   return (
     <React.Fragment>
       <Head title={`Release`} />
-      <ReleaseWrapper>
-        <AlbumPhoto image={props.post_data.thumbnail}  />
-        <ListenBg/>
-      </ReleaseWrapper>
+      <AlbumWrapper>
+        <ReleaseWrapper>
+          <BackClose/>
+          <div className='album-container'>
+            <AlbumPhoto image={props.post_data.thumbnail} />
+            <h1>{props.post_data.title}</h1>
+          </div>
+          <div className='copy-wrapper'>
+            <div className='album-copy' dangerouslySetInnerHTML={{ __html: props.about_release }} />
+          </div>
+        </ReleaseWrapper>
+      </AlbumWrapper>
       <Transition
         from={{ opacity: 0, transform: `matrix3d(0.5, 0.05, 0.5, 0.0005, 0.025, 1.145,0.50,0.0001,0,0,1,0,0,0,10,1)` }}
         enter={{ opacity: 1, transform: `transform: matrix3d(1,0,0.00,0,0.00,1,0.00,0,0,0,1,0,0,0,0,1)` }}
@@ -44,13 +51,48 @@ export default pageData(props => {
 })
 
 const ReleaseWrapper = styled.div`
+  ${flexRow};
   width: 100%;
-  max-width: 86rem;
-  height: 100%;
-  padding: 3rem;
-  margin: auto;
-  display: flex;
-  align-items: center;
+	padding: 5rem 4rem;
+	position: relative;
+	z-index: 100;
+	height: 100%;
+	min-height: 40rem;
+  .album-container {
+    ${flexColumn};
+    position: relative;
+		flex-shrink: 0;
+		width: calc(100% / 3);
+		padding: 1rem;
+		height: 100%;
+		flex-shrink: 0;
+  }
+  h1 {
+    color: white;
+    ${sansFont};
+    text-align: center;
+    line-height: 1.25;
+    padding-top: 1rem;
+    text-transform: uppercase;
+    font-size: 1.65rem;
+  }
+  .copy-wrapper {
+    width: calc((100% / 3) * 2);
+    padding: 0 4rem;
+  }
+  .album-copy {
+    padding-bottom: 4rem;
+    p {
+      ${sansFont};
+      font-size: 1.45rem;
+      line-height: 1.25;
+      color: white;
+      padding-bottom: 1rem;
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
 `
 
 const LogoWrap = styled.div`

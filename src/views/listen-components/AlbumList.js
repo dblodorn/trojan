@@ -2,22 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import AlbumLink from './AlbumLink'
-import ListenBg from './ListenBg'
+import AlbumWrapper from './AlbumWrapper'
 import { flexRow } from '../../styles/mixins'
 
 const AlbumList = props =>
-	<AlbumListWrapper height={props.wh} style={props.styles}>
-		<div className='albums'>
-			<ul>
-				{props.releases && props.releases.map((item, i) =>
-					<li key={`${item.post_data.slug}-album-${i}`}>
-						<AlbumLink data={item}  />
-					</li>
-				)}
-			</ul>
-			<ListenBg/>
-		</div>
-	</AlbumListWrapper>
+	<AlbumWrapper>
+		<Albums>
+			{props.releases && props.releases.map((item, i) =>
+				<li key={`${item.post_data.slug}-album-${i}`}>
+					<AlbumLink data={item}  />
+				</li>
+			)}
+		</Albums>
+	</AlbumWrapper>
 
 export default connect(
 	state => ({
@@ -25,29 +22,16 @@ export default connect(
 	})
 )(AlbumList)
 
-const AlbumListWrapper = styled.section`
+const Albums = styled.ul`
 	width: 100%;
-	max-width: 86rem;
-	height: ${props => props.height}px;
-	padding: 3rem;
-	margin: auto;
-	display: flex;
+	padding:  10rem 4rem;
+	position: relative;
+	z-index: 100;
+	height: 100%;
+	min-height: 40rem;
+	${flexRow};
 	align-items: center;
-	.albums {
-		width: 100%;
-		position: relative;
-	}
-	ul {
-		width: 100%;
-		padding:  10rem 4rem;
-		position: relative;
-		z-index: 100;
-		height: 100%;
-		min-height: 40rem;
-		${flexRow};
-		align-items: center;
-		justify-content: center;
-	}
+	justify-content: center;
 	li {
 		position: relative;
 		flex-shrink: 0;
