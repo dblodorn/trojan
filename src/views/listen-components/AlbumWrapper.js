@@ -25,6 +25,7 @@ const AlbumListWrapper = styled.section`
 	margin: auto;
 	display: flex;
 	align-items: center;
+	min-height: 45rem;
 `
 
 const Albums = styled.div`

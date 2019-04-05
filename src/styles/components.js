@@ -165,11 +165,16 @@ const NavWrapper = styled(Link)`
     .hover-shape {
       opacity: 1;
     }
+    .image-wrapper {
+      transform: scale(1.05) rotate(-2.5deg);
+    }
   }
   .image-wrapper {
     width: 70%;
     height: 100%;
     position: relative;
+    will-change: transform;
+    transition: transform 250ms ease-in-out;
     img {
       ${_.absoluteCentered};
       width: 100%;
@@ -177,6 +182,15 @@ const NavWrapper = styled(Link)`
       object-fit: contain;
     }
   }
+`
+
+const ModalWrapper = styled.div`
+  ${_.flexCenteredAll};
+  position: fixed;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.45);
 `
 
 export {
@@ -194,5 +208,6 @@ export {
   ExternalLink,
   ModalContentWrapper,
   CloseButton,
-  NavWrapper
+  NavWrapper,
+  ModalWrapper,
 }

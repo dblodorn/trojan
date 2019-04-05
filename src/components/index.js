@@ -11,6 +11,7 @@ import apiData from './apiData'
 import FullWindow from './FullWindow'
 import Loading from './Loading'
 import BackClose from './BackClose'
+import Modal from './Modal'
 
 export {
   FitImage,
@@ -26,4 +27,5 @@ export {
   FullWindow,
   Loading,
   BackClose,
+  Modal,
 }

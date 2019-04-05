@@ -23,6 +23,11 @@ const media = {
       ${ css(...args) }
     }
   `,
+  desktop: (...args) => css`
+    @media (min-width: ${breakpoints.desktop}px) {
+      ${ css(...args)}
+    }
+  `,
   big: (...args) => css`
     @media (min-width: ${breakpoints.big}px) {
       ${ css(...args) }
@@ -305,6 +310,29 @@ const albumImage = css`
   }
 `
 
+const fancyScroll = css`
+  &::-webkit-scrollbar {
+    width: 4px;
+    border-left: 0;
+    position: absolute;
+    z-index: 10000;
+    display: block;
+  }
+  &::-webkit-scrollbar-track {
+    background: ${colors.red};
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${colors.green};
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${colors.blue};
+    width: 4px;
+    cursor: pointer;
+  }
+`
+
 export {
   media,
   maxWidth,
@@ -338,5 +366,6 @@ export {
   textShadow,
   linkInit,
   animationRotateRev,
-  sansFont
+  sansFont,
+  fancyScroll
 }

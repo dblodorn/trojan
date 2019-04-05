@@ -14,4 +14,9 @@ export default props =>
 const AlbumItem = styled(Link)`
   ${linkInit};
   ${albumImage};
+  will-change: transform;
+  transition: transform 250ms ease-in-out;
+  &:hover {
+    transform: scale(1.05) rotate(-2.5deg);
+  }
 `

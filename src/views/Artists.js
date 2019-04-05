@@ -9,13 +9,20 @@ import { colors } from './../styles/theme'
 import paperInit from './../paper'
 
 class Artists extends React.Component {
+  constructor (props) {
+    super(props)
+    this.wrapper = document.getElementById('canvas-wrapper');
+  }
   
+
   componentWillMount() {
     paperInit(true)
+    this.wrapper.classList.add('show');
   }
 
   componentWillUnmount() {
     paperInit(false)
+    this.wrapper.classList.remove('show');
   }
 
   render() {

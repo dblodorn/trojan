@@ -38,6 +38,9 @@ WebFont.load({
     families: config.fonts,
     urls: ['/assets/fonts.css']
   },
+  typekit: {
+    id: 'swz7mag'
+  },
   active: function () {
     store.dispatch(fontsLoaded(true))
   }

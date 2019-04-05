@@ -2,8 +2,9 @@ import React from 'react'
 import { Transition } from 'react-spring'
 import styled from 'styled-components'
 import { Head, apiData, FullWindow, FitImage } from './../components'
-import { animationFadeIn, animationRotate, flexRow } from './../styles/mixins'
+import { animationFadeIn, animationRotate, flexRow, flexColumn } from './../styles/mixins'
 import { colors } from './../styles/theme'
+import TouringModal from './tour-components/TouringModal'
 import AlbumWrapper from './listen-components/AlbumWrapper'
 
 export default apiData(props =>
@@ -12,6 +13,13 @@ export default apiData(props =>
     <AlbumWrapper color={colors.orange}>
       <LiveWrapper>
         <h1>Trojan Jamaica Live</h1>
+        <ul className='artists'>
+          {props.options.live_info.map((item, i) =>
+            <li key={`tour${i}`}>
+              <TouringModal data={item}/>
+            </li>
+          )}
+        </ul>
       </LiveWrapper>
     </AlbumWrapper>
     <Transition
@@ -33,7 +41,7 @@ export default apiData(props =>
 )
 
 const LiveWrapper = styled.div`
-  ${flexRow};
+  ${flexColumn};
   width: 100%;
 	padding: 5rem 4rem;
 	position: relative;
@@ -41,10 +49,26 @@ const LiveWrapper = styled.div`
 	height: 100%;
 	min-height: 40rem;
   h1 {
+    font-family: 'Eurostile Extd', sans-serif;
+    font-style: normal;
+    font-weight: 800;
     text-align: center;
     width: 100%;
-    color: ${colors.red};
+    color: #fc0d1b;
     text-transform: uppercase;
+    font-size: 4.5rem;
+    max-width: 65rem;
+    margin: 0 auto 1.5rem;
+  }
+  ul {
+    ${flexRow};
+    width: 100%;
+    position: relative;
+  }
+  li {
+    width: calc(100% / 3);
+    padding: 1rem;
+    
   }
 `
 
