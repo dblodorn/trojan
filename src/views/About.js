@@ -30,7 +30,7 @@ export default apiData(props =>
         <FullWindow zindex={0} bgcolor={'#0B9444'} styles={styles}>
           <LogoWrap>
             <div className='inner-wrapper'>
-              <FitImage src="assets/imgs/trojan-jamaica-logo-dk-grn.svg" fit={'contain'} />
+              <FitImage src="assets/logo/trojan-logo-dk-green-globe.svg" fit={'contain'} />
             </div>
           </LogoWrap>
           <BgGreen>

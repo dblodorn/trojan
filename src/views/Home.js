@@ -18,7 +18,7 @@ export default apiData(props =>
           <HomeBgWrapper>
             <LogoWrap>
               <div className='inner-wrapper'>
-                <FitImage src="assets/imgs/trojan-logo-yellow.svg" fit={'contain'} />
+                <FitImage src="assets/logo/trojan-logo-yellow-globe.svg" fit={'contain'} />
               </div>
             </LogoWrap>
             <div className='bg-black'>

@@ -31,14 +31,39 @@ export default apiData(props =>
         <FullWindow zindex={0} bgcolor={colors.blue} styles={styles}>
           <LogoWrap>
             <div className='inner-wrapper'>
-              <FitImage src="assets/imgs/trojan-jamaica-logo-red.svg" fit={'contain'} />
+              <FitImage src="assets/logo/trojan-logo-red-globe.svg" fit={'contain'} />
             </div>
           </LogoWrap>
+          <BgRed>
+            <svg width="800px" height="623px" preserveAspectRatio="none" viewBox="0 0 800 623" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <g id="Large-Web-Copy" fill="#EC0400">
+                  <g id="Group-3" transform="translate(0.000000, 0.000000)">
+                    <path d="M511.644321,0 L719.584823,0 C724.879538,4.42255608 729.786544,9.22411459 734.811052,14.437352 C747.475442,27.5792769 761.671367,38.4258197 774.993225,50.7936759 C788.66011,63.4795901 798.763636,79.0088658 799.783382,98.525362 C801.558351,132.440687 792.13146,174.78838 782.261784,206.827929 C768.217287,252.415598 738.456832,292.703578 712.163893,331.794051 C662.351646,405.844075 604.925813,466.765587 529.717696,515.014596 C451.565353,565.150877 363.838523,597.104206 272.255063,611.075764 C211.154698,620.397161 144.378646,628.484647 82.7415727,618.214824 C53.2870692,613.306003 26.9432641,602.952355 1.43884904e-13,592.143387 L0,189.078447 L55.0493598,174.249981 C90.9282856,174.259561 126.828296,175.037461 162.68422,173.54872 C197.319134,172.109795 233.792272,171.93927 267.564619,163.211836 C289.400965,157.567266 311.440494,148.199884 332.400855,139.899721 C377.114377,122.193856 415.740098,88.9127308 452.171066,58.3293504 C473.645051,40.3015741 492.790716,20.330136 511.644321,2.00373051e-12 Z" id="Combined-Shape"></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </BgRed>
         </FullWindow>
       )}
     </Transition>
   </React.Fragment>
 )
+
+const BgRed = styled.div`
+  ${animationFadeIn(1000, 750)};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 50%;
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`
 
 const LiveWrapper = styled.div`
   ${flexColumn};

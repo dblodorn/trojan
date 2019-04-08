@@ -38,7 +38,7 @@ class Artists extends React.Component {
             <FullWindow zindex={0} bgcolor={colors.bright_red} styles={styles}>
               <ArtBg>
                 <div className='inner-wrapper'>
-                  <FitImage src="assets/imgs/artists-bg.svg" fit={'contain'} />
+                  <FitImage src="assets/logo/trojan-logo-orange-globe.svg" fit={'contain'} />
                 </div>
               </ArtBg>
             </FullWindow>
