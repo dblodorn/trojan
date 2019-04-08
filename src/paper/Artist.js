@@ -198,19 +198,19 @@ export default class ArtistThumb {
       this.y = this.y - this.i_speed;
     }
 
-    if (this.x > (this.state.ww - (this.radius - 3)) && this.direction === 1) {
+    if (this.x > (this.state.ww - (this.radius - 10)) && this.direction === 1) {
       this.direction = 3
-    } else if (this.x > (this.state.ww - (this.radius - 3)) && this.direction === 2) {
+    } else if (this.x > (this.state.ww - (this.radius - 10)) && this.direction === 2) {
       this.direction = 4
-    } else if (this.x < this.radius && this.direction === 3) {
+    } else if (this.x < (this.radius + 120) && this.direction === 3) {
       this.direction = 1
-    } else if (this.x < this.radius && this.direction === 4) {
+    } else if (this.x < (this.radius + 120) && this.direction === 4) {
       this.direction = 2
     }
 
-    if (this.y > (this.state.wh - (this.radius + bottom)) && this.direction === 1) {
+    if (this.y > (this.state.wh - (this.radius - 10)) && this.direction === 1) {
       this.direction = 2
-    } else if (this.y > (this.state.wh - (this.radius + bottom)) && this.direction === 3) {
+    } else if (this.y > (this.state.wh - (this.radius - 10)) && this.direction === 3) {
       this.direction = 4
     } else if (this.y < this.radius && this.direction === 2) {
       this.direction = 1
