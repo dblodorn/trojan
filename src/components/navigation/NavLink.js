@@ -6,7 +6,10 @@ import HoverRect from './HoverRect'
 const NavLink = props =>
 	<NavWrapper to={`/${props.item.slug}`} className={(props.router === `/${props.item.slug}` && 'active')}>
 		<div className='image-wrapper'>
-			<img src={`/assets/navigation/${props.item.image}.svg`}/>
+			{(props.router === `/${props.item.slug}`) 
+				? <img src={`/assets/navigation/hover-${props.item.image}.svg`}/>
+				: <img src={`/assets/navigation/${props.item.image}.svg`}/>
+			}
 		</div>
 		<HoverRect title={props.item.title} />
 	</NavWrapper>
