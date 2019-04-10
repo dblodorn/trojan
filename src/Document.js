@@ -2,14 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn } from './styles/mixins'
-import { Header, ImageLoader } from './components'
+import { Header, ImageLoader, ResponsiveWrapper, HeaderMobile } from './components'
 
 const Document = props =>
   <React.Fragment>
     <GlobalStyles />
     {props.apiData &&
       <React.Fragment>
-        <Header/>
+        <ResponsiveWrapper
+          desktop={<Header/>}
+          mobile={<HeaderMobile/>}
+        />
         <Main>
           {props.children}
         </Main>

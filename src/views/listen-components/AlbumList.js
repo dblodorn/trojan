@@ -6,7 +6,7 @@ import AlbumWrapper from './AlbumWrapper'
 import { flexRow } from '../../styles/mixins'
 
 const AlbumList = props =>
-	<AlbumWrapper>
+	<AlbumWrapper styles={props.styles}>
 		<Albums>
 			{props.releases && props.releases.map((item, i) =>
 				<li key={`${item.post_data.slug}-album-${i}`}>
@@ -23,13 +23,13 @@ export default connect(
 )(AlbumList)
 
 const Albums = styled.ul`
-	width: 100%;
+  ${flexRow};  
+  width: 100%;
 	padding:  10rem 4rem;
 	position: relative;
 	z-index: 100;
 	height: 100%;
 	min-height: 40rem;
-	${flexRow};
 	align-items: center;
 	justify-content: center;
 	li {

@@ -88,7 +88,7 @@ const VideoWrapper = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  ${media.desktopNav`
+  ${media.desktop`
     width: 80vw;
     max-width: 96rem;
     padding: 0;

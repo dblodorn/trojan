@@ -12,6 +12,8 @@ import FullWindow from './FullWindow'
 import Loading from './Loading'
 import BackClose from './BackClose'
 import Modal from './Modal'
+import HeaderMobile from './HeaderMobile'
+import ResponsiveWrapper from './ResponsiveWrapper'
 
 export {
   FitImage,
@@ -28,4 +30,6 @@ export {
   Loading,
   BackClose,
   Modal,
+  HeaderMobile,
+  ResponsiveWrapper,
 }

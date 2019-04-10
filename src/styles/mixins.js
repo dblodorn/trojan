@@ -18,11 +18,6 @@ const media = {
       ${ css(...args)}
     }
   `,
-  desktopNav: (...args) => css`
-    @media (min-width: ${breakpoints.desktop}px) {
-      ${ css(...args) }
-    }
-  `,
   desktop: (...args) => css`
     @media (min-width: ${breakpoints.desktop}px) {
       ${ css(...args)}

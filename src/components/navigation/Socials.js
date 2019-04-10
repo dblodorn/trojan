@@ -27,7 +27,8 @@ export default apiData(props =>
 const SocialsWrapper = styled.ul`
 	${flexRow};
 	justify-content: center;
-	width: 70%;
+  width: 100%;
+  max-width: 20rem;
 	li {
 		width: 4rem;
 		height: 2rem;

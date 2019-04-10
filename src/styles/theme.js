@@ -56,6 +56,7 @@ const logo = `/assets/trojan-logo.svg`
 const fonts = {
   akzidenz: `'Azidenz', Arial, system-ui, sans-serif`,
   fakt: `'Fakt', Arial, system-ui, sans-serif `,
+  eurostile: `'Eurostile Extd', sans-serif`
 }
 
 const baseFontSize = 16

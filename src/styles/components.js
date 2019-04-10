@@ -148,42 +148,6 @@ const CloseButton = styled.button`
   }
 `
 
-const NavWrapper = styled(Link)`
-  ${_.flexRow};
-  position: relative;
-  width: 100%;
-  height: 9rem;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  &.active {
-    pointer-events: none;
-    .hover-shape {
-      opacity: 1;
-    }
-  }
-  &:hover {
-    .hover-shape {
-      opacity: 1;
-    }
-    .image-wrapper {
-      transform: scale(1.05) rotate(-2.5deg);
-    }
-  }
-  .image-wrapper {
-    width: 70%;
-    height: 100%;
-    position: relative;
-    will-change: transform;
-    transition: transform 250ms ease-in-out;
-    img {
-      ${_.absoluteCentered};
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-`
-
 const ModalWrapper = styled.div`
   ${_.flexCenteredAll};
   position: fixed;
@@ -208,6 +172,5 @@ export {
   ExternalLink,
   ModalContentWrapper,
   CloseButton,
-  NavWrapper,
   ModalWrapper,
 }

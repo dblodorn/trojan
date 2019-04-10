@@ -2,7 +2,7 @@ import React from 'react'
 import { Transition } from 'react-spring'
 import styled from 'styled-components'
 import { Head, apiData, FullWindow, FitImage } from './../components'
-import { flexCenteredAll, animationRotate, animationFadeIn } from './../styles/mixins'
+import { flexCenteredAll, animationRotate, animationFadeIn, media } from './../styles/mixins'
 import { colors } from './../styles/theme'
 
 export default apiData(props =>
@@ -42,8 +42,11 @@ export default apiData(props =>
 const HomeBgWrapper = styled.div`
   position: relative;
   height: 100%;
-  width: 70vw;
+  width: 82vw;
   margin: 0 auto;
+  ${media.desktop`
+  width: 70vw;
+  `}
   svg {
     width: 100%;
     height: 100vh;
@@ -53,13 +56,16 @@ const HomeBgWrapper = styled.div`
 const LogoWrap = styled.div`
   ${flexCenteredAll};
   ${animationFadeIn(1000, 500)};
-  width: 65%;
+  width: 75%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   margin: auto;
+  ${media.desktop`
+    width: 65%;
+  `}
   .inner-wrapper {
     ${animationRotate(85000)};
     width: 100%;
