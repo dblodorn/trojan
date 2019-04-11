@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { flexColumnCentered, flexRow, flexColumn } from '../../styles/mixins'
+import { media, flexColumn } from '../../styles/mixins'
 
 const AlbumList = props =>
 	<AboutWrapper height={props.wh} style={props.styles}>
@@ -48,8 +48,9 @@ export default connect(
 )(AlbumList)
 
 const AboutInner = styled.div`
-  width: 100%;
+  width: 95%;
   position: relative;
+  margin: 0 auto;
   ${flexColumn};
   .inner {
     padding: 3rem;
@@ -84,9 +85,13 @@ const AboutInner = styled.div`
 		justify-content: center;
 		position: relative;
 		width: 100%;
-		padding: 4rem 1rem;
     z-index: 100;
-		height: 30rem;
+    padding: 2.5rem 1rem;
+    height: 18rem;
+    ${media.desktop`
+      padding: 4rem 1rem;
+      height: 30rem;
+    `}
 	}
 `
 

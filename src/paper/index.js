@@ -12,7 +12,7 @@ export default (status) => {
       this.window = store.getState().resizeState;
       this.artists = false;
       this.artists_array = false;
-      this.bottom_height = 130;
+      this.bottom_height = 120;
       this.state = {
         ww: this.window.window_width,
         wh: this.window.window_height,
@@ -43,6 +43,8 @@ export default (status) => {
     };
 
     createThumbs(paper) {
+      console.log(store.getState().resizeState.breakpoints.desktop);
+      console.log(store.getState().touchState)
       this.artists = [];
       this.artists_array.forEach((info) => {
         this.artists.push(
@@ -59,25 +61,10 @@ export default (status) => {
         };
         if (this.artists !== false) {
           for (let i = 0, l = this.artists.length; i < l; i++) {
-		        this.artists[i].position(95, paper);
+		        this.artists[i].position(this.bottom_height);
           }
         }
       };
-      
-      paper.view.onResize = e => {
-        // console.log(e);
-      };
-
-      paper.view.onMouseMove = e => {
-        // console.log(e)
-      }
-
-      paper.view.onMouseDown = e => {
-        console.log(e)
-        console.log(paper.project)
-      }
-
-
     };
 
     kill() {

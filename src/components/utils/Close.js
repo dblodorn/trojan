@@ -3,7 +3,7 @@ import { CloseButton } from './../../styles/components'
 import { colors } from '../../styles/theme';
 
 const Close = (props) =>
-  <CloseButton onClick={props.clickFunction || null} size={props.size || '6rem'}>
+  <CloseButton onClick={props.clickFunction || null} className='close-button-wrapper'>
     <div className={'close-x'}>
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 64 64" width="100%" height="100%">
         <g fill={props.color || `#ffffff`}>

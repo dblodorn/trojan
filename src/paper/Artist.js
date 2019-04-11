@@ -62,7 +62,6 @@ export default class ArtistThumb {
     this.boundBox = new paper.Shape.Rectangle({
       point: [-100, -100],
       size: [200, 200],
-      // strokeColor: 'black',
       fillColor: 'transparent'
     })
     
@@ -84,27 +83,7 @@ export default class ArtistThumb {
   clickHandler() {
     store.dispatch(setArtist(this.props));
     store.dispatch(setArtistPopup(true));
-  }
-
-  hoverTween(dir) {
-    const tweenVal = value(1, (v) => {
-      this.tween = v;
-    });
-    if (dir === 'up') {
-      tween({
-        from: 1,
-        to: 1.15,
-        duration: 250
-      }).start(tweenVal);
-    } else if (dir === 'down') {
-      tween({
-        from: 1.15,
-        to: 1,
-        duration: 250
-      }).start(tweenVal);
-    } else {
-      this.tween = 1;
-    }
+    this.hovered = false;
   } 
 
   createThumb(paper) {
@@ -146,9 +125,7 @@ export default class ArtistThumb {
     this.thumbnail.onMouseEnter = e => {
       e.stopPropagation();
       if (!this.modal) {
-        console.log('hover')
         this.hovered = true;
-        // this.hoverTween('up');
         document.body.style.cursor = 'pointer';
       }
     }
@@ -156,15 +133,13 @@ export default class ArtistThumb {
     this.thumbnail.onMouseLeave = e => {
       e.stopPropagation();
       if (!this.modal) {
-        console.log('outs')
         this.hovered = false;
-        // _.debounce(this.hoverTween('down'), 550);
         document.body.style.cursor = 'default';
       }
     }
   }
 
-  position(bottom, paper) {
+  position(bottom) {
 
     this.i = this.i + this.i_speed;
 
@@ -202,9 +177,9 @@ export default class ArtistThumb {
       this.direction = 3
     } else if (this.x > (this.state.ww - (this.radius - 10)) && this.direction === 2) {
       this.direction = 4
-    } else if (this.x < (this.radius + 120) && this.direction === 3) {
+    } else if (this.x < (this.radius + bottom) && this.direction === 3) {
       this.direction = 1
-    } else if (this.x < (this.radius + 120) && this.direction === 4) {
+    } else if (this.x < (this.radius + bottom) && this.direction === 4) {
       this.direction = 2
     }
 

@@ -6,7 +6,6 @@ import { flexCenteredAll } from './../../styles/mixins'
 import { setArtist, setArtistPopup } from './../../state/actions'
 import Modal from './../Modal'
 import Video from './Video'
-import Close from './../utils/Close'
 
 const VideoModal = props => {
   const clickHandler = () => {
@@ -18,8 +17,7 @@ const VideoModal = props => {
       {props.artistPopup && (styles => 
         <Modal>
           <ModalWrapper style={styles}>
-            <Close clickFunction={() => clickHandler()}/>
-            <Video data={props.currentArtist}/>
+            <Video data={props.currentArtist} clickFunction={() => clickHandler()}/>
           </ModalWrapper>
         </Modal>
       )}
@@ -46,5 +44,5 @@ const ModalWrapper = styled.div`
   z-index: 10000;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,.45);
+  background-color: rgba(0,0,0,.85);
 `

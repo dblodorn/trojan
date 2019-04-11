@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Transition } from 'react-spring'
 import { setMenuState } from './../state/actions'
 import { flexColumnCentered, buttonInit, absoluteCentered } from './../styles/mixins'
 import { colors, fonts } from './../styles/theme'
@@ -9,9 +9,15 @@ import Navigation from './navigation'
 import Socials from './navigation/Socials'
 import Close from './utils/Close'
 import HoverBg from './navigation/HoverBg'
+import FitImage from './utils/FitImage'
 
 const HeaderMobile = props => 
   <React.Fragment>
+    <LogoWrapper to={'/'} className={(props.router === `/` && 'active')}>
+      <div className='img-wrapper'>
+        <FitImage src="/assets/imgs/trojan-logo-blk.svg"/>
+      </div>
+    </LogoWrapper>
     <MenuButton onClick={() => props.setMenuState(true)}>
       <span>MENU</span>
       <HoverBg color={colors.red}/>
@@ -25,14 +31,44 @@ const HeaderMobile = props =>
 
 export default connect(
 	state => ({
-		menuState: state.menuState
+    menuState: state.menuState,
+    router: state.routeState
 	}),
   dispatch => ({
     setMenuState: (bool) => dispatch(setMenuState(bool))
   })
 )(HeaderMobile)
 
-const HeaderWrapper = styled.header`
+const LogoWrapper = styled(Link)`
+  width: 9rem;
+  height: 9rem;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  padding: .25rem;
+  border-radius: 50%;
+  background-color: ${colors.orange};
+  transform: rotate(-5deg);
+  &.active {
+    background-color: ${colors.yellow_gold};
+    pointer-events: none;
+  }
+  .img-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  img {
+    ${absoluteCentered};
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`
+
+const HeaderWrapper = styled.menu`
   ${flexColumnCentered};
   top: 0;
   left: 0;
@@ -52,10 +88,11 @@ const MenuButton = styled.button`
   ${buttonInit};
   position: fixed;
   top: 2rem;
-  right: 2rem;
+  right: 1.5rem;
   z-index: 1000;
   height: 4rem;
   width: 10rem;
+  transform: rotate(2deg);
   span {
     ${absoluteCentered};
     z-index: 10;

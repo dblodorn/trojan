@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import AlbumLink from './AlbumLink'
 import AlbumWrapper from './AlbumWrapper'
-import { flexRow } from '../../styles/mixins'
+import { flexRow, media } from '../../styles/mixins'
 
 const AlbumList = props =>
 	<AlbumWrapper styles={props.styles}>
@@ -35,9 +35,15 @@ const Albums = styled.ul`
 	li {
 		position: relative;
 		flex-shrink: 0;
-		width: calc(100% / 3);
+		width: 100%;
 		padding: 1rem;
 		height: 100%;
-		flex-shrink: 0;
-	}
+    flex-shrink: 0;
+    ${media.desktop`
+      width: calc(100% / 2);
+    `}
+    ${media.medium`
+      width: calc(100% / 3);
+    `}
+  }
 `

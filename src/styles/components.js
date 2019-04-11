@@ -123,6 +123,14 @@ const CloseButton = styled.button`
   padding: 0;
   z-index: 11000;
   cursor: pointer;
+  ${_.media.desktop`
+    width: ${props => props.size || `5rem`};
+    height: ${props => props.size || `5rem`};
+  `}
+  ${_.media.medium`
+    width: ${props => props.size || `6rem`};
+    height: ${props => props.size || `6rem`};
+  `}
   svg {
     ${_.absoluteCentered};
     width: 100%;
@@ -134,10 +142,16 @@ const CloseButton = styled.button`
     width: 100%;
     height: 100%;
     z-index: 100;
-    padding: 1rem;
+    padding: .75rem;
     svg {
-      padding: 1rem;
+      padding: .75rem;
     }
+    ${_.media.medium`
+      padding: 1rem;
+      svg {
+        padding: 1rem;
+      }
+    `}
   }
   .close-bg {
     ${_.absoluteCentered};
