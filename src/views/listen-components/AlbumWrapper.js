@@ -3,14 +3,33 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { media } from './../../styles/mixins'
 import ListenBg from './ListenBg'
+import { ResponsiveWrapper } from './../../components'
 
 const AlbumList = props =>
-	<AlbumListWrapper height={props.wh} style={props.styles}>
-		<Albums>
-			{props.children}
-			<ListenBg color={props.color}/>
-		</Albums>
-	</AlbumListWrapper>
+	<ResponsiveWrapper 
+		desktop={
+			<AlbumListWrapper height={props.wh} style={props.styles}>
+				<Albums>
+					{props.children}
+					<ListenBg color={props.color} />
+				</Albums>
+			</AlbumListWrapper>
+		}
+		mobile={
+			<AlbumListWrapper>
+				<Albums>
+					{props.children}
+					<ListenBg color={props.color} />
+				</Albums>
+			</AlbumListWrapper>
+		}
+	/>
+		<AlbumListWrapper height={props.wh} style={props.styles}>
+			<Albums>
+				{props.children}
+				<ListenBg color={props.color}/>
+			</Albums>
+		</AlbumListWrapper>
 
 export default connect(
 	state => ({
