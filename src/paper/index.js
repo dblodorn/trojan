@@ -3,16 +3,15 @@ import { store } from '../state/store'
 import Artist from './Artist'
 
 export default (status) => {
-  
-
   class Artists {
     constructor(status) {
       console.log(status);
       this.stage = document.getElementById('canvas');
       this.window = store.getState().resizeState;
       this.artists = false;
-      this.artists_array = false;
-      this.bottom_height = 120;
+      this.artists_array = true;
+      this.bottom_height = -3;
+      this.mobile = true;
       this.state = {
         ww: this.window.window_width,
         wh: this.window.window_height,
@@ -43,12 +42,14 @@ export default (status) => {
     };
 
     createThumbs(paper) {
-      console.log(store.getState().resizeState.breakpoints.desktop);
-      console.log(store.getState().touchState)
+      if ( this.state.ww >= store.getState().resizeState.breakpoints.desktop) {
+        this.mobile = false;
+        this.bottom_height = 120;
+      }
       this.artists = [];
       this.artists_array.forEach((info) => {
         this.artists.push(
-          new Artist(paper, info, this.state)
+          new Artist(paper, info, this.state, this.mobile)
         );
       });
     };

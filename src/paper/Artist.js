@@ -12,7 +12,7 @@ mixin(_, {
 })
 
 export default class ArtistThumb {
-  constructor(paper, data, state) {
+  constructor(paper, data, state, mobile) {
     this.props = data;
     this.state = state;
     this.hovered = false;
@@ -32,6 +32,7 @@ export default class ArtistThumb {
     this.initwidth = 0;
     this.initheight = 0;
     this.tween = 1;
+    this.mobile = mobile;
 
     // INITIALIZE PAPER OBJECTS
     this.thumbBg = new paper.Path.RegularPolygon({
@@ -52,7 +53,7 @@ export default class ArtistThumb {
       fillColor: '#000000',
       justification: 'center',
       fontFamily: 'Azidenz',
-      fontSize: 20,
+      fontSize: this.mobile ? 14 : 20,
     });
     
     this.thumbMask = new paper.Path.Circle({
@@ -113,6 +114,10 @@ export default class ArtistThumb {
       position: [this.x, this.y],
     });
     
+    if (this.mobile) {
+      this.thumbnail.scale(0.8);
+    }
+
     this.initwidth = this.thumbnail.bounds.width;
     this.initheight = this.thumbnail.bounds.height;
   
@@ -139,8 +144,8 @@ export default class ArtistThumb {
     }
   }
 
-  position(bottom) {
-
+  position(bottom, mobile) {
+    // console.log(mobile)
     this.i = this.i + this.i_speed;
 
     // Animation
@@ -153,7 +158,7 @@ export default class ArtistThumb {
       this.thumbnail.bounds.width = this.initwidth * this.tween;
       this.thumbnail.bounds.height = this.initheight * this.tween;
     } else {
-      this.title_alpha = 0;
+      this.title_alpha = this.mobile ? 1 : 0;
       this.thumbnail.bounds.width = this.initwidth;
       this.thumbnail.bounds.height = this.initheight;
     }
