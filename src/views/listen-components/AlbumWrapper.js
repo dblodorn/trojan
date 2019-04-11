@@ -20,15 +20,20 @@ export default connect(
 
 const AlbumListWrapper = styled.section`
 	width: 100%;
+	position: relative;
 	max-width: 86rem;
 	padding: 3rem;
 	margin: 10rem auto 6rem;
 	display: flex;
 	align-items: flex-start;
 	min-height: 45rem;
+	background-color: transparent;
 	${media.desktop`
 		align-items: center;
 		margin: 0 auto;
+		position: absolute;
+		left: 0;
+		right: 0;
 		height: ${props => props.height}px;
 	`}
 `
