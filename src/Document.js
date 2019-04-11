@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn } from './styles/mixins'
-import { Header, ImageLoader, ResponsiveWrapper, HeaderMobile } from './components'
+import { Header, ImageLoader, ResponsiveWrapper, HeaderMobile, AudioPlayer } from './components'
 
 const Document = props =>
   <React.Fragment>
@@ -16,6 +16,7 @@ const Document = props =>
         <Main>
           {props.children}
         </Main>
+        <AudioPlayer song={props.apiData.options.song_url}/>
         <ImageLoader artists={props.apiData.artists}/>
       </React.Fragment>
     }

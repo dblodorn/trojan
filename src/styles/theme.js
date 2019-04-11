@@ -28,6 +28,7 @@ const heights = {
   header: toRem(units.header),
   mobile_header: toRem(units.header),
   footer: toRem(units.footer),
+  player_icons: `4rem`
 }
 
 const spacing = {

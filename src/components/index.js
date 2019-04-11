@@ -14,6 +14,7 @@ import BackClose from './BackClose'
 import Modal from './Modal'
 import HeaderMobile from './HeaderMobile'
 import ResponsiveWrapper from './ResponsiveWrapper'
+import AudioPlayer from './video/AudioPlayer'
 
 export {
   FitImage,
@@ -32,4 +33,5 @@ export {
   Modal,
   HeaderMobile,
   ResponsiveWrapper,
+  AudioPlayer,
 }

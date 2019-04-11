@@ -3,8 +3,8 @@
   "short_name": "Trojan Jamaica",
   "start_url": "index.html",
   "display": "standalone",
-  "theme_color": "#ec3e00",
-  "background_color": "#ob9444",
+  "theme_color": "#EC3E00",
+  "background_color": "#FFCA00",
   "orientation": "portrait",
   "icons": [
     {

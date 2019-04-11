@@ -11,3 +11,10 @@ export function setRoute(route) {
     route
   }
 }
+
+export function setAudioPlaying(bool) {
+  return {
+    type: 'AUDIO_PLAYING',
+    bool
+  }
+}
