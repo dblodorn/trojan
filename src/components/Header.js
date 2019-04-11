@@ -16,8 +16,8 @@ export default () =>
 const HeaderWrapper = styled.div`
   ${flexColumn};
   top: 4rem;
-  left: 2.5rem;
-  width: 18rem;
+  left: 0rem;
+  width: 20rem;
   position: fixed;
   z-index: 9000;
 `

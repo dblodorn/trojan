@@ -19,6 +19,7 @@ const Nav = styled.nav`
   z-index: 100;
   position: relative;
   ${media.desktop`
+    padding-left: 1rem;
     margin: 0 auto;
   `}
 `

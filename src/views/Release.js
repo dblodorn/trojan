@@ -63,7 +63,7 @@ const ReleaseDiv = styled.div`
   height: 3rem;
   will-change: transform;
   padding: 0 1rem;
-  transition: transform 250ms ease -in -out;
+  transition: transform 250ms ease-in-out;
   &:hover {
     transform: scale(1.05) rotate(-2.5deg);
   }
@@ -117,7 +117,7 @@ const ReleaseWrapper = styled.div`
     `}
   }
   .copy-wrapper {
-    width: 100%;f
+    width: 100%;
     ${media.desktop`
       padding: 0 4rem;
       width: calc((100% / 3) * 2);

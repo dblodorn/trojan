@@ -32,19 +32,21 @@ export default connect(
 )(AlbumList)
 
 const AlbumListWrapper = styled.section`
-	width: 100%;
+	width: 95%;
 	position: relative;
 	max-width: 86rem;
 	padding: 3rem;
 	margin: 10rem auto 6rem;
 	display: flex;
 	align-items: flex-start;
-	min-height: 45rem;
 	background-color: transparent;
+	z-index: 100;
 	${media.desktop`
+		width: 100%;
 		align-items: center;
 		margin: 0 auto;
 		position: absolute;
+		min-height: 45rem;
 		left: 0;
 		right: 0;
 		height: ${props => props.height}px;

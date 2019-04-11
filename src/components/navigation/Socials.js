@@ -21,6 +21,11 @@ export default apiData(props =>
 				<FitImage src='/assets/logo-instagram.svg' fit={'contain'} />
 			</SocialLink>
 		</li>
+		<li>
+			<SocialLink href={props.options.youtube_link} target='_blank'>
+				<FitImage src='/assets/logo-youtube.svg' fit={'contain'} />
+			</SocialLink>
+		</li>
 	</SocialsWrapper>
 )
 
@@ -28,12 +33,15 @@ const SocialsWrapper = styled.ul`
 	${flexRow};
 	justify-content: center;
   width: 100%;
-  max-width: 20rem;
-	margin-left: 2rem;
+  max-width: 18rem;
+	margin-left: 3rem;
+	padding-left: 2rem;
 	position: relative;
 	z-index: 100;
 	${media.desktop`
 		margin-left: 0;
+		margin-left: 0;
+		padding-left: 0;
 	`}
 	li {
 		width: 4rem;
