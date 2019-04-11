@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { media } from './../../styles/mixins'
 import ListenBg from './ListenBg'
 
 const AlbumList = props =>
@@ -20,12 +21,16 @@ export default connect(
 const AlbumListWrapper = styled.section`
 	width: 100%;
 	max-width: 86rem;
-	height: ${props => props.height}px;
 	padding: 3rem;
-	margin: auto;
+	margin: 10rem auto 6rem;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	min-height: 45rem;
+	${media.desktop`
+		align-items: center;
+		margin: 0 auto;
+		height: ${props => props.height}px;
+	`}
 `
 
 const Albums = styled.div`

@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { setMenuState } from './../state/actions'
-import { flexColumnCentered, buttonInit, absoluteCentered } from './../styles/mixins'
+import { flexColumn, buttonInit, absoluteCentered } from './../styles/mixins'
 import { colors, fonts } from './../styles/theme'
 import Navigation from './navigation'
 import Socials from './navigation/Socials'
 import Close from './utils/Close'
 import HoverBg from './navigation/HoverBg'
 import FitImage from './utils/FitImage'
+import BgStroke from './BgStroke'
 
 const HeaderMobile = props => 
   <React.Fragment>
@@ -26,6 +27,9 @@ const HeaderMobile = props =>
       <Close size={'5rem'} clickFunction={() => props.setMenuState(false)}/>
       <Navigation/>
       <Socials/>
+      <StrokeWrapper>
+        <BgStroke color={'#f96800'}/>
+      </StrokeWrapper>
     </HeaderWrapper>
   </React.Fragment>
 
@@ -38,6 +42,14 @@ export default connect(
     setMenuState: (bool) => dispatch(setMenuState(bool))
   })
 )(HeaderMobile)
+
+const StrokeWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  transform: rotate(180deg);
+`
 
 const LogoWrapper = styled(Link)`
   width: 9rem;
@@ -69,7 +81,7 @@ const LogoWrapper = styled(Link)`
 `
 
 const HeaderWrapper = styled.menu`
-  ${flexColumnCentered};
+  ${flexColumn};
   top: 0;
   left: 0;
   width: 100vw;

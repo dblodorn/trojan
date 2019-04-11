@@ -15,6 +15,7 @@ import Modal from './Modal'
 import HeaderMobile from './HeaderMobile'
 import ResponsiveWrapper from './ResponsiveWrapper'
 import AudioPlayer from './video/AudioPlayer'
+import BgStroke from './BgStroke'
 
 export {
   FitImage,
@@ -34,4 +35,5 @@ export {
   HeaderMobile,
   ResponsiveWrapper,
   AudioPlayer,
+  BgStroke,
 }

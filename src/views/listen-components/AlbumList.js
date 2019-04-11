@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import AlbumLink from './AlbumLink'
 import AlbumWrapper from './AlbumWrapper'
-import { flexRow, media } from '../../styles/mixins'
+import { media, flexColumn, flexRowWrap } from '../../styles/mixins'
 
 const AlbumList = props =>
 	<AlbumWrapper styles={props.styles}>
 		<Albums>
 			{props.releases && props.releases.map((item, i) =>
 				<li key={`${item.post_data.slug}-album-${i}`}>
-					<AlbumLink data={item}  />
+					<AlbumLink data={item} />
 				</li>
 			)}
 		</Albums>
@@ -23,15 +23,19 @@ export default connect(
 )(AlbumList)
 
 const Albums = styled.ul`
-  ${flexRow};  
+  ${flexColumn};  
   width: 100%;
-	padding:  10rem 4rem;
+	padding:  3rem;
 	position: relative;
 	z-index: 100;
 	height: 100%;
 	min-height: 40rem;
-	align-items: center;
 	justify-content: center;
+	${media.desktop`
+		${flexRowWrap};
+		padding: 6rem 4rem;
+		align-items: center;
+	`}
 	li {
 		position: relative;
 		flex-shrink: 0;

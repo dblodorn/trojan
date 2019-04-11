@@ -1,7 +1,7 @@
 import React from 'react'
 import apiData from './../apiData'
 import styled from 'styled-components'
-import { flexRow } from './../../styles/mixins'
+import { flexRow, media } from './../../styles/mixins'
 import { FitImage } from '..';
 
 export default apiData(props =>
@@ -29,6 +29,12 @@ const SocialsWrapper = styled.ul`
 	justify-content: center;
   width: 100%;
   max-width: 20rem;
+	margin-left: 2rem;
+	position: relative;
+	z-index: 100;
+	${media.desktop`
+		margin-left: 0;
+	`}
 	li {
 		width: 4rem;
 		height: 2rem;

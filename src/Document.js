@@ -16,7 +16,10 @@ const Document = props =>
         <Main>
           {props.children}
         </Main>
-        <AudioPlayer song={props.apiData.options.song_url}/>
+        <ResponsiveWrapper 
+          desktop={<AudioPlayer song={props.apiData.options.song_url} />}
+          mobile={false}
+        />
         <ImageLoader artists={props.apiData.artists}/>
       </React.Fragment>
     }

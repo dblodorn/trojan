@@ -2,7 +2,7 @@ import React from 'react'
 import { Transition } from 'react-spring'
 import styled from 'styled-components'
 import { Head, pageData, FullWindow, FitImage, BackClose } from './../components'
-import { animationFadeIn, animationRotate, animationRotateRev, flexRow, flexColumn, sansFont } from './../styles/mixins'
+import { animationFadeIn, animationRotate, animationRotateRev, flexRow, flexColumn, sansFont, media } from './../styles/mixins'
 import { colors } from './../styles/theme'
 import AlbumPhoto from './listen-components/AlbumPhoto'
 import AlbumWrapper from './listen-components/AlbumWrapper'
@@ -76,13 +76,16 @@ const ReleaseDiv = styled.div`
 `
 
 const ReleaseWrapper = styled.div`
-  ${flexRow};
+  ${flexColumn};
   width: 100%;
 	padding: 5rem 4rem;
 	position: relative;
 	z-index: 100;
 	height: 100%;
 	min-height: 40rem;
+  ${media.desktop`
+    ${flexRow};
+  `}
   .streaming {
     position: relative;
     width: 100%;
@@ -93,23 +96,32 @@ const ReleaseWrapper = styled.div`
     ${flexColumn};
     position: relative;
 		flex-shrink: 0;
-		width: calc(100% / 3);
-		padding: 1rem;
+		width: 100%;
 		height: 100%;
 		flex-shrink: 0;
+    ${media.desktop`
+      padding: 1rem;
+      width: calc(100% / 3);
+    `}
   }
   h1 {
     color: white;
     ${sansFont};
-    text-align: center;
+    text-align: left;
     line-height: 1.25;
     padding-top: 1rem;
     text-transform: uppercase;
     font-size: 1.65rem;
+    ${media.desktop`
+      text-align: center;
+    `}
   }
   .copy-wrapper {
-    width: calc((100% / 3) * 2);
-    padding: 0 4rem;
+    width: 100%;f
+    ${media.desktop`
+      padding: 0 4rem;
+      width: calc((100% / 3) * 2);
+    `}
   }
   .album-copy {
     padding-bottom: 4rem;
