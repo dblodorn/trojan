@@ -17,7 +17,7 @@ const Document = props =>
           {props.children}
         </Main>
         <ResponsiveWrapper 
-          desktop={<AudioPlayer song={props.apiData.options.song_url} />}
+          desktop={<AudioPlayer song={props.apiData.options.song_url} title={props.apiData.options.song_title}/>}
           mobile={false}
         />
         <ImageLoader artists={props.apiData.artists}/>

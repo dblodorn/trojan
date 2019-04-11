@@ -5,11 +5,12 @@ import ReactPlayer from 'react-player'
 import Duration from 'duration'
 import ErrorBoundary from './../utils/ErrorBoundary'
 import { setAudioPlaying } from './../../state/actions'
-import { flexRow, flexColumnCentered, flexRowCenteredVert, buttonInit, media, absoluteCentered } from './../../styles/mixins'
+import { flexRow, flexColumnCentered, flexRowCenteredVert, buttonInit, media, absoluteCentered, flexColumn } from './../../styles/mixins'
 import { spacing, colors, heights } from './../../styles/theme'
 import AudioPlayButton from './AudioPlayButton'
 import AudioPauseButton from './AudioPauseButton'
 import HoverBg from './../navigation/HoverBg'
+import Ticker from './../Ticker'
 
 class AudioPlayer extends React.Component {
   state = {
@@ -22,7 +23,7 @@ class AudioPlayer extends React.Component {
     started: false,
     duration: 0,
     playbackRate: 1.0,
-    loop: false,
+    loop: true,
     buffering: false
   }
   componentWillMount() {
@@ -42,7 +43,6 @@ class AudioPlayer extends React.Component {
   onPlay = () => {
     this.setState({ playing: true })
     this.props.audioControl(true)
-    this.props.video_playing(false)
   }
   onPause = () => {
     this.setState({ playing: false })
@@ -66,6 +66,10 @@ class AudioPlayer extends React.Component {
     this.setState({ volume: parseFloat(e.target.value) })
   }
   onProgress = state => {
+    if (this.props.artistPopup) {
+      this.props.audioControl(false)
+      this.player.seekTo(0)
+    }
     if (!this.state.seeking) {
       this.setState(state)
     }
@@ -81,76 +85,11 @@ class AudioPlayer extends React.Component {
     this.player = player
   }
   render() {
-    const Controls = styled.div`
-      ${flexColumnCentered};
-      width: 100%;
-    `
-
-    const PlayPause = styled.div`
-      ${flexRow};
-      padding: ${spacing.micro_pad};
-      width: 100%;
-    `
-    const PlayButton = styled.button`
-      ${buttonInit};
-      width: 3.5rem;
-      height: 3.5rem;
-      padding: 0;
-      border: 0;
-      border-radius: 0;
-      margin-right: ${spacing.micro_pad};
-      ${media.medium`
-        height: ${heights.player_icons};
-      `}
-    `
-
-    const Seek = styled.div`
-      ${flexRowCenteredVert};
-      width: 100%;
-      height: 3.5rem;
-      ${media.medium`
-        height: ${heights.player_icons};
-      `}
-    `
-    const SeekInput = styled.input`
-      -webkit-appearance: none;
-      width: 100%;
-      background: transparent;
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 3.5rem;
-        width: 8px;
-        cursor: pointer;
-        margin-top: calc((-3.5rem / 2) + 1px);
-        background-image: url('/assets/audio-progress.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        display: block;
-        border: 0;
-        ${media.medium`
-          margin-top: calc((-${heights.player_icons} / 2) + 1px);
-          height: ${heights.player_icons};
-          width: 8px;
-        `}
-      }
-      &:focus {
-        outline: none;
-      }
-      &::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 2px;
-        cursor: pointer;
-        background: ${colors.red};
-      }
-      &:focus::-webkit-slider-runnable-track {
-        background: ${colors.red};
-      }
-    `
     return (
       <PlayerContainer>
         <PlayerWrapper>
           <ErrorBoundary>
+            <Ticker copy={this.props.title}/>
             <Controls>
               <PlayPause>
                 <PlayButton onClick={this.playPause}>
@@ -203,7 +142,8 @@ class AudioPlayer extends React.Component {
 
 export default connect(
   state => ({
-    audioPlayingState: state.audioPlayingState
+    audioPlayingState: state.audioPlayingState,
+    artistPopup: state.currentArtist,
   }),
   dispatch => ({
     audioControl: (bool) => dispatch(setAudioPlaying(bool))
@@ -211,6 +151,76 @@ export default connect(
 )(AudioPlayer)
 
 // STYLES
+const Controls = styled.div`
+  ${flexColumnCentered};
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+`
+
+const PlayPause = styled.div`
+  ${flexRow};
+  padding: ${spacing.micro_pad};
+  width: 100%;
+`
+const PlayButton = styled.button`
+  ${buttonInit};
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  margin-right: ${spacing.micro_pad};
+  ${media.medium`
+    height: ${heights.player_icons};
+  `}
+`
+
+const Seek = styled.div`
+  ${flexRowCenteredVert};
+  width: 100%;
+  height: 3.5rem;
+  ${media.medium`
+    height: ${heights.player_icons};
+  `}
+`
+const SeekInput = styled.input`
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 3.5rem;
+    width: 8px;
+    cursor: pointer;
+    margin-top: calc((-3.5rem / 2) + 1px);
+    background-image: url('/assets/audio-progress.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    border: 0;
+    ${media.medium`
+      margin-top: calc((-${heights.player_icons} / 2) + 1px);
+      height: ${heights.player_icons};
+      width: 8px;
+    `}
+  }
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: ${colors.red};
+  }
+  &:focus::-webkit-slider-runnable-track {
+    background: ${colors.red};
+  }
+`
+
 const PlayerContainer = styled.div`
   width: 30rem;
   height: 10rem;
@@ -242,11 +252,13 @@ const BgBg = styled.div`
 
 const PlayerWrapper = styled.div`
   ${absoluteCentered};
+  ${flexColumn};
   display: flex;
   justify-content: flex-start;
   width: 80%;
-  height: 6rem;
+  height: 8rem;
   z-index: 100;
+  top: 2rem!important;
 `
 
 const Video = styled.div`

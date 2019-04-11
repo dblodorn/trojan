@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { setMenuState } from './../state/actions'
-import { flexColumn, buttonInit, absoluteCentered } from './../styles/mixins'
+import { flexColumn, buttonInit, absoluteCentered, animationFadeIn } from './../styles/mixins'
 import { colors, fonts } from './../styles/theme'
 import Navigation from './navigation'
 import Socials from './navigation/Socials'
@@ -11,9 +11,10 @@ import Close from './utils/Close'
 import HoverBg from './navigation/HoverBg'
 import FitImage from './utils/FitImage'
 import BgStroke from './BgStroke'
+import HeaderPortal from './HeaderPortal'
 
 const HeaderMobile = props => 
-  <React.Fragment>
+  <HeaderPortal>
     <LogoWrapper to={'/'} className={(props.router === `/` && 'active')}>
       <div className='img-wrapper'>
         <FitImage src="/assets/imgs/trojan-logo-blk.svg"/>
@@ -31,7 +32,7 @@ const HeaderMobile = props =>
         <BgStroke color={'#f96800'}/>
       </StrokeWrapper>
     </HeaderWrapper>
-  </React.Fragment>
+  </HeaderPortal>
 
 export default connect(
 	state => ({
@@ -82,6 +83,7 @@ const LogoWrapper = styled(Link)`
 
 const HeaderWrapper = styled.menu`
   ${flexColumn};
+  ${animationFadeIn(0, '300ms')}
   top: 0;
   left: 0;
   width: 100vw;
