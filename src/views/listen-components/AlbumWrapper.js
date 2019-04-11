@@ -24,12 +24,6 @@ const AlbumList = props =>
 			</AlbumListWrapper>
 		}
 	/>
-		<AlbumListWrapper height={props.wh} style={props.styles}>
-			<Albums>
-				{props.children}
-				<ListenBg color={props.color}/>
-			</Albums>
-		</AlbumListWrapper>
 
 export default connect(
 	state => ({
