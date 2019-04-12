@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { media, flexColumn } from '../../styles/mixins'
+import { media, flexColumn, flexCenteredAll } from '../../styles/mixins'
+import { colors, fonts } from './../../styles/theme'
+import HoverBg from './../../components/navigation/HoverBg'
 
-const AlbumList = props =>
+const AboutContent = props =>
 	<AboutWrapper height={props.wh} style={props.styles}>
     <AboutInner>
       <div className='inner'>
@@ -26,6 +28,12 @@ const AlbumList = props =>
         <div className='logo-wrapper'>
           <img src="/assets/imgs/trojan-logo-blk.svg"/>
         </div>
+        <ContactWrapper>
+          <a className='contact-link' href={`mailto:${props.contact_email}`}>
+            <span>{props.contact_email_cta}</span>
+            <HoverBg color={colors.red} />
+          </a>
+        </ContactWrapper>
       </div>
       <div className='about-bg'>
         <svg width="893px" height="578px" viewBox="0 0 893 578" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +53,35 @@ export default connect(
 	state => ({
 		wh: state.resizeState.window_height,
 	})
-)(AlbumList)
+)(AboutContent)
+
+const ContactWrapper = styled.div`
+  width: 100%;
+  ${flexCenteredAll};
+  position: relative;
+  z-index: 100;
+  .contact-link {
+    ${flexCenteredAll};
+    text-decoration: none;
+    height: 5rem;
+    width: 20rem;
+    position: relative;
+    will-change: transform;
+    transition: transform 250ms ease-in-out;
+    &:hover {
+      transform: scale(1.05) rotate(2.5deg);
+    }
+  }
+  span {
+    position: relative;
+    z-index: 100;
+    color: ${colors.yellow};
+    font-family: ${fonts.eurostile};
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 5px;
+  }
+`
 
 const AboutInner = styled.div`
   width: 95%;

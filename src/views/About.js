@@ -15,7 +15,11 @@ export default apiData(props =>
       leave={{ opacity: 0, transform: `matrix3d(1.45, 0.02, 0.00, 0.0005, 0.025, 1.45,0.00,0.0001,0,0,1,0,0,0,10,1)`, pointerEvents: 'none' }}
     >
       {props && (styles =>
-        <AboutContent styles={styles}>
+        <AboutContent 
+          styles={styles} 
+          contact_email_cta={props.options.contact_email_cta}
+          contact_email={props.options.contact_email}
+        >
           <StyledMarkup dangerouslySetInnerHTML={{ __html: props.options.about_page_copy }} />
         </AboutContent>
       )}
