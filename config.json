@@ -31,5 +31,11 @@
       "slug": "about",
       "image": "about"
     }
+  ],
+  "PATHS": [
+    "",
+    "/artists",
+    "/listen",
+    "/about"
   ]
 }

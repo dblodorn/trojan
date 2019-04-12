@@ -7,9 +7,9 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const FetchJsonWebpackPlugin = require('fetch-json-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const common = require('./webpack.common.js')
-const {
-  htmlOptions
-} = require('./build.config.js')
+const SitemapPlugin = require('sitemap-webpack-plugin').default
+const { htmlOptions } = require('./build.config.js')
+const { PATHS } = require('./../config.json')
 
 const pathsToClean = [
   './dist'
@@ -45,6 +45,12 @@ module.exports = merge(common, {
     }),
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
+    }),
+    new SitemapPlugin('https://trojanjamaica.com', PATHS, {
+      fileName: 'sitemap.xml',
+      lastMod: true,
+      changeFreq: 'monthly',
+      priority: '0.4'
     }),
     new SWPrecacheWebpackPlugin({
       dontCacheBustUrlsMatching: /\.\w{8}\./,
