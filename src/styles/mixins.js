@@ -18,9 +18,9 @@ const media = {
       ${ css(...args)}
     }
   `,
-  desktopNav: (...args) => css`
+  desktop: (...args) => css`
     @media (min-width: ${breakpoints.desktop}px) {
-      ${ css(...args) }
+      ${ css(...args)}
     }
   `,
   big: (...args) => css`
@@ -73,12 +73,7 @@ const scrollPanel = css`
 
 // TYPOGRAPHY
 const sansFont = css`
-  font-family: ${fonts.sans};
-  font-weight: 400;
-`
-
-const monoFont = css`
-  font-family: ${fonts.mono};
+  font-family: ${fonts.akizdenz};
   font-weight: 400;
 `
 
@@ -94,7 +89,6 @@ const mediumType = css`
   ${sansFont};  
   font-size: ${font_sizes_rem.medium_sm};
   line-height: 1;
-  letter-spacing: 2px;
   ${media.medium`
     font-size: ${font_sizes_rem.medium};
   `}
@@ -121,15 +115,6 @@ const microType = css`
   font-size: ${font_sizes_rem.micro};
   line-height: 1.25;
   letter-spacing: 1px;
-`
-
-const monoP = css`
-  ${monoFont};
-  font-size: 1.5rem;
-  line-height: 1.125;
-  ${media.medium`
-    font-size: 1.35rem;
-  `}
 `
 
 const linkInit = css`
@@ -175,14 +160,6 @@ const buttonInit = css`
   cursor: pointer;
   display: block;
 `
-
-const transitionAll = (time) => {
-  return css`
-    transition-property: all;
-    transition-duration: ${time}ms;
-    transition-timing-function: ease;
-  `
-}
 
 const shadow = css`
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
@@ -230,18 +207,6 @@ const flexRowSpaceBetween = css`
 `
 
 // Animation
-const pulse = keyframes`
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-`
-
 const spin = keyframes`
   from {
     transform: rotate(0deg);
@@ -251,10 +216,30 @@ const spin = keyframes`
   }
 `
 
-const animationRotate = css`
-  animation: ${spin} 700ms linear 0s infinite normal;
-  animation-fill-mode: forwards;
+const spinRev = keyframes`
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 `
+
+const animationRotate = (time) => {
+  const this_time = time ? time : 1200;
+  return css`
+    animation: ${spin} ${this_time}ms linear 0s infinite normal;
+    animation-fill-mode: forwards;
+  `
+}
+
+const animationRotateRev = (time) => {
+  const this_time = time ? time : 1200;
+  return css`
+    animation: ${spinRev} ${this_time}ms linear 0s infinite normal;
+    animation-fill-mode: forwards;
+  `
+}
 
 const simpleFade = keyframes`
   from {
@@ -263,10 +248,6 @@ const simpleFade = keyframes`
   to {
     opacity: 1;
   }
-`
-
-const pulseAnimation = css`
-  animation: 350ms linear ${pulse} infinite;
 `
 
 const animationFadeIn = (time, delay) => {
@@ -289,12 +270,6 @@ const textShadow = (blur, color) => {
   `
 }
 
-const fullBg = css`
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-`
-
 const fullWindow = css`
   display: flex;
   width: 100vw;
@@ -312,148 +287,51 @@ const absoluteTopFull = css`
   left: 0;
 `
 
-const positionClasses = css`
+const albumImage = css`
   display: flex;
-  flex-direction: column;
-  &.centered {
-    align-items: center;
-    justify-content: center;
-  }
-  &.centered_right {
-    align-items: flex-end;
-    justify-content: center;
-  }
-  &.top_right {
-    align-items: flex-end;
-    justify-content: flex-start;
-  }
-  &.bottom_right {
-    align-items: flex-end;
-    justify-content: flex-end;
-  }
-  &.centered_left {
-    align-items: flex-start;
-    justify-content: center;
-  }
-  &.top_left {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  &.bottom_left {
-    align-items: flex-start;
-    justify-content: flex-end;
-  }
-`
-
-const wrapperWidths = css`
-  width: 100%;
-  margin: 0 auto;
-  &.full_width {
-    max-width: 100%;
-  }
-  &.max_large {
-    max-width: ${widths.max_large};
-  }
-  &.max_medium {
-    max-width: ${widths.max_medium};
-  }
-  &.max_small {
-    max-width: ${widths.max_small};
-  }
-`
-
-const grid = css`
-  flex-grow: 0;
-  flex-shrink: 0;
-  li {
-    width: 50%;
+  height: 100%;
+  position: relative;
+  padding: 2rem;
+  background-image: url('assets/imgs/record-bg.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  .album-image {
+    width: 100%;
+    height: 0;
+    overflow-y: visible;
+    padding-bottom: 100%;
     position: relative;
   }
-  ${media.desktopNav`
-    &.one_col > li {
-      width: 100%;
-    }
-    &.three_col > li {
-      width: calc(100% / 3);
-    }
-    &.four_col > li {
-      width: calc(100% / 4);
-    }
-    &.two_col > li {
-      width: 50%;
-    }
-  `}
-  ${media.big`
-    &.four_col > li {
-      width: calc(100% / 5);
-    }
-  `}
 `
 
 const fancyScroll = css`
   &::-webkit-scrollbar {
-    width: 1rem;
-    border-left: ${shared.border_thin};
+    width: 4px;
+    border-left: 0;
     position: absolute;
-    z-index: 9000;
-    display: none;
+    z-index: 10000;
+    display: block;
   }
   &::-webkit-scrollbar-track {
-    border-left: ${shared.border_thin};
-    background: ${colors.white};
-    width: 1rem;
+    background: ${colors.red};
+    width: 4px;
   }
   &::-webkit-scrollbar-thumb {
     background: ${colors.green};
-    border-left: ${shared.border_thin};
-    width: 1rem;
+    width: 4px;
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: ${colors.grey};
-    width: 1rem;
+    background: ${colors.blue};
+    width: 4px;
     cursor: pointer;
-  }
-`
-
-const fixedHero = (top, bottom, left) => {
-  return css`
-    &.fixed-hero {
-      margin: 0;
-      max-height: 100vh;
-      height: 100vh;
-      overflow: hidden;
-      ${media.desktopNav`
-        padding-bottom: ${bottom};
-        padding-top: ${top};
-        padding-left: ${left};
-        position: fixed;
-        top: 0;
-        height: 100vh;
-      `}
-    }
-  `
-}
-
-const fixedWindow = css`
-  ${fancyScroll};
-  padding: ${heights.header} 0 ${heights.footer};
-  width: 50vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  article {
-    padding-top: ${spacing.double_pad};
-    padding-bottom: ${heights.footer};
   }
 `
 
 export {
   media,
   maxWidth,
+  albumImage,
   absoluteCentered,
   fixedTopLeft,
   mainPadding,
@@ -463,9 +341,7 @@ export {
   bodyType,
   smallType,
   microType,
-  monoP,
   defaultLink,
-  transitionAll,
   buttonInit,
   shadow,
   animationRotate,
@@ -479,18 +355,12 @@ export {
   flexRowCenteredAll,
   flexCenteredAll,
   borderRadius,
-  pulseAnimation,
-  fullBg,
-  grid,
   fullWindow,
-  positionClasses,
   absoluteTopFull,
   opacityTransition,
-  wrapperWidths,
   textShadow,
-  fixedHero,
-  halfFixed,
-  fixedWindow,
-  fancyScroll,
   linkInit,
+  animationRotateRev,
+  sansFont,
+  fancyScroll
 }

@@ -6,6 +6,6 @@ head
   include _icons.pug
   include _social-cards.pug
   include _head-css.pug
-  title #{htmlWebpackPlugin.options.title}
+  title(data-react-helmet="true") #{htmlWebpackPlugin.options.title}
   meta(name="description" content= htmlWebpackPlugin.options.description)
   meta(name="keywords" content= htmlWebpackPlugin.options.keywords)

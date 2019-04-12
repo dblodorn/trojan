@@ -1,7 +1,8 @@
 import fetchApiData from './a_api-data'
 import { setResizeState, fontsLoaded, hasTouch, setCurrentPixel, setScrollDirection, setDocHeight  } from './a_window-state'
 import { setHeaderState, setMenuState, setModalState } from './a_ui-state'
-import { setPageCount, setRoute } from './a_content-state'
+import { setPageCount, setRoute, setAudioPlaying } from './a_content-state'
+import { setArtist, setArtistPopup } from './a_artists'
 
 export {
   fetchApiData,
@@ -15,5 +16,8 @@ export {
   setRoute,
   setHeaderState,
   setMenuState,
-  setModalState
+  setModalState,
+  setArtist,
+  setArtistPopup,
+  setAudioPlaying,
 }

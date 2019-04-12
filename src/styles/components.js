@@ -94,22 +94,13 @@ const ExternalLink = styled.a`
 
 const SocialLink = styled.a`
   ${_.flexCenteredAll};
-  width: ${props => props.size || `4rem`};
-  height: ${props => props.size || `4rem`};
+  width: ${props => props.size || `2rem`};
+  height: ${props => props.size || `2rem`};
   svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-`
-
-// WRAPPERS
-const ModalWrapper = styled.div`
-  ${_.flexCenteredAll};
-  position: fixed;
-  z-index: 1000;
-  width: 100vw;
-  height: 100vh;
 `
 
 const ModalContentWrapper = styled.div`
@@ -124,20 +115,60 @@ const ModalContentWrapper = styled.div`
 
 const CloseButton = styled.button`
   ${_.buttonInit};
-  position: fixed;
+  position: absolute;
   width: ${props => props.size || `4rem`};
   height: ${props => props.size || `4rem`};
-  top: ${props => props.position || `.75rem`};
-  right: ${props => props.position || `.75rem`};
+  top: ${props => props.positionY || `.75rem`};
+  right: ${props => props.positionX || `.75rem`};
   padding: 0;
   z-index: 11000;
   cursor: pointer;
+  ${_.media.desktop`
+    width: ${props => props.size || `5rem`};
+    height: ${props => props.size || `5rem`};
+  `}
+  ${_.media.medium`
+    width: ${props => props.size || `6rem`};
+    height: ${props => props.size || `6rem`};
+  `}
   svg {
     ${_.absoluteCentered};
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+  .close-x {
+    ${_.absoluteCentered};
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    padding: .75rem;
+    svg {
+      padding: .75rem;
+    }
+    ${_.media.medium`
+      padding: 1rem;
+      svg {
+        padding: 1rem;
+      }
+    `}
+  }
+  .close-bg {
+    ${_.absoluteCentered};
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 90;
+  }
+`
+
+const ModalWrapper = styled.div`
+  ${_.flexCenteredAll};
+  position: fixed;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.45);
 `
 
 export {
@@ -153,7 +184,7 @@ export {
   SocialLink,
   StyledLink,
   ExternalLink,
-  ModalWrapper,
   ModalContentWrapper,
-  CloseButton
+  CloseButton,
+  ModalWrapper,
 }

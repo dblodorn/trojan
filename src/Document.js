@@ -1,15 +1,34 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn } from './styles/mixins'
-import { Header } from './components'
-import { LoadingPage } from './views'
+import { Header, ImageLoader, ResponsiveWrapper, HeaderMobile, AudioPlayer } from './components'
 
-const Document = props => <LoadingPage/>
+const Document = props =>
+  <React.Fragment>
+    <GlobalStyles />
+    {props.apiData &&
+      <React.Fragment>
+        <ResponsiveWrapper
+          desktop={<Header/>}
+          mobile={<HeaderMobile/>}
+        />
+        <Main>
+          {props.children}
+        </Main>
+        <ResponsiveWrapper 
+          desktop={<AudioPlayer song={props.apiData.options.song_url} title={props.apiData.options.song_title}/>}
+          mobile={false}
+        />
+        <ImageLoader artists={props.apiData.artists}/>
+      </React.Fragment>
+    }
+  </React.Fragment>
 
 export default connect(
   state => ({
     apiData: state.apiData,
+    router: state.router,
     resizeState: state.resizeState
   })
 )(Document)
@@ -46,7 +65,8 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 300;
     font-style: normal;
     text-decoration: none;
-    
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
   }
   ::-webkit-input-placeholder,
   ::-moz-placeholder {

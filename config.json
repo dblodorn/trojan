@@ -1,22 +1,35 @@
 {
-  "wp_endpoint": "https://trojan.dmbk.io/wp-json/api/v1/data/",
+  "wp_endpoint": "https://dmbk.network/trojan-jamaica/wp-json/api/v1/data/",
   "meta_defaults": {
     "title": "Trojan Jamaica",
     "description": "Trojan Jamaica",
     "site_url": "",
-    "bgcolor": "#231F20"
-  },
-  "mail_scrape": {
-    "mailchimp_url": ""
+    "bgcolor": "#D5AE18"
   },
   "fonts": [
-    "GintoNord"
+    "Azidenz",
+    "Fakt"
   ],
   "HEADER_MENU": [
     {
-      "title": "contact",
-      "slug": "contact",
-      "is_home": false
+      "title": "Home",
+      "slug": "",
+      "image": "home"
+    },
+    {
+      "title": "Artists",
+      "slug": "artists",
+      "image": "artists"
+    },
+    {
+      "title": "Listen",
+      "slug": "listen",
+      "image": "listen"
+    },
+    {
+      "title": "About",
+      "slug": "about",
+      "image": "about"
     }
   ]
 }

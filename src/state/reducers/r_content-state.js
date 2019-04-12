@@ -1,4 +1,4 @@
-const pageCount = (state = 0, action) => {
+export function pageCount(state = 0, action) {
   switch (action.type) {
     case 'pageCount':
       return action.count
@@ -7,7 +7,7 @@ const pageCount = (state = 0, action) => {
   }
 }
 
-const routeState = (state = null, action) => {
+export function routeState(state = null, action) {
   switch (action.type) {
     case 'CURRENT_ROUTE':
       return action.route
@@ -16,7 +16,11 @@ const routeState = (state = null, action) => {
   }
 }
 
-export {
-  pageCount,
-  routeState
+export function audioPlayingState(state = false, action) {
+  switch (action.type) {
+    case 'AUDIO_PLAYING':
+      return action.bool
+    default:
+      return state
+  }
 }

@@ -28,6 +28,7 @@ const heights = {
   header: toRem(units.header),
   mobile_header: toRem(units.header),
   footer: toRem(units.footer),
+  player_icons: `4rem`
 }
 
 const spacing = {
@@ -40,19 +41,23 @@ const spacing = {
 const colors = {
   bg: meta_defaults.bgcolor,
   white: '#FFFFFF',
-  black: '#000000',
+  black: '#111010',
   red: '#EC3E00',
-  bright_red: '#EC3E00',
+  bright_red: '#EC0400',
   orange: '#F07924',
-  green: '#OB9444',
+  green: '#0B9444',
   yellow: '#FFE200',
+  yellow_gold: '#FFCA00',
+  off_black: '#111010',
   blue: '#003AAA',
 }
 
 const logo = `/assets/trojan-logo.svg`
 
 const fonts = {
-  sans: `'GintoNord', Arial, system-ui, sans-serif`,
+  akzidenz: `'Azidenz', Arial, system-ui, sans-serif`,
+  fakt: `'Fakt', Arial, system-ui, sans-serif `,
+  eurostile: `'Eurostile Extd', sans-serif`
 }
 
 const baseFontSize = 16

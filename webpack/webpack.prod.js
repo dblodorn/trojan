@@ -7,7 +7,6 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const FetchJsonWebpackPlugin = require('fetch-json-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const common = require('./webpack.common.js')
-const config = require('./../config.json')
 const {
   htmlOptions
 } = require('./build.config.js')
@@ -30,7 +29,7 @@ module.exports = merge(common, {
       cleanOptions
     ),
     new FetchJsonWebpackPlugin({
-      endpoint: config.wp_endpoint,
+      endpoint: htmlOptions.endpoint,
       filename: 'data',
       hash: true,
     }),

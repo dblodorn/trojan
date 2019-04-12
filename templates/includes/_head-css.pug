@@ -53,6 +53,39 @@ style(type="text/css").
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    z-index: 1;
+  }
+  #canvas-wrapper {
+    opacity: 0;
+  }
+  #bg {
+    position: fixed;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     z-index: 0;
-    cursor: none;
+  }
+  #tour {
+    position: fixed;
+    display: block;
+    width: 100vw;
+    overflow: visible;
+    z-index: 10000;
+  }
+  .show {
+    opacity: 1!important;
+  }
+  html {
+    cursor: url('/assets/cursor.gif') 5 5, auto;
+  }
+  button:hover,
+  a:hover {
+    cursor: url('/assets/cursor.gif') 5 5, auto;
+  }
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000;
   }

@@ -10,7 +10,6 @@ import { fetchApiData, setResizeState, hasTouch, fontsLoaded } from './state/act
 import App from './App'
 import config from './../config.json'
 import { history, store } from './state/store'
-import paperInit from './paper'
 
 mixin(_, {
   throttle: throttle
@@ -24,7 +23,6 @@ const resizeHandler = () => {
 
 scrollWatcher()
 resizeHandler()
-// paperInit()
 
 window.addEventListener('resize', _.throttle(resizeHandler, 50))
 
@@ -40,7 +38,10 @@ WebFont.load({
     families: config.fonts,
     urls: ['/assets/fonts.css']
   },
-  active: function() {
+  typekit: {
+    id: 'swz7mag'
+  },
+  active: function () {
     store.dispatch(fontsLoaded(true))
   }
 })

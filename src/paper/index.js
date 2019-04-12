@@ -1,15 +1,17 @@
 import paper from 'paper'
 import { store } from '../state/store'
-import { colors } from '../styles/theme'
-import { randomNumMinMax } from './../scripts'
 import Artist from './Artist'
 
-export default () => {
+export default (status) => {
   class Artists {
-    constructor() {
+    constructor(status) {
+      console.log(status);
       this.stage = document.getElementById('canvas');
       this.window = store.getState().resizeState;
       this.artists = false;
+      this.artists_array = true;
+      this.bottom_height = -3;
+      this.mobile = true;
       this.state = {
         ww: this.window.window_width,
         wh: this.window.window_height,
@@ -17,12 +19,16 @@ export default () => {
         mousePoint: 0,
       };
       // PAPER OBJECTS
-      this.cursor = {}
+      this.children;
       // FUNCTION BINDING
       this.updateState = this.updateState.bind(this);
       this.init = this.init.bind(this);
       // INIT
-      this.init();
+      if(status) {
+        this.init();
+      } else {
+        this.kill();
+      }
     };
 
     updateState() {
@@ -31,50 +37,50 @@ export default () => {
       this.state.wh = store.getState().resizeState.window_height;
       if (store.getState().apiData !== false) {
         this.state.api = store.getState().apiData;
+        this.artists_array = this.state.api.artists;
       };
     };
 
-    createThumbs(data, paper) {
+    createThumbs(paper) {
+      if ( this.state.ww >= store.getState().resizeState.breakpoints.desktop) {
+        this.mobile = false;
+        this.bottom_height = 120;
+      }
       this.artists = [];
-      data.artists.forEach((info) => {
+      this.artists_array.forEach((info) => {
         this.artists.push(
-          new Artist(paper, info, this.state)
+          new Artist(paper, info, this.state, this.mobile)
         );
       });
     };
 
-    animate() {
+    animate(paper) {
       paper.view.onFrame = () => {
         this.updateState();
-        this.cursor.position = this.state.mousePoint;
-        if (this.state.api !== false && !this.artists) {
-          this.createThumbs(this.state.api, paper);
+        if (this.artists_array !== false && !this.artists) {
+          this.createThumbs(paper);
         };
         if (this.artists !== false) {
-          for (var i = 0, l = this.artists.length; i < l; i++) {
-		        this.artists[i].position(i);
+          for (let i = 0, l = this.artists.length; i < l; i++) {
+		        this.artists[i].position(this.bottom_height);
           }
         }
       };
     };
 
+    kill() {
+      paper.project.activeLayer.removeChildren();
+      paper.remove();
+    };
+
     init() {      
       paper.setup(this.stage);
-      this.cursor = new paper.Path.Circle({
-        center: paper.view.center,
-        radius: 10,
-        fillColor: colors.yellow
-      });
+      this.children = paper.project.activeLayer.children;
       paper.view.onMouseMove = (event) => {
         this.state.mousePoint = event.point;
       }
-      this.cursor.onClick = (event) => {
-        console.log(this.state.api, event);
-      }
-      this.animate();
+      this.animate(paper);
     };
-
-  } 
-
-  new Artists();
+  }
+  new Artists(status);
 }

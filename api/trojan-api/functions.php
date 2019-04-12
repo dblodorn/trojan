@@ -47,14 +47,23 @@ add_filter( 'template_include', 'phpless_template');
 /*-----------------------------------------------------------------------------------*/
 
 if(function_exists('acf_add_options_page')) {
+  
   acf_add_options_page(array(
     'page_title' 	=> 'Site Content',
     'menu_title' 	=> 'Site Content',
     'menu_slug' 	=> 'site-content',
-    'capability' 	=> 'edit_posts', 
-    'icon_url' => 'dashicons-welcome-view-site',
-    'position' => 30
+    'capability' 	=> 'edit_posts',
+    'icon_url'    => 'dashicons-welcome-view-site',
+		'redirect'		=> false,
+    'position'    => 30
   ));
+
+  acf_add_options_sub_page(array(
+		'page_title' 	=> 'Live',
+		'menu_title'	=> 'Live',
+    'menu_slug' 	=> 'live',
+		'parent_slug'	=> 'site-content',
+	));
 }
 
 function get_current_template() {
@@ -66,16 +75,6 @@ function get_current_post() {
   global $post; $post_slug=$post->post_name;;
   return $post_slug;
 }
-
-/*-----------------------------------------------------------------------------------*/
-/* ALLOW SVG
-/*-----------------------------------------------------------------------------------*/
-
-function cc_mime_types($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
-}
-add_filter('upload_mimes', 'cc_mime_types');
 
 /*-----------------------------------------------------------------------------------*/
 /* REMOVE EMOJI SHIT

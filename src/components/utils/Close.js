@@ -1,21 +1,26 @@
 import React from 'react'
-import propTypes from 'prop-types'
 import { CloseButton } from './../../styles/components'
+import { colors } from '../../styles/theme';
 
 const Close = (props) =>
-  <CloseButton onClick={props.clickFunction || null} size={props.size || '6rem'}>
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 64 64" width="100%" height="100%">
-      <g fill={props.color || `#ffffff`}>
-        <line fill="none" stroke={props.color || `#ffffff`} strokeWidth={'2'} strokeLinecap="square" strokeMiterlimit="10" x1="54" y1="10" x2="10" y2="54" strokeLinejoin="miter"></line>
-        <line fill="none" stroke={props.color || `#ffffff`} strokeWidth={'2'} strokeLinecap="square" strokeMiterlimit="10" x1="54" y1="54" x2="10" y2="10" strokeLinejoin="miter"></line>
-      </g>
-    </svg>
+  <CloseButton onClick={props.clickFunction || null} className='close-button-wrapper'>
+    <div className={'close-x'}>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 64 64" width="100%" height="100%">
+        <g fill={props.color || `#ffffff`}>
+          <line fill="none" stroke={colors.yellow} strokeWidth={'4'} strokeLinecap="square" strokeMiterlimit="10" x1="54" y1="10" x2="10" y2="54" strokeLinejoin="miter"></line>
+          <line fill="none" stroke={colors.yellow} strokeWidth={'4'} strokeLinecap="square" strokeMiterlimit="10" x1="54" y1="54" x2="10" y2="10" strokeLinejoin="miter"></line>
+        </g>
+      </svg>
+    </div>
+    <div className={'close-bg'}>
+      <svg width="34px" height="35px" viewBox="0 0 34 35" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <g id="UI" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+          <g id="Group-3" fill="#EC0400">
+            <path d="M22.8998564,0.59040144 C22.246919,0.734822549 22.5472078,0.23597669 22.1515617,0.11178849 C21.4396761,-0.111820038 20.4583628,0.070624986 19.7253253,0.0619039045 C18.4926155,0.047601331 17.513036,0.278884411 16.3170821,0.519586259 C14.9685565,0.79063747 13.4976269,0.869824889 12.2052754,1.37041496 C10.1434773,2.16926602 8.31677823,3.25591277 6.59479882,4.63489017 C5.65162846,5.39048466 4.81040372,6.09968301 4.03991676,7.03737368 C2.98647869,8.32007034 2.48888698,9.66416341 1.89420419,11.2032599 C1.34702668,12.6199123 0.599772228,14.009355 0.307458767,15.5118229 C0.0193063527,16.9937091 0.00925049225,18.5275729 0.00994399986,20.0300408 C0.0106375075,21.4955313 -0.0972029269,22.8776483 0.381317329,24.2883705 C0.80123619,25.5253687 1.42435278,26.7951581 2.09046685,27.9132008 C2.69520549,28.9283346 3.6612616,29.768698 4.48722917,30.6052242 C5.30695517,31.4354711 6.26954375,32.5399089 7.32506234,33.0575923 C9.66738431,34.2063331 12.1730273,34.9082058 14.7729874,34.863205 C17.649657,34.8133204 20.4757005,35.4541455 23.2594401,34.3270329 C25.8871404,33.2630609 28.4080406,30.9913937 30.1931292,28.800658 C31.0731904,27.7202904 31.8166306,26.4177097 32.3461236,25.1308269 C32.8832453,23.8247578 33.5670438,22.2455443 33.7896597,20.8473806 C34.2002162,18.2725685 34.0365485,15.6478718 33.0607832,13.2007364 C32.0884856,10.7612755 30.5880818,8.56146988 29.4746553,6.20398714 C28.5980617,4.34814101 27.1458568,3.01276902 25.3191577,2.16856834 C24.1027454,1.60658185 22.9699007,0.906453431 21.7364974,0.395049216 C20.8918051,0.0455082714 19.4174079,-0.323916738 20.2992028,1.11366633" id="close-bg"></path>
+          </g>
+        </g>
+      </svg>
+    </div>
   </CloseButton>
-
-Close.propTypes = {
-  clickFunction: propTypes.func,
-  color: propTypes.string,
-  stroke: propTypes.number
-}
 
 export default Close
