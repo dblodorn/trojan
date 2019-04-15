@@ -2,8 +2,9 @@
   "wp_endpoint": "https://dmbk.network/trojan-jamaica/wp-json/api/v1/data/",
   "meta_defaults": {
     "title": "Trojan Jamaica",
-    "description": "Trojan Jamaica",
-    "site_url": "",
+    "description": "Trojan Jamaica is the result of a partnership with Zak Starkey and Sharna “Sshh” Liguz. Based in Jamaica, the label will reflect not only the island’s rich musical history, but American soul and blues.",
+    "keywords": "Trojan Jamaica, Roots, Reggae, Roots Music, Zak Starkey, Sharna Liguz, Jamaica, Soul, Blues",
+    "site_url": "https://trojanjamaica.com",
     "bgcolor": "#D5AE18"
   },
   "fonts": [

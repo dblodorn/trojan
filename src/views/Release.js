@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Head, pageData, FullWindow, FitImage, BackClose } from './../components'
 import { animationFadeIn, animationRotate, animationRotateRev, flexRow, flexColumn, sansFont, media } from './../styles/mixins'
 import { colors } from './../styles/theme'
+import { trimExcerpt } from './../scripts'
 import AlbumPhoto from './listen-components/AlbumPhoto'
 import AlbumWrapper from './listen-components/AlbumWrapper'
 
@@ -11,7 +12,10 @@ export default pageData(props => {
   console.log(props)
   return (
     <React.Fragment>
-      <Head title={`Release`} />
+      <Head 
+        title={`Release`}
+        description={trimExcerpt(props.about_release)}
+      />
       <AlbumWrapper>
         <ReleaseWrapper>
           <BackClose/>

@@ -7,13 +7,13 @@ import { } from './../styles/components'
 import { animationRotate, animationFadeIn } from './../styles/mixins'
 import { colors } from './../styles/theme'
 import paperInit from './../paper'
+import { meta_defaults } from './../../config.json'
 
 class Artists extends React.Component {
   constructor (props) {
     super(props)
     this.wrapper = document.getElementById('canvas-wrapper');
   }
-  
 
   componentWillMount() {
     paperInit(true)
@@ -28,7 +28,10 @@ class Artists extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Head title={`Artists`} />
+        <Head 
+          title={`Artists`} 
+          description={this.props.apiData && this.props.apiData.options.artists_meta}
+        />
         <Transition
         from={{ opacity: 0, transform: `matrix3d(-1.45, 0.02, 0.00, 0.0005, 0.025, -1.45,0.00,0.0001,0,0,1,0,0,0,10,1)` }}
         enter={{ opacity: 1, transform: `transform: matrix3d(1,0,0.00,0,0.00,1,0.00,0,0,0,1,0,0,0,0,1)` }}
