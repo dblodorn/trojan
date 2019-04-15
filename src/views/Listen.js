@@ -5,10 +5,14 @@ import { Head, apiData, FullWindow, FitImage } from './../components'
 import { animationFadeIn, animationRotate, animationRotateRev } from './../styles/mixins'
 import { colors } from './../styles/theme'
 import AlbumList from './listen-components/AlbumList'
+import { meta_defaults } from './../../config.json'
 
 export default apiData(props =>
   <React.Fragment>
-    <Head title={`Listen`} />
+    <Head 
+      title={`Listen`}
+      description={props.options.listen_meta || meta_defaults.description}
+    />
     <Transition
       from={{ opacity: 0, transform: `matrix3d(-1.45, 0.02, 0.00, 0.0005, 0.025, -1.45,0.00,0.0001,0,0,1,0,0,0,10,1)` }}
       enter={{ opacity: 1, transform: `transform: matrix3d(1,0,0.00,0,0.00,1,0.00,0,0,0,1,0,0,0,0,1)` }}

@@ -6,10 +6,14 @@ import { animationFadeIn, animationRotate, flexRow, flexColumn } from './../styl
 import { colors } from './../styles/theme'
 import TouringModal from './tour-components/TouringModal'
 import AlbumWrapper from './listen-components/AlbumWrapper'
+import { meta_defaults } from './../../config.json'
 
 export default apiData(props =>
   <React.Fragment>
-    <Head title={`Live`} />
+    <Head 
+      title={`Live`}
+      description={props.options.live_meta || meta_defaults.description}
+    />
     <AlbumWrapper color={colors.orange}>
       <LiveWrapper>
         <h1>Trojan Jamaica Live</h1>

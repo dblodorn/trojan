@@ -5,10 +5,14 @@ import { Head, apiData, FullWindow, FitImage, BgStroke } from './../components'
 import { StyledMarkup } from './../styles/components'
 import { animationRotate, animationFadeIn } from './../styles/mixins'
 import AboutContent from './about-components/AboutContent'
+import { meta_defaults } from './../../config.json'
 
 export default apiData(props =>
   <React.Fragment>
-    <Head title={`About`} />
+    <Head 
+      title={`Home`}
+      description={props.options.about_meta || meta_defaults.description}
+    />
     <Transition
       from={{ opacity: 0, transform: `matrix3d(-1.45, 0.02, 0.00, 0.0005, 0.025, -1.45,0.00,0.0001,0,0,1,0,0,0,10,1)` }}
       enter={{ opacity: 1, transform: `transform: matrix3d(1,0,0.00,0,0.00,1,0.00,0,0,0,1,0,0,0,0,1)` }}

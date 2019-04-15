@@ -7,5 +7,5 @@ head
   include _social-cards.pug
   include _head-css.pug
   title(data-react-helmet="true") #{htmlWebpackPlugin.options.title}
-  meta(name="description" content= htmlWebpackPlugin.options.description)
+  meta(data-react-helmet="true", name="description" content= htmlWebpackPlugin.options.description)
   meta(name="keywords" content= htmlWebpackPlugin.options.keywords)

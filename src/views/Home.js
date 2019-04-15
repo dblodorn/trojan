@@ -4,10 +4,14 @@ import styled from 'styled-components'
 import { Head, apiData, FullWindow, FitImage } from './../components'
 import { flexCenteredAll, animationRotate, animationFadeIn, media } from './../styles/mixins'
 import { colors } from './../styles/theme'
+import { meta_defaults } from './../../config.json'
 
 export default apiData(props =>
   <React.Fragment>
-    <Head title={`Home`} />
+    <Head 
+      title={`Home`}
+      description={props.options.home_meta || meta_defaults.description}
+    />
     <Transition
       from={{ opacity: 0, transform: `matrix3d(0.5, 0.05, 0.5, 0.0005, 0.025, 1.145,0.50,0.0001,0,0,1,0,0,0,10,1)` }}
       enter={{ opacity: 1, transform: `transform: matrix3d(1,0,0.00,0,0.00,1,0.00,0,0,0,1,0,0,0,0,1)` }}
