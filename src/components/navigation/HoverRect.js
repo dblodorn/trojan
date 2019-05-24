@@ -5,7 +5,7 @@ import { fonts } from './../../styles/theme'
 import HoverBg from './HoverBg'
 
 export default props =>
-	<HoverShape className="hover-shape">
+	<HoverShape className="hover-shape" opacity={props.opacity} full={props.full}>
 		<div className='span-wrapper'>
 			<span>{props.title}</span>
 		</div>
@@ -13,13 +13,13 @@ export default props =>
 	</HoverShape>
 
 const HoverShape = styled.div`
-	width: 40%;
-  height: 50%;
-  margin-top: 10%;
+	width: ${props => props.full ? '100%' : '40%' };
+  height: ${props => props.full ? '100%' : '50%' };
+  margin-top: ${props => props.full ? '0' : '10%' };
 	position: relative;
 	&.hover-shape {
     ${media.desktop`
-      opacity: 0;
+      opacity: ${props => props.opacity || 0};
       transition: opacity 400ms ease;
       will-change: opacity;
     `}
