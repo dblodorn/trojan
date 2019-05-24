@@ -16,6 +16,7 @@ import HeaderMobile from './HeaderMobile'
 import ResponsiveWrapper from './ResponsiveWrapper'
 import AudioPlayer from './video/AudioPlayer'
 import BgStroke from './BgStroke'
+import HoverRect from './navigation/HoverRect'
 
 export {
   FitImage,
@@ -36,4 +37,5 @@ export {
   ResponsiveWrapper,
   AudioPlayer,
   BgStroke,
+  HoverRect
 }

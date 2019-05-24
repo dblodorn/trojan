@@ -1,7 +1,7 @@
 import React from 'react'
 import { Transition } from 'react-spring'
 import styled from 'styled-components'
-import { Head, pageData, FullWindow, FitImage, BackClose } from './../components'
+import { Head, pageData, FullWindow, FitImage, BackClose, HoverRect } from './../components'
 import { animationFadeIn, animationRotate, animationRotateRev, flexRow, flexColumn, sansFont, media } from './../styles/mixins'
 import { colors } from './../styles/theme'
 import { trimExcerpt } from './../scripts'
@@ -9,7 +9,6 @@ import AlbumPhoto from './listen-components/AlbumPhoto'
 import AlbumWrapper from './listen-components/AlbumWrapper'
 
 export default pageData(props => {
-  console.log(props)
   return (
     <React.Fragment>
       <Head 
@@ -26,12 +25,16 @@ export default pageData(props => {
           <div className='copy-wrapper'>
             <div className='album-copy' dangerouslySetInnerHTML={{ __html: props.about_release }} />
             <div className='streaming'>
-              <ReleaseDiv>
-                <a href={props.apple_music_link}><FitImage src={'/assets/apple.svg'} fit={'contain'} /></a>
-              </ReleaseDiv>
-              <ReleaseDiv>
-                <a href={props.spotify_link}><FitImage src={'/assets/logo-spotify.svg'} fit={'contain'}/></a>
-              </ReleaseDiv>
+              {props.purchase_link &&
+                <ReleaseDiv>
+                  <a href={props.purchase_link}><HoverRect title={'Purchase'} opacity={1} full/></a>
+                </ReleaseDiv>
+              }
+              {props.video_link &&
+                <ReleaseDiv>
+                  <a href={props.video_link}><HoverRect title={'Watch Video'} opacity={1} full/></a>
+                </ReleaseDiv>
+              }
             </div>
           </div>
         </ReleaseWrapper>
@@ -63,7 +66,7 @@ export default pageData(props => {
 })
 
 const ReleaseDiv = styled.div`
-  width: 5rem;
+  width: 14rem;
   height: 3rem;
   will-change: transform;
   padding: 0 1rem;
