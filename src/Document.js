@@ -3,12 +3,19 @@ import { connect } from 'react-redux'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn } from './styles/mixins'
 import { Header, ImageLoader, ResponsiveWrapper, HeaderMobile, AudioPlayer } from './components'
+import IntroPopup from './views/IntroPopup'
+import SimpleModal from './components/SimpleModal'
 
 const Document = props =>
   <React.Fragment>
     <GlobalStyles />
     {props.apiData &&
       <React.Fragment>
+        {props.apiData.options.intro_popup.use_popup &&
+          <SimpleModal startOpen height={'55.5rem'} width={'55rem'} closeColor={'white'} bgColor={`rgba(0,0,0,.5)`} position={'absolute'}>
+            <IntroPopup/>
+          </SimpleModal>
+        }
         <ResponsiveWrapper
           desktop={<Header/>}
           mobile={<HeaderMobile/>}

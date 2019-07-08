@@ -19,5 +19,5 @@ const HeaderWrapper = styled.div`
   left: 0rem;
   width: 20rem;
   position: fixed;
-  z-index: 9000;
+  z-index: 1000;
 `
