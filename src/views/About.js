@@ -61,17 +61,3 @@ const LogoWrap = styled.div`
     position: relative;
   }
 `
-
-const BgGreen = styled.div`
-  ${animationFadeIn(1000, 750)};
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`

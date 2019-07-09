@@ -78,8 +78,9 @@ const sansFont = css`
 `
 
 const bigType = css`
-  ${sansFont};
-  font-size: ${font_sizes_rem.giant};
+  font-family: ${fonts.akzidenz};
+  font-weight: 500;
+  font-size: 2.25rem;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
