@@ -38,7 +38,7 @@ const ModalWrapper = styled.div`
   z-index: 10000;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,.65);
+  background-color: rgba(0,0,0,.75);
 `
 
 const ModalButton = styled.button`
