@@ -27,12 +27,12 @@ export default pageData(props => {
             <div className='streaming'>
               {props.purchase_link &&
                 <ReleaseDiv>
-                  <a href={props.purchase_link}><HoverRect title={'Purchase'} opacity={1} full/></a>
+                  <a href={props.purchase_link}><HoverRect title={'GET IT HERE'} opacity={1} full/></a>
                 </ReleaseDiv>
               }
               {props.video_link &&
                 <ReleaseDiv>
-                  <a href={props.video_link}><HoverRect title={'Watch Video'} opacity={1} full/></a>
+                  <a href={props.video_link}><HoverRect title={'WATCH VIDEO'} opacity={1} full/></a>
                 </ReleaseDiv>
               }
             </div>

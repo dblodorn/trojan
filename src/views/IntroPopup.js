@@ -21,7 +21,7 @@ const IntroPopup = props =>
 			{props.apiData.options.intro_popup.popup_link &&
 				<LinkWrapper>
 					<a className='contact-link' href={props.apiData.options.intro_popup.popup_link} target="_blank">
-						<span>{props.apiData.options.intro_popup.popup_link_cta || 'Learn More'}</span>
+						<span>{props.apiData.options.intro_popup.popup_link_cta || 'GET IT HERE'}</span>
 						<HoverBg color={colors.red} />
 					</a>
 				</LinkWrapper>
