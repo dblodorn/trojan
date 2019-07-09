@@ -13,8 +13,8 @@ export default props =>
 	</HoverShape>
 
 const HoverShape = styled.div`
-	width: ${props => props.full ? '100%' : '40%' };
-  height: ${props => props.full ? '100%' : '50%' };
+	width: ${props => props.full ? '100%' : '55%' };
+  height: ${props => props.full ? '100%' : '45%' };
   margin-top: ${props => props.full ? '0' : '10%' };
 	position: relative;
 	&.hover-shape {

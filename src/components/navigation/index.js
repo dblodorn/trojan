@@ -14,7 +14,7 @@ export default () =>
 const Nav = styled.nav`
   ${flexColumn};
   width: 100%;
-  max-width: 20rem;
+  max-width: 24rem;
   margin: 4rem 2rem 0;
   z-index: 100;
   position: relative;

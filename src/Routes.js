@@ -14,6 +14,7 @@ export default () =>
       <Route exact path={'/'} component={props => <Home {...props} />} />
       <Route exact path={'/artists'} component={props => <Artists {...props} />} />
       <Route exact path={'/listen'} component={props => <Listen {...props} />} />
+      <Route exact path={'/releases'} component={props => <Listen {...props} />} />
       <Route exact path={'/about'} component={props => <About {...props} />} />
       <Route exact path={'/release/:id'} component={props => <Release {...props} />} />
       <Route component={NotFound} />

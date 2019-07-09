@@ -32,7 +32,7 @@ const NavWrapper = styled(Link)`
   ${flexRow};
   position: relative;
   width: 100%;
-  max-width: 20rem;
+  max-width: 22rem;
   height: 9rem;
   margin-bottom: 1.5rem;
   padding: 1rem;
