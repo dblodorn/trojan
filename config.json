@@ -23,8 +23,8 @@
       "image": "artists"
     },
     {
-      "title": "Listen",
-      "slug": "listen",
+      "title": "Releases",
+      "slug": "releases",
       "image": "listen"
     },
     {
@@ -36,7 +36,7 @@
   "PATHS": [
     "",
     "/artists",
-    "/listen",
+    "/releases",
     "/about"
   ]
 }
