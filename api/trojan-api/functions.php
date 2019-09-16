@@ -22,6 +22,7 @@ add_action( 'admin_menu', 'my_remove_menu_pages' );
 function my_remove_menu_pages() {
   remove_menu_page('edit-comments.php');
   remove_menu_page('edit.php');
+  remove_menu_page('edit.php?post_type=page');
 }
 
 function my_theme_setup() {
@@ -58,6 +59,13 @@ if(function_exists('acf_add_options_page')) {
     'position'    => 30
   ));
 
+  acf_add_options_sub_page(array(
+		'page_title' 	=> 'Press',
+		'menu_title'	=> 'Press',
+    'menu_slug' 	=> 'press',
+		'parent_slug'	=> 'site-content',
+	));
+  
   acf_add_options_sub_page(array(
 		'page_title' 	=> 'Live',
 		'menu_title'	=> 'Live',

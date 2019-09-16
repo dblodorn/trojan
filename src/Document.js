@@ -11,11 +11,11 @@ const Document = props =>
     <GlobalStyles />
     {props.apiData &&
       <React.Fragment>
-        {props.apiData.options.intro_popup.use_popup &&
+        {/*props.apiData.options.intro_popup.use_popup &&
           <SimpleModal startOpen height={'55.5rem'} width={'55rem'} closeColor={'white'} bgColor={`rgba(0,0,0,.5)`} position={'absolute'}>
             <IntroPopup/>
           </SimpleModal>
-        }
+        */}
         <ResponsiveWrapper
           desktop={<Header/>}
           mobile={<HeaderMobile/>}

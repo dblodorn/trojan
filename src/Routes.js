@@ -6,6 +6,7 @@ import Home from './views/Home'
 import Artists from './views/Artists'
 import Listen from './views/Listen'
 import About from './views/About'
+import Press from './views/Press'
 import Release from './views/Release'
 
 export default () =>
@@ -16,6 +17,7 @@ export default () =>
       <Route exact path={'/listen'} component={props => <Listen {...props} />} />
       <Route exact path={'/releases'} component={props => <Listen {...props} />} />
       <Route exact path={'/about'} component={props => <About {...props} />} />
+      <Route exact path={'/press'} component={props => <Press {...props} />} />
       <Route exact path={'/release/:id'} component={props => <Release {...props} />} />
       <Route component={NotFound} />
     </Switch>
