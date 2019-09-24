@@ -27,10 +27,13 @@ export default apiData(props =>
                   <p>{item.press_attribution}</p>
                 </div>
               }
-              {item.press_url &&
-                <ReadLink>
-                  <a href={item.press_url} target="_blank"><HoverRect title={'READ MORE'} opacity={1} full/></a>
-                </ReadLink>
+              {item.link_or_pdf === 'link'
+                ? <ReadLink>
+                    <a href={item.press_url} target="_blank"><HoverRect title={'READ MORE'} opacity={1} full/></a>
+                  </ReadLink>
+                : <ReadLink>
+                    <a href={item.press_pdf} target="_blank"><HoverRect title={'DOWNLOAD ARTICLE'} opacity={1} full/></a>
+                  </ReadLink>
               }
               <div className='press-copy-bg'>
                 <svg width="783px" height="198px" viewBox="0 0 783 198" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +77,7 @@ export default apiData(props =>
 )
 
 const ReadLink = styled.div`
-  width: 14rem;
+  width: 16rem;
   height: 3rem;
   position: relative;
   margin: auto;
@@ -97,7 +100,7 @@ const ReadLink = styled.div`
 const PressList = styled.ul`
   ${flexColumn};  
   width: 100%;
-	padding:  3rem;
+	padding:  12rem 3rem 6rem;
 	position: relative;
 	z-index: 100;
 	height: 100%;
@@ -114,6 +117,9 @@ const PressList = styled.ul`
 		width: 100%;
     padding: 3rem;
     margin-bottom: 5rem;
+    transition: transform 250ms ease;
+    will-change: transform;
+    transform-origin: 50% 50%;
     &:nth-child(1n) {
       transform: rotate(1.5deg) translateX(-5vw);
       max-width: 65rem;
@@ -129,6 +135,9 @@ const PressList = styled.ul`
     &:nth-child(2n+2) {
       transform: rotate(3deg);
       max-width: 96rem;
+    }
+    &:hover {
+      transform: rotate(0deg);
     }
   }
   .press-copy-bg {
