@@ -29,7 +29,7 @@
     "dom": "0.0.3",
     "duration": "^0.2.2",
     "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "marquee3000": "^1.0.9",
     "nprogress": "^0.2.0",
     "paper": "^0.12.0",
